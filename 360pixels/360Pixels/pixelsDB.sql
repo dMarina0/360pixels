@@ -1,4 +1,4 @@
-USE [test6]
+
 
 CREATE TABLE [Photos](
 [PhotoID] uniqueidentifier NOT NULL,
@@ -177,6 +177,16 @@ BEGIN
 END
 GO
 
+CREATE PROCEDURE [dbo].[UserProfile_ReadAll]
+
+AS
+BEGIN
+	SELECT *
+	FROM UserProfile s	
+	
+END
+GO
+
 
 
 CREATE PROCEDURE [dbo].[Blog_Update]
@@ -253,7 +263,15 @@ BEGIN
 END
 GO
 
+CREATE PROCEDURE [dbo].[Blog_ReadAll]
 
+AS
+BEGIN
+	SELECT *
+	FROM Blog 
+	
+END
+GO
 
 
 
@@ -322,6 +340,18 @@ BEGIN
 END
 GO
 
+CREATE PROCEDURE [dbo].[Challenges_ReadAll]
+
+AS
+BEGIN
+	SELECT *
+	FROM Challenges
+	
+END
+GO
+
+
+
 
 
 CREATE PROCEDURE [dbo].[Categories_Update]
@@ -387,6 +417,18 @@ BEGIN
 	
 END
 GO
+
+
+CREATE PROCEDURE [dbo].[Categories_ReadAll]
+
+AS
+BEGIN
+	SELECT *
+	FROM Categories
+	
+END
+GO
+
 
 
 CREATE PROCEDURE [dbo].[Photos_Create]
@@ -471,6 +513,15 @@ END
 GO
 
 
+CREATE PROCEDURE [dbo].[Photos_ReadAll]
+
+AS
+BEGIN
+	SELECT *
+	FROM Photos
+	
+END
+GO
 
 
 
@@ -553,3 +604,15 @@ BEGIN
 
 END
 GO
+
+
+CREATE PROCEDURE [dbo].[AboutUser_ReadAll]
+
+AS
+BEGIN
+	SELECT *
+	FROM AboutUser
+	
+END
+GO
+
