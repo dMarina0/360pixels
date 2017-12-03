@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("MD.360pixels.Console")]
+[assembly: AssemblyTitle("MD.360pixels.Test")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("MD.360pixels.Console")]
+[assembly: AssemblyProduct("MD.360pixels.Test")]
 [assembly: AssemblyCopyright("Copyright ©  2017")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("a7061ff6-b4a9-4581-acdc-d54055f6cfb4")]
+[assembly: Guid("b7618268-db1d-4164-91ff-6c0832de18da")]
 
 // Version information for an assembly consists of the following four values:
 //

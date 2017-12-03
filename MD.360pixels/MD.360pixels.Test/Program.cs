@@ -6,56 +6,45 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MD._360pixels
 
+namespace MD._360pixels.Test
 {
     class Program
     {
-        
         static void Main(string[] args)
         {
 
-            Program obj = new Program();
-            /*obj.crudUserProfile();
-            obj.crudBlog();
-             obj.crudPhoto();
-            obj.crudCategory();
-            obj.crudChallenge();
-            */
+            
             crudUserProfile();
-            crudBlog();
-            crudPhoto();
-            crudCategory();
-            crudChallenge();
-           
-
+           //crudBlog();
+           // crudPhoto();
+           // crudCategory();
+            //crudChallenge();
         }
-
-
         public static void crudUserProfile()
         {
             UserProfileRepository userRepository = new UserProfileRepository();
             List<UserProfile> users = new List<UserProfile>();
 
             //Update
-             UserProfile user = new UserProfile();
-              user.UserID = new Guid("77117CCC-5713-DEAA-1995-DB413054A843");
-              user.UserName = "Update";
-              user.FirstName = "Doci";
-              user.LastName = "Marina";
-              user.Camera = "";
-              user.BirthDay = new DateTime(1995,11,17);
-              user.Country="Romania";
-              user.Website = "webUpdate";
+            UserProfile user = new UserProfile();
+            user.UserID = new Guid("77117CCC-5713-DEAA-1995-DB413054A843");
+            user.UserName = "Update";
+            user.FirstName = "Doci";
+            user.LastName = "Marina";
+            user.Camera = "";
+            user.BirthDay = new DateTime(1995, 11, 17);
+            user.Country = "Romania";
+            user.Website = "webUpdate";
 
-              userRepository.Update(user);
+            userRepository.Update(user);
 
             //Delete
             UserProfile u2 = new UserProfile();
             u2.UserID = new Guid("77117EFD-5713-DEAA-1995-DB413054A833");
 
             userRepository.Delete(u2);
-            
+
             //Insert
             UserProfile u3 = new UserProfile();
             u3.UserID = Guid.NewGuid();
@@ -71,22 +60,22 @@ namespace MD._360pixels
 
             //Read By Id
             UserProfile u1 = new UserProfile();
-             u1.UserID = new Guid("77117EFD-571A-DEAA-1995-DB413054A827");
-             UserProfile u = userRepository.ReadById(u1);
+            u1.UserID = new Guid("77117EFD-571A-DEAA-1995-DB413054A827");
+            UserProfile u = userRepository.ReadById(u1);
             Console.WriteLine(" Read by Id : \n {0} {1} {2} {3} {4} \n", u.UserID, u.UserName, u.FirstName, u.LastName, u.Camera);
 
 
             //Read All
             users = userRepository.ReadAll();
 
-            
+
             Console.WriteLine("--------READ ALL METHOD-------");
             foreach (UserProfile us in users)
-             {
-                 Console.WriteLine(" UserName :{0} \n FirstName:{1} \n LastName: {2} ", us.UserName, us.FirstName, us.LastName);
-             }
-             
-             Console.ReadKey();
+            {
+                Console.WriteLine(" UserName :{0} \n FirstName:{1} \n LastName: {2} ", us.UserName, us.FirstName, us.LastName);
+            }
+
+            Console.ReadKey();
         }
 
         public static void crudBlog()
@@ -103,7 +92,7 @@ namespace MD._360pixels
             b.Date = new DateTime(2017, 12, 1);
             b.Type = "News";
             blogrepo.Update(b);
-            
+
             //Insert
             Blog b2 = new Blog();
             b2.BlogID = Guid.NewGuid();
@@ -112,7 +101,7 @@ namespace MD._360pixels
             b2.Content = "Romanica";
             b2.Date = new DateTime(2017, 12, 1);
             b2.Type = "News";
-            
+
             blogrepo.Insert(b2);
             //DELETE 
             b.BlogID = new Guid("a7695725-7701-47ee-a4f6-f49b9bab8dd3");
@@ -133,7 +122,7 @@ namespace MD._360pixels
             }
             Console.ReadKey();
 
-            
+
 
         }
 
@@ -155,19 +144,19 @@ namespace MD._360pixels
 
 
             // DELETE
-             Photos b = new Photos();
-             b.PhotoID = new Guid("3da9940d-6756-4395-96a6-04c9a537d8b9");
-             photorepo.Delete(b);
-            
+            Photos b = new Photos();
+            b.PhotoID = new Guid("3da9940d-6756-4395-96a6-04c9a537d8b9");
+            photorepo.Delete(b);
+
             // Read BY ID
             Photos b1 = new Photos();
             b1.PhotoID = new Guid("31825ab5-c675-4748-ae05-bead72f19f91");
             Photos b2 = photorepo.ReadById(b1);
             Console.WriteLine(" Read by ID : \n Photo:{0} \n NrLikes:{1} ", b2.Photo, b2.Likes);
-            
+
 
             // Update
-             Photos p1 = new Photos();
+            Photos p1 = new Photos();
             p1.PhotoID = new Guid("1a3c2085-eb15-43b7-a334-3a441e1cca61");
             p1.Photo = "UpdatePhoto.jpg";
             p1.Likes = 10;
@@ -175,22 +164,22 @@ namespace MD._360pixels
             p1.Comment = "best";
 
             photorepo.Update(p1);
-            
+
             // Read All
-           photos = photorepo.ReadAll();
+            photos = photorepo.ReadAll();
             Console.WriteLine("====== READ ALL=======");
-           foreach (Photos p in photos)
-           {
-               Console.WriteLine("PhotoName: {0} \n NrLikes: {1} \n Location: {2} \n Comment: {3} ", p.Photo,p.Likes,p.Location,p.Comment);
+            foreach (Photos p in photos)
+            {
+                Console.WriteLine("PhotoName: {0} \n NrLikes: {1} \n Location: {2} \n Comment: {3} ", p.Photo, p.Likes, p.Location, p.Comment);
 
 
-           }
+            }
 
-           Console.ReadKey();
-           
+            Console.ReadKey();
+
         }
 
-        public  static void crudCategory()
+        public static void crudCategory()
         {
             CategoryRepository categoryrepo = new CategoryRepository();
             List<Category> categories = new List<Category>();
@@ -199,38 +188,38 @@ namespace MD._360pixels
             category.CategoryID = Guid.NewGuid();
             category.CategoryName = "Animals";
             categoryrepo.Insert(category);
-            
+
 
             //DELETE
             Category c1 = new Category();
             c1.CategoryID = new Guid("9A1833AB-B8AC-4781-7478-45FD04AD5166");
 
-           categoryrepo.Delete(c1);
-          
+            categoryrepo.Delete(c1);
+
 
             // UPDATE
-             Category c2 = new Category();
+            Category c2 = new Category();
             c2.CategoryID = new Guid("9A18C663-B8AC-4781-7478-45FD04AD5166");
             c2.CategoryName = "Humans";
 
             categoryrepo.Update(c2);
-            
+
 
             // Read By ID 
-               Category c3 = new Category();
-              c3.CategoryID = new Guid("8738C663-B8AC-4781-7478-45FD04AD5166");
-              Category c4 = categoryrepo.ReadById(c3);
-              Console.WriteLine(" Read by ID : ID: {0}  \n CategoryName: {1} ", c4.CategoryID, c4.CategoryName);
-              
+            Category c3 = new Category();
+            c3.CategoryID = new Guid("8738C663-B8AC-4781-7478-45FD04AD5166");
+            Category c4 = categoryrepo.ReadById(c3);
+            Console.WriteLine(" Read by ID : ID: {0}  \n CategoryName: {1} ", c4.CategoryID, c4.CategoryName);
 
-             categories = categoryrepo.ReadAll();
+
+            categories = categoryrepo.ReadAll();
             Console.WriteLine("=======Read all Categories=====");
-             foreach (Category c in categories)
-             {
-                 Console.WriteLine("{0} ", c.CategoryName);
-             }
-             Console.ReadKey();
-             
+            foreach (Category c in categories)
+            {
+                Console.WriteLine("{0} ", c.CategoryName);
+            }
+            Console.ReadKey();
+
         }
 
         public static void crudChallenge()

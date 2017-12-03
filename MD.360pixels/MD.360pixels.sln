@@ -5,8 +5,6 @@ VisualStudioVersion = 15.0.27004.2009
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MD.360Pixels.Model", "MD.360Pixels.Model\MD.360Pixels.Model.csproj", "{A5A9EAA0-BBBE-46B4-B8B9-75BC4F28E3E6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MD.360pixels", "MD.360pixels.Console\MD.360pixels.csproj", "{A7061FF6-B4A9-4581-ACDC-D54055F6CFB4}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SQL", "SQL", "{58662647-C3DD-42D6-8A66-41570D052183}"
 	ProjectSection(SolutionItems) = preProject
 		..\..\..\Desktop\INSERT.sql = ..\..\..\Desktop\INSERT.sql
@@ -14,6 +12,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SQL", "SQL", "{58662647-C3D
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MD.360pixels.Repository", "MD.360pixels.Repository\MD.360pixels.Repository.csproj", "{673D019F-095B-4762-8DDF-1A4D14B6D56F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MD.360pixels.Test", "MD.360pixels.Test\MD.360pixels.Test.csproj", "{B7618268-DB1D-4164-91FF-6C0832DE18DA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -25,14 +25,14 @@ Global
 		{A5A9EAA0-BBBE-46B4-B8B9-75BC4F28E3E6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A5A9EAA0-BBBE-46B4-B8B9-75BC4F28E3E6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A5A9EAA0-BBBE-46B4-B8B9-75BC4F28E3E6}.Release|Any CPU.Build.0 = Release|Any CPU
-		{A7061FF6-B4A9-4581-ACDC-D54055F6CFB4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A7061FF6-B4A9-4581-ACDC-D54055F6CFB4}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A7061FF6-B4A9-4581-ACDC-D54055F6CFB4}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A7061FF6-B4A9-4581-ACDC-D54055F6CFB4}.Release|Any CPU.Build.0 = Release|Any CPU
 		{673D019F-095B-4762-8DDF-1A4D14B6D56F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{673D019F-095B-4762-8DDF-1A4D14B6D56F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{673D019F-095B-4762-8DDF-1A4D14B6D56F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{673D019F-095B-4762-8DDF-1A4D14B6D56F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B7618268-DB1D-4164-91FF-6C0832DE18DA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B7618268-DB1D-4164-91FF-6C0832DE18DA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B7618268-DB1D-4164-91FF-6C0832DE18DA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B7618268-DB1D-4164-91FF-6C0832DE18DA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
