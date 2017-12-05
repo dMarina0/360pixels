@@ -31,6 +31,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -43,6 +44,8 @@
     <Compile Include="BlogRepository.cs" />
     <Compile Include="CategoryRepository.cs" />
     <Compile Include="ChallengeRepository.cs" />
+    <Compile Include="Core\BaseRepository.cs" />
+    <Compile Include="Core\RepositoryContext.cs" />
     <Compile Include="PhotoRepository.cs" />
     <Compile Include="UserProfileRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -53,5 +56,6 @@
       <Name>MD.360Pixels.Model</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

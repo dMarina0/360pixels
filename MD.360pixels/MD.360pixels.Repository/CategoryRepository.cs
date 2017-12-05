@@ -1,4 +1,5 @@
-﻿using MD._360Pixels.Model;
+﻿using MD._360pixels.Repository.Core;
+using MD._360Pixels.Model;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
@@ -8,50 +9,27 @@ using System.Threading.Tasks;
 
 namespace MD._360pixels.Repository
 {
-   public class CategoryRepository
+
+   public class CategoryRepository:BaseRepository<Category>
     {
+        #region ReadAll
+
+        
         public List<Category> ReadAll()
         {
-            List<Category> categories = new List<Category>();
-            string connectionString = "Server =DESKTOP-2HQ1GA6 ; Database =test3; Trusted_Connection = True; ";
-            using (SqlConnection connection = new SqlConnection(connectionString))
-            {
 
-                try
-                {
-                    using (SqlCommand command = new SqlCommand())
-                    {
-                        command.Connection = connection;
-                        command.CommandText = "Categories_ReadAll";
-                        command.CommandType = System.Data.CommandType.StoredProcedure;
+            return ReadAll("Categories_ReadAll");
 
-                        connection.Open();
-
-                        using (SqlDataReader reader = command.ExecuteReader())
-                        {
-                            while (reader.Read())
-                            {
-                                Category category = new Category();
-                                category.CategoryID = reader.GetGuid(reader.GetOrdinal("CategoryID"));
-                                category.CategoryName = reader.GetString(reader.GetOrdinal("CategoryName"));
-
-                                categories.Add(category);
-
-                            }
-                        }
-                    }
-                }
-                catch (SqlException ex)
-                {
-                    Console.WriteLine("Exception : {0}", ex.ToString());
-                }
-                finally
-                {
-                    connection.Close();
-                }
-            }
-            return categories;
         }
+
+        protected override Category GetModelfromReader(SqlDataReader reader)
+        {
+            Category category = new Category();
+            category.CategoryID = reader.GetGuid(reader.GetOrdinal("CategoryID"));
+            category.CategoryName = reader.GetString(reader.GetOrdinal("CategoryName"));
+            return category;
+        }
+            #endregion
 
         public void Insert(Category category)
         {

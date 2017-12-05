@@ -1,4 +1,5 @@
-﻿using MD._360Pixels.Model;
+﻿using MD._360pixels.Repository.Core;
+using MD._360Pixels.Model;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
@@ -9,61 +10,30 @@ using System.Threading.Tasks;
 
 namespace MD._360pixels.Repository
 {
-    public class UserProfileRepository
+    public class UserProfileRepository :BaseRepository<UserProfile>
     {
         #region Methods
 
     
         public List<UserProfile> ReadAll()
         {
-            List<UserProfile> users = new List<UserProfile>();
-            string connectionString = "Server =DESKTOP-2HQ1GA6 ; Database =test3; Trusted_Connection = True; ";
-            using (SqlConnection connection = new SqlConnection(connectionString))
-            {
+            return ReadAll("UserProfile_ReadAll");
+        }
 
-                try
-                {
-                    using (SqlCommand command = new SqlCommand())
-                    {
-                        command.Connection = connection;
-                        command.CommandText = "UserProfile_ReadAll";
-                        command.CommandType = System.Data.CommandType.StoredProcedure;
+        protected override UserProfile GetModelfromReader(SqlDataReader reader)
+        {
+            UserProfile user = new UserProfile();
+            user.UserID = reader.GetGuid(reader.GetOrdinal("UserID"));
+            user.UserName = reader.GetString(reader.GetOrdinal("UserName"));
+            user.FirstName = reader.GetString(reader.GetOrdinal("FirstName"));
+            user.LastName = reader.GetString(reader.GetOrdinal("LastName"));
+            user.BirthDay = reader.GetDateTime(reader.GetOrdinal("BirthDay"));
+            user.Camera = reader.GetString(reader.GetOrdinal("Camera"));
+            user.Country = reader.GetString(reader.GetOrdinal("Country"));
+            user.Camera = reader.GetString(reader.GetOrdinal("Camera"));
+            user.Website = reader.GetString(reader.GetOrdinal("Website"));
 
-                        connection.Open();
-
-                        using (SqlDataReader reader = command.ExecuteReader())
-                        {
-                            while(reader.Read())
-                            {
-                                UserProfile user = new UserProfile();
-                                user.UserID = reader.GetGuid(reader.GetOrdinal("UserID"));
-                                user.UserName = reader.GetString(reader.GetOrdinal("UserName"));
-                                user.FirstName = reader.GetString(reader.GetOrdinal("FirstName"));
-                                user.LastName = reader.GetString(reader.GetOrdinal("LastName"));
-                                user.BirthDay = reader.GetDateTime(reader.GetOrdinal("BirthDay"));
-                                user.Camera= reader.GetString(reader.GetOrdinal("Camera"));
-                                user.Country = reader.GetString(reader.GetOrdinal("Country"));
-                                user.Camera = reader.GetString(reader.GetOrdinal("Camera"));
-                                user.Website = reader.GetString(reader.GetOrdinal("Website"));
-
-                                users.Add(user);
-
-
-
-                            }
-                        }
-                    }
-                }
-                catch(SqlException ex)
-                {
-                    Console.WriteLine("Exception : {0}", ex.ToString());
-                }
-                finally
-                {
-                    connection.Close();
-                }
-            }
-                return users;
+            return user;
         }
 
         public void Insert(UserProfile user)

@@ -15,11 +15,11 @@ namespace MD._360pixels.Test
         {
 
             
-            //crudUserProfile();
+            crudUserProfile();
            //crudBlog();
            // crudPhoto();
            // crudCategory();
-           crudChallenge();
+           //crudChallenge();
         }
         public static void crudUserProfile()
         {
@@ -40,10 +40,7 @@ namespace MD._360pixels.Test
             userRepository.Update(user);
 
             //Delete
-            UserProfile u2 = new UserProfile();
-            u2.UserID = new Guid("77117EFD-5713-DEAA-1995-DB413054A833");
-
-            userRepository.Delete(u2);
+            userRepository.Delete(new Guid("77117CCC-5713-DEAA-1995-DB413054A843"));
 
             //Insert
             UserProfile u3 = new UserProfile();
@@ -59,9 +56,8 @@ namespace MD._360pixels.Test
             userRepository.Insert(u3);
 
             //Read By Id
-            UserProfile u1 = new UserProfile();
-            u1.UserID = new Guid("77117EFD-571A-DEAA-1995-DB413054A827");
-            UserProfile u = userRepository.ReadById(u1);
+            
+            UserProfile u = userRepository.ReadById(new Guid("77117EFD-571A-DEAA-1995-DB413054A827"));
             Console.WriteLine(" Read by Id : \n {0} {1} {2} {3} {4} \n", u.UserID, u.UserName, u.FirstName, u.LastName, u.Camera);
 
 
@@ -104,12 +100,12 @@ namespace MD._360pixels.Test
 
             blogrepo.Insert(b2);
             //DELETE 
-            b.BlogID = new Guid("a7695725-7701-47ee-a4f6-f49b9bab8dd3");
-            blogrepo.Delete(b);
+            
+            blogrepo.Delete(new Guid("a7695725-7701-47ee-a4f6-f49b9bab8dd3"));
 
             //READ BY ID
             Blog b1 = new Blog();
-            b1 = blogrepo.ReadById(b);
+            b1 = blogrepo.ReadById(new Guid("77117CCC-5713-DEAA-1995-DB413054A833"));
             Console.WriteLine("Read by ID: \n TITLE:{0}\n Type: {1} ", b1.Title, b1.Type);
 
 
@@ -144,14 +140,11 @@ namespace MD._360pixels.Test
 
 
             // DELETE
-            Photos b = new Photos();
-            b.PhotoID = new Guid("3da9940d-6756-4395-96a6-04c9a537d8b9");
-            photorepo.Delete(b);
+            photorepo.Delete(new Guid("3da9940d-6756-4395-96a6-04c9a537d8b9"));
 
             // Read BY ID
-            Photos b1 = new Photos();
-            b1.PhotoID = new Guid("31825ab5-c675-4748-ae05-bead72f19f91");
-            Photos b2 = photorepo.ReadById(b1);
+            
+            Photos b2 = photorepo.ReadById(new Guid("31825ab5-c675-4748-ae05-bead72f19f91"));
             Console.WriteLine(" Read by ID : \n Photo:{0} \n NrLikes:{1} ", b2.Photo, b2.Likes);
 
 
@@ -191,10 +184,8 @@ namespace MD._360pixels.Test
 
 
             //DELETE
-            Category c1 = new Category();
-            c1.CategoryID = new Guid("9A1833AB-B8AC-4781-7478-45FD04AD5166");
-
-            categoryrepo.Delete(c1);
+           
+            categoryrepo.Delete(new Guid("9A1833AB-B8AC-4781-7478-45FD04AD5166"));
 
 
             // UPDATE
@@ -206,9 +197,8 @@ namespace MD._360pixels.Test
 
 
             // Read By ID 
-            Category c3 = new Category();
-            c3.CategoryID = new Guid("8738C663-B8AC-4781-7478-45FD04AD5166");
-            Category c4 = categoryrepo.ReadById(c3);
+            
+            Category c4 = categoryrepo.ReadById(new Guid("8738C663-B8AC-4781-7478-45FD04AD5166"));
             Console.WriteLine(" Read by ID : ID: {0}  \n CategoryName: {1} ", c4.CategoryID, c4.CategoryName);
 
 

@@ -1,4 +1,5 @@
-﻿using MD._360Pixels.Model;
+﻿using MD._360pixels.Repository.Core;
+using MD._360Pixels.Model;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
@@ -8,56 +9,31 @@ using System.Threading.Tasks;
 
 namespace MD._360pixels.Repository
 {
-    public class PhotoRepository
+    public class PhotoRepository: BaseRepository<Photos>
     {
+        #region ReadAll
+
+        
         public List<Photos> ReadAll()
         {
-            List<Photos> photos = new List<Photos>();
 
-            string connectionString = "Server =DESKTOP-2HQ1GA6 ; Database =test3; Trusted_Connection = True; ";
-
-            using (SqlConnection connection = new SqlConnection(connectionString))
-            {
-                try
-                {
-                    using (SqlCommand command = new SqlCommand())
-                    {
-                        command.Connection = connection;
-                        command.CommandText = "Photos_ReadAll";
-                        command.CommandType = System.Data.CommandType.StoredProcedure;
-
-                        connection.Open();
-                        using (SqlDataReader reader = command.ExecuteReader())
-                        {
-                            while (reader.Read())
-                            {
-                                Photos photo = new Photos();
-                                photo.PhotoID = reader.GetGuid(reader.GetOrdinal("PhotoID"));
-                                photo.Photo = reader.GetString(reader.GetOrdinal("Photo"));
-                                photo.Likes = reader.GetInt32(reader.GetOrdinal("Likes"));
-                                photo.Location = reader.GetString(reader.GetOrdinal("Location"));
-                                photo.Comment = reader.GetString(reader.GetOrdinal("Comments"));
-                               
-
-                                photos.Add(photo);
-                            }
-                        }
-
-                    }
-
-                }
-                catch (SqlException ex)
-                {
-                    Console.WriteLine("Exception : {0}", ex.ToString());
-                }
-                finally
-                {
-                    connection.Close();
-                }
-            }
-
-            return photos;
+            return ReadAll("Photos_ReadAll");
+            
         }
+
+        protected override Photos GetModelfromReader(SqlDataReader reader)
+        {
+
+            Photos photo = new Photos();
+            photo.PhotoID = reader.GetGuid(reader.GetOrdinal("PhotoID"));
+            photo.Photo = reader.GetString(reader.GetOrdinal("Photo"));
+            photo.Likes = reader.GetInt32(reader.GetOrdinal("Likes"));
+            photo.Location = reader.GetString(reader.GetOrdinal("Location"));
+            photo.Comment = reader.GetString(reader.GetOrdinal("Comments"));
+            return photo;
+        }
+#endregion
+
         public void Insert(Photos photo)
         {
             string ConnectionString = "Server =DESKTOP-2HQ1GA6 ; Database =test3; Trusted_Connection = True; ";
