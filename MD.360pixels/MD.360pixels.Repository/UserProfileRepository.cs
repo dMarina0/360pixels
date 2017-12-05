@@ -103,7 +103,7 @@ namespace MD._360pixels.Repository
             }
         }
 
-        public void Delete(UserProfile user)
+        public void Delete(Guid userID)
         {
             string StringConnection= "Server =DESKTOP-2HQ1GA6 ; Database =test3; Trusted_Connection = True; ";
 
@@ -115,7 +115,8 @@ namespace MD._360pixels.Repository
                     command.Connection = connection;
                     command.CommandText = "UserProfile_Delete";
                     command.CommandType = System.Data.CommandType.StoredProcedure;
-
+                    UserProfile user = new UserProfile();
+                    user.UserID = userID;
                     command.Parameters.Add(new SqlParameter("UserID", user.UserID));
                     connection.Open();
                     command.ExecuteNonQuery();
@@ -170,10 +171,11 @@ namespace MD._360pixels.Repository
             }
         }
 
-        public UserProfile ReadById(UserProfile user)
+        public UserProfile ReadById(Guid userID)
         {
             string ConnectionString = "Server =DESKTOP-2HQ1GA6 ; Database =test3; Trusted_Connection = True; ";
-
+            UserProfile user = new UserProfile();
+           
             using (SqlConnection connection = new SqlConnection(ConnectionString))
             {
                 try
@@ -183,6 +185,7 @@ namespace MD._360pixels.Repository
                     command.CommandText = "UserProfie_ReadById";
                     command.CommandType = System.Data.CommandType.StoredProcedure;
                     connection.Open();
+                    user.UserID = userID;
                     command.Parameters.Add(new SqlParameter("UserID", user.UserID));
                     using (SqlDataReader reader = command.ExecuteReader())
                     {

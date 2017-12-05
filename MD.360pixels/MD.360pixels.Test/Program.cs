@@ -15,11 +15,11 @@ namespace MD._360pixels.Test
         {
 
             
-            crudUserProfile();
+            //crudUserProfile();
            //crudBlog();
            // crudPhoto();
            // crudCategory();
-            //crudChallenge();
+           crudChallenge();
         }
         public static void crudUserProfile()
         {
@@ -236,10 +236,8 @@ namespace MD._360pixels.Test
 
 
             // DELETE
-            Challenge c1 = new Challenge();
-            c1.ChallengeID = new Guid("34aa90ba-df2e-457e-810d-d87f58eb13d0");
-
-            challengerepo.Delete(c1);
+          
+            challengerepo.Delete(new Guid("d7f9fc1c-d39a-42ce-a437-56c88306e024"));
 
 
             // UPDATE
@@ -251,9 +249,8 @@ namespace MD._360pixels.Test
             challengerepo.Update(c2);
 
             // Read By ID 
-            Challenge c3 = new Challenge();
-            c3.ChallengeID = new Guid("706e200d-4819-4c82-9c6e-3f4ad984d42b");
-            Challenge c4 = challengerepo.ReadById(c3);
+           
+            Challenge c4 = challengerepo.ReadById(new Guid("474b1a89-ed68-4164-bd8f-44c01799d987"));
             Console.WriteLine(" Read by ID : \n Challenge: {0} \n Description:  {1} \n ", c4.ChallengeName, c4.Description);
 
 

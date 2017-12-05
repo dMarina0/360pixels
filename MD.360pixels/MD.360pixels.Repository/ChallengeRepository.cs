@@ -90,7 +90,7 @@ namespace MD._360pixels.Repository
             }
         }
 
-        public void Delete(Challenge challenge)
+        public void Delete(Guid challengeID)
         {
             string StringConnection = "Server =DESKTOP-2HQ1GA6 ; Database =test3; Trusted_Connection = True; ";
 
@@ -102,7 +102,8 @@ namespace MD._360pixels.Repository
                     command.Connection = connection;
                     command.CommandText = "Challenges_Delete";
                     command.CommandType = System.Data.CommandType.StoredProcedure;
-
+                    Challenge challenge = new Challenge();
+                    challenge.ChallengeID = challengeID;
                     command.Parameters.Add(new SqlParameter("ChallengeID", challenge.ChallengeID));
                     connection.Open();
                     command.ExecuteNonQuery();
@@ -154,11 +155,11 @@ namespace MD._360pixels.Repository
             }
         }
 
-        public Challenge ReadById(Challenge challenge)
+        public Challenge ReadById(Guid challengeID)
         {
-            string ConnectionString = "Server =DESKTOP-2HQ1GA6 ; Database =test3; Trusted_Connection = True; ";
-
-            using (SqlConnection connection = new SqlConnection(ConnectionString))
+            string connectionString = "Server =DESKTOP-2HQ1GA6 ; Database =test3; Trusted_Connection = True; ";
+            Challenge challenge = new Challenge();
+            using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 try
                 {
@@ -167,6 +168,8 @@ namespace MD._360pixels.Repository
                     command.CommandText = "Challenges_ReadById";
                     command.CommandType = System.Data.CommandType.StoredProcedure;
                     connection.Open();
+                    
+                    challenge.ChallengeID = challengeID;
                     command.Parameters.Add(new SqlParameter("ChallengeID", challenge.ChallengeID));
                     using (SqlDataReader reader = command.ExecuteReader())
                     {

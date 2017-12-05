@@ -558,4 +558,217 @@ END
 GO
 
 
+CREATE PROCEDURE [dbo].[UserChallenges_ReadAll]
+
+AS
+BEGIN
+	SELECT s.UserID,
+			s.ChallengeID
+	FROM UserChallenges s
 	
+END
+GO
+
+
+CREATE PROCEDURE [dbo].[UserChallenges_Create]
+(
+	@UserID uniqueidentifier,
+	@ChallengeID uniqueidentifier
+)
+AS
+BEGIN
+	INSERT INTO UserChallenges VALUES(@UserID, @ChallengeID);
+
+END
+GO
+
+CREATE PROCEDURE [dbo].[UserChallenges_Update]
+(
+	@UserID uniqueidentifier ,
+	@ChallengeID uniqueidentifier
+)
+AS 
+BEGIN 
+
+	UPDATE UserChallenges
+	SET UserID=@UserID ,
+		 ChallengeID=@ChallengeID
+	WHERE ChallengeID=@ChallengeID AND UserID=@UserID
+
+	
+
+END
+GO
+
+
+
+CREATE PROCEDURE [dbo].[UserChallenges_Delete]
+(
+	@UserID uniqueidentifier,
+	@ChallengeID uniqueidentifier
+)
+AS
+	BEGIN
+	DELETE 
+	FROM UserChallenges
+	WHERE UserID=@UserID  And ChallengeID=@ChallengeID
+	
+ 
+END 
+GO
+
+
+CREATE PROCEDURE [dbo].[BlogPhotos_ReadAll]
+
+AS
+BEGIN
+	SELECT s.BlogID,
+			s.PhotoID
+	FROM BlogPhotos s
+	
+END
+GO
+
+CREATE PROCEDURE [dbo].[BlogPhotos_Create]
+(
+	@BlogID uniqueidentifier,
+	@PhotoID uniqueidentifier
+)
+AS
+BEGIN
+	INSERT INTO BlogPhotos VALUES(@BlogID, @PhotoID);
+
+END
+GO
+
+CREATE PROCEDURE [dbo].[BlogPhotos_Delete]
+(
+	@BlogID uniqueidentifier,
+	@PhotoID uniqueidentifier
+)
+AS
+	BEGIN
+	DELETE 
+	FROM BlogPhotos
+	WHERE BlogID=@BlogID  And PhotoID=@PhotoID
+	
+ 
+END 
+GO
+	
+
+CREATE PROCEDURE [dbo].[CategoriesPhotos_ReadAll]
+
+AS
+BEGIN
+	SELECT s.CategoryID,
+			s.PhotoID
+	FROM CategoriesPhotos s
+	
+END
+GO
+
+CREATE PROCEDURE [dbo].[CategoriesPhotos_Create]
+(
+	@CategoryID uniqueidentifier,
+	@PhotoID uniqueidentifier
+)
+AS
+BEGIN
+	INSERT INTO CategoriesPhotos VALUES(@CategoryID, @PhotoID);
+
+END
+GO
+
+CREATE PROCEDURE [dbo].[CategoriesPhotos_Delete]
+(
+	@CategoryID uniqueidentifier,
+	@PhotoID uniqueidentifier
+)
+AS
+	BEGIN
+	DELETE 
+	FROM CategoriesPhotos
+	WHERE CategoryID=@CategoryID  And PhotoID=@PhotoID
+	
+ 
+END 
+GO
+
+
+CREATE PROCEDURE [dbo].[ChallengesPhotos_ReadAll]
+
+AS
+BEGIN
+	SELECT s.ChallengeID,
+			s.PhotoID
+	FROM ChallengesPhotos s
+	
+END
+GO
+
+CREATE PROCEDURE [dbo].[ChallengesPhotos_Create]
+(
+	@ChallengeID uniqueidentifier,
+	@PhotoID uniqueidentifier
+)
+AS
+BEGIN
+	INSERT INTO ChallengesPhotos VALUES(@ChallengeID, @PhotoID);
+
+END
+GO
+
+CREATE PROCEDURE [dbo].[ChallengesPhotos_Delete]
+(
+	@ChallengeID uniqueidentifier,
+	@PhotoID uniqueidentifier
+)
+AS
+	BEGIN
+	DELETE 
+	FROM ChallengesPhotos
+	WHERE ChallengeID=@ChallengeID  And PhotoID=@PhotoID
+	
+ 
+END 
+GO
+
+
+CREATE PROCEDURE [dbo].[UserProfilePhotos_ReadAll]
+
+AS
+BEGIN
+	SELECT s.UserID,
+			s.PhotoID
+	FROM UserProfilePhotos s
+	
+END
+GO
+
+CREATE PROCEDURE [dbo].[UserProfilePhotos_Create]
+(
+	@UserID uniqueidentifier,
+	@PhotoID uniqueidentifier
+)
+AS
+BEGIN
+	INSERT INTO UserProfilePhotos VALUES(@UserID, @PhotoID);
+
+END
+GO
+
+CREATE PROCEDURE [dbo].[UserProfilePhotos_Delete]
+(
+	@UserID uniqueidentifier,
+	@PhotoID uniqueidentifier 
+)
+AS
+	BEGIN
+	DELETE 
+	FROM UserProfilePhotos
+	WHERE UserID=@UserID  And PhotoID=@PhotoID
+	
+ 
+END 
+GO

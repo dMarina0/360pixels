@@ -85,7 +85,7 @@ namespace MD._360pixels.Repository
             }
         }
 
-        public void Delete(Category category)
+        public void Delete(Guid categoryID)
         {
             string StringConnection = "Server =DESKTOP-2HQ1GA6 ; Database =test3; Trusted_Connection = True; ";
 
@@ -97,7 +97,8 @@ namespace MD._360pixels.Repository
                     command.Connection = connection;
                     command.CommandText = "Categories_Delete";
                     command.CommandType = System.Data.CommandType.StoredProcedure;
-
+                    Category category = new Category();
+                    category.CategoryID = categoryID;
                     command.Parameters.Add(new SqlParameter("CategoryID", category.CategoryID));
                     connection.Open();
                     command.ExecuteNonQuery();
@@ -147,10 +148,11 @@ namespace MD._360pixels.Repository
             }
         }
 
-        public  Category ReadById(Category category)
+        public  Category ReadById(Guid categoryID)
         {
             string ConnectionString = "Server =DESKTOP-2HQ1GA6 ; Database =test3; Trusted_Connection = True; ";
-
+            Category category = new Category();
+            
             using (SqlConnection connection = new SqlConnection(ConnectionString))
             {
                 try
@@ -160,6 +162,7 @@ namespace MD._360pixels.Repository
                     command.CommandText = "Categories_ReadById";
                     command.CommandType = System.Data.CommandType.StoredProcedure;
                     connection.Open();
+                    category.CategoryID = categoryID;
                     command.Parameters.Add(new SqlParameter("CategoryID", category.CategoryID));
                     using (SqlDataReader reader = command.ExecuteReader())
                     {

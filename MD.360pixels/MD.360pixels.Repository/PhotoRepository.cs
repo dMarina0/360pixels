@@ -93,7 +93,7 @@ namespace MD._360pixels.Repository
 
             }
         }
-        public void Delete(Photos photo)
+        public void Delete(Guid photoID)
         {
             string StringConnection = "Server =DESKTOP-2HQ1GA6 ; Database =test3; Trusted_Connection = True; ";
 
@@ -105,7 +105,8 @@ namespace MD._360pixels.Repository
                     command.Connection = connection;
                     command.CommandText = "Photos_Delete";
                     command.CommandType = System.Data.CommandType.StoredProcedure;
-
+                    Photos photo = new Photos();
+                    photo.PhotoID = photoID;
                     command.Parameters.Add(new SqlParameter("PhotoID", photo.PhotoID));
                     connection.Open();
                     command.ExecuteNonQuery();
@@ -158,11 +159,12 @@ namespace MD._360pixels.Repository
             }
         }
 
-        public Photos ReadById(Photos photo)
+        public Photos ReadById(Guid photoID)
         {
-            string ConnectionString = "Server =DESKTOP-2HQ1GA6 ; Database =test3; Trusted_Connection = True; ";
-
-            using (SqlConnection connection = new SqlConnection(ConnectionString))
+            string connectionString = "Server =DESKTOP-2HQ1GA6 ; Database =test3; Trusted_Connection = True; ";
+            Photos photo = new Photos();
+          
+            using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 try
                 {
@@ -171,7 +173,7 @@ namespace MD._360pixels.Repository
                     command.CommandText = "Photos_ReadByID";
                     command.CommandType = System.Data.CommandType.StoredProcedure;
                     connection.Open();
-
+                    photo.PhotoID = photoID;
                     command.Parameters.Add(new SqlParameter("PhotoID", photo.PhotoID));
 
                     using (SqlDataReader reader = command.ExecuteReader())

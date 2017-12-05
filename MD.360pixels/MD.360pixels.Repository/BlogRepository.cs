@@ -97,7 +97,7 @@ namespace MD._360pixels.Repository
             }
         }
 
-        public void Delete(Blog blog)
+        public void Delete(Guid blogID)
         {
             string StringConnection = "Server =DESKTOP-2HQ1GA6 ; Database =test3; Trusted_Connection = True; ";
 
@@ -109,7 +109,8 @@ namespace MD._360pixels.Repository
                     command.Connection = connection;
                     command.CommandText = "Blog_Delete";
                     command.CommandType = System.Data.CommandType.StoredProcedure;
-
+                    Blog blog = new Blog();
+                    blog.BlogID = blogID;
                     command.Parameters.Add(new SqlParameter("BlogID", blog.BlogID));
                     connection.Open();
                     command.ExecuteNonQuery();
@@ -163,10 +164,11 @@ namespace MD._360pixels.Repository
             }
         }
 
-        public Blog ReadById(Blog blog)
+        public Blog ReadById(Guid blogID)
         {
             string ConnectionString = "Server =DESKTOP-2HQ1GA6 ; Database =test3; Trusted_Connection = True; ";
-
+            Blog blog = new Blog();
+           
             using (SqlConnection connection = new SqlConnection(ConnectionString))
             {
                 try
@@ -176,6 +178,7 @@ namespace MD._360pixels.Repository
                     command.CommandText = "Blog_ReadById";
                     command.CommandType = System.Data.CommandType.StoredProcedure;
                     connection.Open();
+                    blog.BlogID = blogID;
                     command.Parameters.Add(new SqlParameter("BlogID", blog.BlogID));
                     using (SqlDataReader reader = command.ExecuteReader())
                     {
