@@ -1,4 +1,4 @@
-USE [test3]
+USE [pixelsDB]
 
 INSERT INTO UserProfile VALUES ('FE1B7EFD-571A-DEAA-4513-DB413054A827', 'Muchtamir','Doci','Marina','nikon','1995-11-17','Romania','website');
 INSERT INTO UserProfile VALUES ('353E116F-3D66-C91A-7F69-9350261B440D', 'Marzena','Neil','Krug','canon','2015-12-17','China','web ');

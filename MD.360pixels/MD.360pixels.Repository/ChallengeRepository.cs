@@ -30,68 +30,49 @@ namespace MD._360pixels.Repository
         #endregion
 
 
+        #region Insert
 
         public void Insert(Challenge challenge)
         {
-            string ConnectionString = "Server =DESKTOP-2HQ1GA6 ; Database =test3; Trusted_Connection = True; ";
-            using (SqlConnection connection = new SqlConnection(ConnectionString))
-            {
-                try
-                {
-                    SqlCommand command = new SqlCommand();
-                    command.Connection = connection;
-                    command.CommandText = "Challenges_Create";
-                    command.CommandType = System.Data.CommandType.StoredProcedure;
-
-
-                    command.Parameters.Add(new SqlParameter("ChallengeID", challenge.ChallengeID));
-                    command.Parameters.Add(new SqlParameter("ChallengeName", challenge.ChallengeName));
-                    command.Parameters.Add(new SqlParameter("Description", challenge.Description));
-                    
-
-                    connection.Open();
-                    command.ExecuteNonQuery();
-                }
-                catch (SqlException Ex)
-                {
-                    Console.WriteLine("Exception : {0}", Ex.ToString());
-                }
-                finally
-                {
-                    connection.Close();
-                }
-
-            }
+            Insert("Challenges_Create", AddParameter(challenge));
+                   
+            
         }
+        protected override SqlParameter[] AddParameter(Challenge challenge)
+        {
+            SqlParameter[] parameter = new SqlParameter[]
+            {
+                new SqlParameter("ChallengeID", challenge.ChallengeID),
+                new SqlParameter("ChallengeName", challenge.ChallengeName),
+                new SqlParameter("Description", challenge.Description)
+
+            };
+
+
+            return parameter;
+        }
+
+        #endregion
 
         public void Delete(Guid challengeID)
         {
-            string StringConnection = "Server =DESKTOP-2HQ1GA6 ; Database =test3; Trusted_Connection = True; ";
+            Delete("Challenges_Delete", SetID(challengeID));
+              
 
-            using (SqlConnection connection = new SqlConnection(StringConnection))
+        }
+        protected override SqlParameter[] SetID(Guid challengeID)
+        {
+            
+
+            SqlParameter[] parameter = new SqlParameter[]
             {
-                try
-                {
-                    SqlCommand command = new SqlCommand();
-                    command.Connection = connection;
-                    command.CommandText = "Challenges_Delete";
-                    command.CommandType = System.Data.CommandType.StoredProcedure;
-                    Challenge challenge = new Challenge();
-                    challenge.ChallengeID = challengeID;
-                    command.Parameters.Add(new SqlParameter("ChallengeID", challenge.ChallengeID));
-                    connection.Open();
-                    command.ExecuteNonQuery();
+                new SqlParameter("ChallengeID", challengeID)
+            };
 
-                }
-                catch (SqlException ex)
-                {
-                    Console.WriteLine("Exception: {0} ", ex.ToString());
-                }
-                finally
-                {
-                    connection.Close();
-                }
-            }
+
+            return parameter;
+
+
 
         }
 
@@ -131,46 +112,11 @@ namespace MD._360pixels.Repository
 
         public Challenge ReadById(Guid challengeID)
         {
-            string connectionString = "Server =DESKTOP-2HQ1GA6 ; Database =test3; Trusted_Connection = True; ";
-            Challenge challenge = new Challenge();
-            using (SqlConnection connection = new SqlConnection(connectionString))
-            {
-                try
-                {
-                    SqlCommand command = new SqlCommand();
-                    command.Connection = connection;
-                    command.CommandText = "Challenges_ReadById";
-                    command.CommandType = System.Data.CommandType.StoredProcedure;
-                    connection.Open();
-                    
-                    challenge.ChallengeID = challengeID;
-                    command.Parameters.Add(new SqlParameter("ChallengeID", challenge.ChallengeID));
-                    using (SqlDataReader reader = command.ExecuteReader())
-                    {
-                        while (reader.Read())
-                        {
+            return ReadByID("Categories_ReadById", SetID(challengeID)).First();
 
-                           
-                            challenge.ChallengeName = reader.GetString(reader.GetOrdinal("ChallengeName"));
-                            challenge.Description = reader.GetString(reader.GetOrdinal("Description"));
-                            
-                        }
-                    }
-
-                    command.ExecuteNonQuery();
-
-                }
-                catch (SqlException ex)
-                {
-                    Console.WriteLine("Exception : {0} ", ex.ToString());
-                }
-                finally
-                {
-                    connection.Close();
-                }
-            }
-            return challenge;
         }
+
+       
     }
 }
 

@@ -29,70 +29,50 @@ namespace MD._360pixels.Repository
             category.CategoryName = reader.GetString(reader.GetOrdinal("CategoryName"));
             return category;
         }
-            #endregion
+        #endregion
+        #region Insert
 
         public void Insert(Category category)
         {
-            string ConnectionString = "Server =DESKTOP-2HQ1GA6 ; Database =test3; Trusted_Connection = True; ";
-            using (SqlConnection connection = new SqlConnection(ConnectionString))
-            {
-                try
-                {
-                    SqlCommand command = new SqlCommand();
-                    command.Connection = connection;
-                    command.CommandText = "Categories_Create";
-                    command.CommandType = System.Data.CommandType.StoredProcedure;
 
-
-                    command.Parameters.Add(new SqlParameter("CategoryID", category.CategoryID));
-                    command.Parameters.Add(new SqlParameter("CategoryName", category.CategoryName));
-                   
-
-                    connection.Open();
-                    command.ExecuteNonQuery();
-                }
-                catch (SqlException Ex)
-                {
-                    Console.WriteLine("Exception : {0}", Ex.ToString());
-                }
-                finally
-                {
-                    connection.Close();
-                }
-
-            }
+            Insert("Categories_Create", AddParameter(category));
+            
         }
+
+        protected override SqlParameter[] AddParameter(Category category)
+        {
+            SqlParameter[] parameter = new SqlParameter[]
+            {
+                new SqlParameter("CategoryID", category.CategoryID),
+                new SqlParameter("CategoryName", category.CategoryName),
+               
+            };
+
+
+            return parameter;
+        }
+        #endregion
 
         public void Delete(Guid categoryID)
         {
-            string StringConnection = "Server =DESKTOP-2HQ1GA6 ; Database =test3; Trusted_Connection = True; ";
-
-            using (SqlConnection connection = new SqlConnection(StringConnection))
-            {
-                try
-                {
-                    SqlCommand command = new SqlCommand();
-                    command.Connection = connection;
-                    command.CommandText = "Categories_Delete";
-                    command.CommandType = System.Data.CommandType.StoredProcedure;
-                    Category category = new Category();
-                    category.CategoryID = categoryID;
-                    command.Parameters.Add(new SqlParameter("CategoryID", category.CategoryID));
-                    connection.Open();
-                    command.ExecuteNonQuery();
-
-                }
-                catch (SqlException ex)
-                {
-                    Console.WriteLine("Exception: {0} ", ex.ToString());
-                }
-                finally
-                {
-                    connection.Close();
-                }
-            }
+            Delete("Categories_Delete", SetID(categoryID));
 
         }
+        protected override SqlParameter[] SetID(Guid categoryID)
+        {
+
+            SqlParameter[] parameter = new SqlParameter[]
+            {
+                new SqlParameter("CategoryID", categoryID)
+            };
+
+
+            return parameter;
+
+        }
+
+
+
 
         public void Update(Category category)
         {
@@ -126,45 +106,15 @@ namespace MD._360pixels.Repository
             }
         }
 
-        public  Category ReadById(Guid categoryID)
+        
+        public Category ReadById(Guid categoryID)
         {
-            string ConnectionString = "Server =DESKTOP-2HQ1GA6 ; Database =test3; Trusted_Connection = True; ";
-            Category category = new Category();
-            
-            using (SqlConnection connection = new SqlConnection(ConnectionString))
-            {
-                try
-                {
-                    SqlCommand command = new SqlCommand();
-                    command.Connection = connection;
-                    command.CommandText = "Categories_ReadById";
-                    command.CommandType = System.Data.CommandType.StoredProcedure;
-                    connection.Open();
-                    category.CategoryID = categoryID;
-                    command.Parameters.Add(new SqlParameter("CategoryID", category.CategoryID));
-                    using (SqlDataReader reader = command.ExecuteReader())
-                    {
-                        while (reader.Read())
-                        {
+                return ReadByID("Categories_ReadById", SetID(categoryID)).First();
 
-                            category.CategoryName = reader.GetString(reader.GetOrdinal("CategoryName"));
-                            
-                        }
-                    }
-
-                    command.ExecuteNonQuery();
-
-                }
-                catch (SqlException ex)
-                {
-                    Console.WriteLine("Exception : {0} ", ex.ToString());
-                }
-                finally
-                {
-                    connection.Close();
-                }
-            }
-            return category;
         }
+
+        
+
+
     }
 }

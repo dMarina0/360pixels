@@ -32,70 +32,57 @@ namespace MD._360pixels.Repository
         }
         #endregion
 
+        #region Insert
+
+        
         public void Insert(Blog blog)
         {
-            string ConnectionString = "Server =DESKTOP-2HQ1GA6 ; Database =test3; Trusted_Connection = True; ";
-            using (SqlConnection connection = new SqlConnection(ConnectionString))
-            {
-                try
-                {
-                    SqlCommand command = new SqlCommand();
-                    command.Connection = connection;
-                    command.CommandText = "Blog_Create";
-                    command.CommandType = System.Data.CommandType.StoredProcedure;
 
-
-                    command.Parameters.Add(new SqlParameter("BlogID", blog.BlogID));
-                    command.Parameters.Add(new SqlParameter("Title", blog.Title));
-                    command.Parameters.Add(new SqlParameter("Author", blog.Author));
-                    command.Parameters.Add(new SqlParameter("Content", blog.Content));
-                    command.Parameters.Add(new SqlParameter("Date", blog.Date));
-                    command.Parameters.Add(new SqlParameter("Type", blog.Type));
+            Insert("Blog_Create", AddParameter(blog));
                    
-
-                    connection.Open();
-                    command.ExecuteNonQuery();
-                }
-                catch (SqlException Ex)
-                {
-                    Console.WriteLine("Exception : {0}", Ex.ToString());
-                }
-                finally
-                {
-                    connection.Close();
-                }
-
-            }
+            
         }
+
+        protected override SqlParameter[] AddParameter(Blog blog)
+        {
+            SqlParameter[] parameter = new SqlParameter[]
+            {
+                new SqlParameter("BlogID", blog.BlogID),
+                new SqlParameter("Title", blog.Title),
+                new SqlParameter("Author", blog.Author),
+                new SqlParameter("Content", blog.Content),
+                new SqlParameter("Date", blog.Date),
+                new SqlParameter("Type", blog.Type)
+
+            };
+
+
+            return parameter;
+         }
+
+        #endregion
 
         public void Delete(Guid blogID)
         {
-            string StringConnection = "Server =DESKTOP-2HQ1GA6 ; Database =test3; Trusted_Connection = True; ";
 
-            using (SqlConnection connection = new SqlConnection(StringConnection))
+            Delete("Blog_Delete", SetID(blogID));
+                 
+
+        }
+
+        protected override SqlParameter[] SetID(Guid blogID)
+        {
+            
+
+            SqlParameter[] parameter = new SqlParameter[]
             {
-                try
-                {
-                    SqlCommand command = new SqlCommand();
-                    command.Connection = connection;
-                    command.CommandText = "Blog_Delete";
-                    command.CommandType = System.Data.CommandType.StoredProcedure;
-                    Blog blog = new Blog();
-                    blog.BlogID = blogID;
-                    command.Parameters.Add(new SqlParameter("BlogID", blog.BlogID));
-                    connection.Open();
-                    command.ExecuteNonQuery();
+                new SqlParameter("BlogID", blogID)
+            };
 
-                }
-                catch (SqlException ex)
-                {
-                    Console.WriteLine("Exception: {0} ", ex.ToString());
-                }
-                finally
-                {
-                    connection.Close();
-                }
-            }
+
+            return parameter;
+
+
 
         }
 
@@ -137,47 +124,10 @@ namespace MD._360pixels.Repository
 
         public Blog ReadById(Guid blogID)
         {
-            string ConnectionString = "Server =DESKTOP-2HQ1GA6 ; Database =test3; Trusted_Connection = True; ";
-            Blog blog = new Blog();
-           
-            using (SqlConnection connection = new SqlConnection(ConnectionString))
-            {
-                try
-                {
-                    SqlCommand command = new SqlCommand();
-                    command.Connection = connection;
-                    command.CommandText = "Blog_ReadById";
-                    command.CommandType = System.Data.CommandType.StoredProcedure;
-                    connection.Open();
-                    blog.BlogID = blogID;
-                    command.Parameters.Add(new SqlParameter("BlogID", blog.BlogID));
-                    using (SqlDataReader reader = command.ExecuteReader())
-                    {
-                        while (reader.Read())
-                        {
-
-                            blog.BlogID = reader.GetGuid(reader.GetOrdinal("BlogID"));
-                            blog.Title = reader.GetString(reader.GetOrdinal("Title"));
-                            blog.Author = reader.GetString(reader.GetOrdinal("Author"));
-                            blog.Content = reader.GetString(reader.GetOrdinal("Content"));
-                            blog.Date = reader.GetDateTime(reader.GetOrdinal("Date"));
-                            blog.Type = reader.GetString(reader.GetOrdinal("Type"));
-                        }
-                    }
-
-                    command.ExecuteNonQuery();
-
-                }
-                catch (SqlException ex)
-                {
-                    Console.WriteLine("Exception : {0} ", ex.ToString());
-                }
-                finally
-                {
-                    connection.Close();
-                }
-            }
-            return blog;
+             return ReadByID("Blog_ReadById", SetID(blogID)).First();
+            
         }
+
+      
     }
 }

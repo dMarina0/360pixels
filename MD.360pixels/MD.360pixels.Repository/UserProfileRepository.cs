@@ -12,9 +12,9 @@ namespace MD._360pixels.Repository
 {
     public class UserProfileRepository :BaseRepository<UserProfile>
     {
-        #region Methods
+        
 
-    
+        #region ReadALL
         public List<UserProfile> ReadAll()
         {
             return ReadAll("UserProfile_ReadAll");
@@ -35,74 +35,55 @@ namespace MD._360pixels.Repository
 
             return user;
         }
+        #endregion
+        #region Insert
 
+        
         public void Insert(UserProfile user)
         {
-            string ConnectionString = "Server =DESKTOP-2HQ1GA6 ; Database =test3; Trusted_Connection = True; ";
-            using (SqlConnection connection = new SqlConnection(ConnectionString))
+
+            Insert("UserProfile_Create", AddParameter(user));
+           
+        }
+        protected override SqlParameter[] AddParameter(UserProfile user)
+        {
+            
+            SqlParameter[] parameter = new SqlParameter[]
             {
-                try
-                {
-                    SqlCommand command = new SqlCommand();
-                    command.Connection = connection;
-                    command.CommandText = "UserProfile_Create";
-                    command.CommandType = System.Data.CommandType.StoredProcedure;
+                new SqlParameter("UserID", user.UserID),
+                new SqlParameter("UserName", user.UserName),
+                new SqlParameter("FirstName", user.FirstName),
+                new SqlParameter("LastName", user.LastName),
+                new SqlParameter("BirthDay", user.BirthDay),
+                new SqlParameter("Camera", user.Camera),
+                new SqlParameter("Country", user.Country),
+                new SqlParameter("Website", user.Website)
 
-                   
-                    command.Parameters.Add(new SqlParameter("UserID", user.UserID));
-                    command.Parameters.Add(new SqlParameter("UserName", user.UserName));
-                    command.Parameters.Add(new SqlParameter("FirstName", user.FirstName));
-                    command.Parameters.Add(new SqlParameter("LastName", user.LastName));
-                    command.Parameters.Add(new SqlParameter("BirthDay", user.BirthDay));
-                    command.Parameters.Add(new SqlParameter("Camera", user.Camera));
-                    command.Parameters.Add(new SqlParameter("Country", user.Country));
-                    command.Parameters.Add(new SqlParameter("Website", user.Website));
+            };
 
-                    connection.Open();
-                    command.ExecuteNonQuery();
-                }
-                catch(SqlException Ex)
-                {
-                    Console.WriteLine("Exception : {0}", Ex.ToString());
-                }
-                finally
-                {
-                    connection.Close();
-                }
 
-            }
+            return parameter;
         }
 
+            #endregion
         public void Delete(Guid userID)
         {
-            string StringConnection= "Server =DESKTOP-2HQ1GA6 ; Database =test3; Trusted_Connection = True; ";
-
-            using (SqlConnection connection = new SqlConnection(StringConnection))
-            {
-                try
-                {
-                    SqlCommand command = new SqlCommand();
-                    command.Connection = connection;
-                    command.CommandText = "UserProfile_Delete";
-                    command.CommandType = System.Data.CommandType.StoredProcedure;
-                    UserProfile user = new UserProfile();
-                    user.UserID = userID;
-                    command.Parameters.Add(new SqlParameter("UserID", user.UserID));
-                    connection.Open();
-                    command.ExecuteNonQuery();
-
-                }
-                catch(SqlException ex)
-                {
-                    Console.WriteLine("Exception: {0} ", ex.ToString());
-                }
-                finally
-                {
-                    connection.Close();
-                }
-            }
+            Delete("UserProfile_Delete", SetID(userID));
 
         }
+
+        protected override SqlParameter[] SetID(Guid userID)
+        {
+
+            SqlParameter[] parameter = new SqlParameter[]
+            {
+                new SqlParameter("UserID", userID)
+            };
+
+            return parameter;
+        }
+
+
 
         public void Update(UserProfile user)
         {
@@ -143,54 +124,12 @@ namespace MD._360pixels.Repository
 
         public UserProfile ReadById(Guid userID)
         {
-            string ConnectionString = "Server =DESKTOP-2HQ1GA6 ; Database =test3; Trusted_Connection = True; ";
-            UserProfile user = new UserProfile();
-           
-            using (SqlConnection connection = new SqlConnection(ConnectionString))
-            {
-                try
-                {
-                    SqlCommand command = new SqlCommand();
-                    command.Connection = connection;
-                    command.CommandText = "UserProfie_ReadById";
-                    command.CommandType = System.Data.CommandType.StoredProcedure;
-                    connection.Open();
-                    user.UserID = userID;
-                    command.Parameters.Add(new SqlParameter("UserID", user.UserID));
-                    using (SqlDataReader reader = command.ExecuteReader())
-                    {
-                        while (reader.Read())
-                        {
-                           
-                            user.UserName = reader.GetString(reader.GetOrdinal("UserName"));
-                            user.FirstName = reader.GetString(reader.GetOrdinal("FirstName"));
-                            user.LastName = reader.GetString(reader.GetOrdinal("LastName"));
-                            user.BirthDay = reader.GetDateTime(reader.GetOrdinal("BirthDay"));
-                            user.Camera = reader.GetString(reader.GetOrdinal("Camera"));
-                            user.Country = reader.GetString(reader.GetOrdinal("Country"));
-                            user.Camera = reader.GetString(reader.GetOrdinal("Camera"));
-                            user.Website = reader.GetString(reader.GetOrdinal("Website"));
-                        }
-                    }
-                    
-                    command.ExecuteNonQuery();
+            List<UserProfile> list = new List<UserProfile>();
+            list = ReadByID("UserProfie_ReadById", SetID(userID)) ;
+            return list.FirstOrDefault() ;
 
-                }
-                catch (SqlException ex)
-                {
-                    Console.WriteLine("Exception : {0} ", ex.ToString());
-                }
-                finally
-                {
-                    connection.Close();
-                }
-            }
-            return user;
         }
 
-
- 
-
-        #endregion
+   
     }
 }

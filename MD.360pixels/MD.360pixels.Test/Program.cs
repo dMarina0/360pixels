@@ -15,16 +15,17 @@ namespace MD._360pixels.Test
         {
 
             
-            crudUserProfile();
+           crudUserProfile();
            //crudBlog();
            // crudPhoto();
-           // crudCategory();
+          // crudCategory();
            //crudChallenge();
         }
         public static void crudUserProfile()
         {
             UserProfileRepository userRepository = new UserProfileRepository();
             List<UserProfile> users = new List<UserProfile>();
+            List<UserProfile> usersReadbyID = new List<UserProfile>();
 
             //Update
             UserProfile user = new UserProfile();
@@ -45,7 +46,7 @@ namespace MD._360pixels.Test
             //Insert
             UserProfile u3 = new UserProfile();
             u3.UserID = Guid.NewGuid();
-            u3.UserName = "doMar  -- INSERT METHOD";
+            u3.UserName = "TEST  -- INSERT METHOD";
             u3.FirstName = "Doci";
             u3.LastName = "Marina";
             u3.Camera = "";
@@ -56,8 +57,8 @@ namespace MD._360pixels.Test
             userRepository.Insert(u3);
 
             //Read By Id
-            
-            UserProfile u = userRepository.ReadById(new Guid("77117EFD-571A-DEAA-1995-DB413054A827"));
+            UserProfile u = new UserProfile();
+            u = userRepository.ReadById(new Guid("77117EFD-571A-DEAA-1995-DB413054A827"));
             Console.WriteLine(" Read by Id : \n {0} {1} {2} {3} {4} \n", u.UserID, u.UserName, u.FirstName, u.LastName, u.Camera);
 
 
@@ -101,24 +102,22 @@ namespace MD._360pixels.Test
             blogrepo.Insert(b2);
             //DELETE 
             
-            blogrepo.Delete(new Guid("a7695725-7701-47ee-a4f6-f49b9bab8dd3"));
+            blogrepo.Delete(new Guid("b142f930-aa29-484e-3a1a-7d8b184c0429"));
 
             //READ BY ID
             Blog b1 = new Blog();
-            b1 = blogrepo.ReadById(new Guid("77117CCC-5713-DEAA-1995-DB413054A833"));
+           b1 = blogrepo.ReadById(new Guid("b142f930-aa29-484e-3a1a-7d8b184c0429"));
             Console.WriteLine("Read by ID: \n TITLE:{0}\n Type: {1} ", b1.Title, b1.Type);
 
 
             //Read All
             blogs = blogrepo.ReadAll();
             Console.WriteLine("            === Read All ==         ");
-            foreach (Blog blog in blogs)
+            foreach (Blog bl in blogs)
             {
-                Console.WriteLine("Title: {0} \n Author:  {1} \n Content {2} ", blog.Title, blog.Author, blog.Content);
+                Console.WriteLine("Title: {0} \n ", bl.Title);
             }
             Console.ReadKey();
-
-
 
         }
 
@@ -133,14 +132,14 @@ namespace MD._360pixels.Test
             photo.Photo = "p2.jpg";
             photo.Likes = 10;
             photo.Location = "cluj";
-            photo.Comment = "best";
+            photo.Comment = "Test INsert";
 
             photorepo.Insert(photo);
 
 
 
             // DELETE
-            photorepo.Delete(new Guid("3da9940d-6756-4395-96a6-04c9a537d8b9"));
+            photorepo.Delete(new Guid("abee6f53-7dc7-4368-9edc-9814b3dcacad"));
 
             // Read BY ID
             
@@ -179,7 +178,7 @@ namespace MD._360pixels.Test
             //INSERT
             Category category = new Category();
             category.CategoryID = Guid.NewGuid();
-            category.CategoryName = "Animals";
+            category.CategoryName = "Animals--insert";
             categoryrepo.Insert(category);
 
 
@@ -220,7 +219,7 @@ namespace MD._360pixels.Test
             //INSERT
             Challenge challenge = new Challenge();
             challenge.ChallengeID = Guid.NewGuid();
-            challenge.ChallengeName = "Street art";
+            challenge.ChallengeName = "Street art--insert";
             challenge.Description = "Whether used as a backdrop or as part of your main composition there's no denying that graffiti can add a real punch to your street photography.";
             challengerepo.Insert(challenge);
 

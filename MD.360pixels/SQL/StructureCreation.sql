@@ -1,4 +1,4 @@
-USE [test]
+USE [pixelsDB]
 
 CREATE TABLE [Photos](
 [PhotoID] uniqueidentifier NOT NULL,
@@ -50,7 +50,7 @@ GO
 CREATE TABLE [Blog](
 [BlogID] uniqueidentifier NOT NULL,
 [Title] nvarchar(100) NOT NULL,
-[Autor] nvarchar(100) NOT NULL,
+[Author] nvarchar(100) NOT NULL,
 [Content] nvarchar(300) NOT NULL,
 [Date] DATE NOT NULL,
 [Type] nvarchar(50) NOT NULL,
@@ -212,7 +212,7 @@ CREATE PROCEDURE [dbo].[Blog_Update]
 (
 	@BlogID uniqueidentifier,	
 	@Title nvarchar(100) ,
-	@Autor nvarchar(100) ,
+	@Author nvarchar(100) ,
 	@Content nvarchar(300) ,
 	@Date DATE ,
 	@Type nvarchar(50) 
@@ -221,7 +221,7 @@ AS
 	BEGIN
 	UPDATE Blog
 	SET Title =@Title,
-		Autor=@Autor,
+		Author=@Author,
 		Content=@Content,
 		Date=@Date,
 		Type=@Type
@@ -254,7 +254,7 @@ CREATE PROCEDURE [dbo].[Blog_Create]
 (
 	@BlogID uniqueidentifier,	
 	@Title nvarchar(100) ,
-	@Autor nvarchar(100) ,
+	@Author nvarchar(100) ,
 	@Content nvarchar(300) ,
 	@Date DATE ,
 	@Type nvarchar(50) 
@@ -263,7 +263,7 @@ CREATE PROCEDURE [dbo].[Blog_Create]
 AS 
 BEGIN 
 
-	INSERT INTO Blog VALUES(@BlogID, @Title, @Autor, @Content, @Date, @Type);
+	INSERT INTO Blog VALUES(@BlogID, @Title, @Author, @Content, @Date, @Type);
 
 END
 GO
@@ -275,7 +275,7 @@ CREATE PROCEDURE [dbo].[Blog_ReadById]
 AS
 BEGIN
 	SELECT s.Title,
-			s.Autor,
+			s.Author,
 			s.Content,
 			s.Date,
 			s.Type
@@ -291,7 +291,7 @@ CREATE PROCEDURE [dbo].[Blog_ReadAll]
 AS
 BEGIN
 	SELECT s.Title,
-			s.Autor,
+			s.Author,
 			s.Content,
 			s.Date,
 			s.Type
@@ -558,16 +558,7 @@ END
 GO
 
 
-CREATE PROCEDURE [dbo].[UserChallenges_ReadAll]
 
-AS
-BEGIN
-	SELECT s.UserID,
-			s.ChallengeID
-	FROM UserChallenges s
-	
-END
-GO
 
 
 CREATE PROCEDURE [dbo].[UserChallenges_Create]
@@ -582,23 +573,7 @@ BEGIN
 END
 GO
 
-CREATE PROCEDURE [dbo].[UserChallenges_Update]
-(
-	@UserID uniqueidentifier ,
-	@ChallengeID uniqueidentifier
-)
-AS 
-BEGIN 
 
-	UPDATE UserChallenges
-	SET UserID=@UserID ,
-		 ChallengeID=@ChallengeID
-	WHERE ChallengeID=@ChallengeID AND UserID=@UserID
-
-	
-
-END
-GO
 
 
 
@@ -618,16 +593,7 @@ END
 GO
 
 
-CREATE PROCEDURE [dbo].[BlogPhotos_ReadAll]
 
-AS
-BEGIN
-	SELECT s.BlogID,
-			s.PhotoID
-	FROM BlogPhotos s
-	
-END
-GO
 
 CREATE PROCEDURE [dbo].[BlogPhotos_Create]
 (
@@ -657,16 +623,7 @@ END
 GO
 	
 
-CREATE PROCEDURE [dbo].[CategoriesPhotos_ReadAll]
 
-AS
-BEGIN
-	SELECT s.CategoryID,
-			s.PhotoID
-	FROM CategoriesPhotos s
-	
-END
-GO
 
 CREATE PROCEDURE [dbo].[CategoriesPhotos_Create]
 (
@@ -696,16 +653,7 @@ END
 GO
 
 
-CREATE PROCEDURE [dbo].[ChallengesPhotos_ReadAll]
 
-AS
-BEGIN
-	SELECT s.ChallengeID,
-			s.PhotoID
-	FROM ChallengesPhotos s
-	
-END
-GO
 
 CREATE PROCEDURE [dbo].[ChallengesPhotos_Create]
 (
@@ -735,16 +683,7 @@ END
 GO
 
 
-CREATE PROCEDURE [dbo].[UserProfilePhotos_ReadAll]
 
-AS
-BEGIN
-	SELECT s.UserID,
-			s.PhotoID
-	FROM UserProfilePhotos s
-	
-END
-GO
 
 CREATE PROCEDURE [dbo].[UserProfilePhotos_Create]
 (
