@@ -15,10 +15,10 @@ namespace MD._360pixels.Test
         {
 
             
-           //crudUserProfile();
-           crudBlog();
+          //crudUserProfile();
+           //crudBlog();
            // crudPhoto();
-          // crudCategory();
+          //crudCategory();
           // crudChallenge();
         }
         public static void crudUserProfile()

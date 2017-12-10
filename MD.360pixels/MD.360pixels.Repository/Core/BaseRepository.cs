@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace MD._360pixels.Repository.Core
 {
-    public abstract class  BaseRepository<TModel>
+    public abstract class  BaseRepository<TModel>:RepositoryContext
     {
 
         protected static string connectionString= GetConnectionString();

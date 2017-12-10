@@ -43,7 +43,7 @@ namespace MD._360pixels.Repository
 
         public Challenge ReadById(Guid challengeID)
         {
-            return ReadByID("Challenges_ReadById", SetID(challengeID)).FirstOrDefault();
+            return ReadByID("Challenges_ReadById", SetID(challengeID)).First();
 
         }
 

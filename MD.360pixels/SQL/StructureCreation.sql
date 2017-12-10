@@ -442,7 +442,7 @@ CREATE PROCEDURE [dbo].[Categories_ReadById]
 )
 AS
 BEGIN
-	SELECT s.CategoryID,
+	SELECT	s.CategoryID,
 			s.CategoryName
 	FROM Categories s
 	WHERE s.CategoryID = @CategoryID

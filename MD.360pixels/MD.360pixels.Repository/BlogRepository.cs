@@ -14,6 +14,7 @@ namespace MD._360pixels.Repository
 
         public List<Blog> ReadAll()
         {
+            PhotoRepository photo = RepositoryContext.photoRepository;
             return ReadAll("Blog_ReadAll");
         }
        
@@ -44,7 +45,7 @@ namespace MD._360pixels.Repository
       
         public Blog ReadById(Guid blogID)
         {
-             return ReadByID("Blog_ReadById", SetID(blogID)).FirstOrDefault();
+             return ReadByID("Blog_ReadById", SetID(blogID)).First();
             
         }
        
