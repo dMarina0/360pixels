@@ -11,7 +11,6 @@ namespace MD._360pixels.Repository
 {
     public class ChallengeRepository:BaseRepository<Challenge>
     {
-        #region ReadAll
 
         public List<Challenge> ReadAll()
         {
@@ -19,24 +18,47 @@ namespace MD._360pixels.Repository
         
         }
 
-        protected override Challenge GetModelfromReader(SqlDataReader reader)
-        {
-            Challenge challenge = new Challenge();
-            challenge.ChallengeID = reader.GetGuid(reader.GetOrdinal("ChallengeID"));
-            challenge.ChallengeName = reader.GetString(reader.GetOrdinal("ChallengeName"));
-            challenge.Description = reader.GetString(reader.GetOrdinal("Description"));
-            return challenge;
-        }
-        #endregion
-
-
-        #region Insert
-
+        
         public void Insert(Challenge challenge)
         {
             Insert("Challenges_Create", AddParameter(challenge));
                    
             
+        }
+
+        public void Delete(Guid challengeID)
+        {
+            Delete("Challenges_Delete", SetID(challengeID));
+              
+
+        }
+        
+
+        public void Update(Challenge challenge)
+        {
+
+            Update("Challenges_Update", AddParameter(challenge));
+            
+        }
+
+        public Challenge ReadById(Guid challengeID)
+        {
+            return ReadByID("Challenges_ReadById", SetID(challengeID)).FirstOrDefault();
+
+        }
+
+        protected override SqlParameter[] SetID(Guid challengeID)
+        {
+
+
+            SqlParameter[] parameter = new SqlParameter[]
+            {
+                new SqlParameter("ChallengeID", challengeID)
+            };
+
+
+            return parameter;
+
         }
         protected override SqlParameter[] AddParameter(Challenge challenge)
         {
@@ -47,76 +69,17 @@ namespace MD._360pixels.Repository
                 new SqlParameter("Description", challenge.Description)
 
             };
-
-
             return parameter;
         }
-
-        #endregion
-
-        public void Delete(Guid challengeID)
+        protected override Challenge GetModelfromReader(SqlDataReader reader)
         {
-            Delete("Challenges_Delete", SetID(challengeID));
-              
-
-        }
-        protected override SqlParameter[] SetID(Guid challengeID)
-        {
-            
-
-            SqlParameter[] parameter = new SqlParameter[]
-            {
-                new SqlParameter("ChallengeID", challengeID)
-            };
-
-
-            return parameter;
-
-
-
+            Challenge challenge = new Challenge();
+            challenge.ChallengeID = reader.GetGuid(reader.GetOrdinal("ChallengeID"));
+            challenge.ChallengeName = reader.GetString(reader.GetOrdinal("ChallengeName"));
+            challenge.Description = reader.GetString(reader.GetOrdinal("Description"));
+            return challenge;
         }
 
-        public void Update(Challenge challenge)
-        {
-            string ConnectionString = "Server =DESKTOP-2HQ1GA6 ; Database =test3; Trusted_Connection = True; ";
-
-            using (SqlConnection connection = new SqlConnection(ConnectionString))
-            {
-                try
-                {
-                    SqlCommand command = new SqlCommand();
-                    command.Connection = connection;
-                    command.CommandText = "Challenges_Update";
-                    command.CommandType = System.Data.CommandType.StoredProcedure;
-
-                    command.Parameters.Add(new SqlParameter("ChallengeID", challenge.ChallengeID));
-                    command.Parameters.Add(new SqlParameter("ChallengeName", challenge.ChallengeName));
-                    command.Parameters.Add(new SqlParameter("Description", challenge.Description));
-                   
-
-
-                    connection.Open();
-                    command.ExecuteNonQuery();
-
-                }
-                catch (SqlException ex)
-                {
-                    Console.WriteLine("Exception : {0} ", ex.ToString());
-                }
-                finally
-                {
-                    connection.Close();
-                }
-            }
-        }
-
-        public Challenge ReadById(Guid challengeID)
-        {
-            return ReadByID("Categories_ReadById", SetID(challengeID)).First();
-
-        }
-
-       
     }
 }
 

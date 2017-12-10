@@ -66,8 +66,6 @@ namespace MD._360pixels.Repository.Core
             return result;
         }
 
-        protected abstract TModel GetModelfromReader(SqlDataReader reader);
-
         public void Insert(string storedProcedure, SqlParameter[] parameters= default(SqlParameter[]))
         {
             using (SqlConnection connection = new SqlConnection(connectionString))
@@ -98,9 +96,6 @@ namespace MD._360pixels.Repository.Core
             }
         }
 
-        protected abstract SqlParameter[] AddParameter(TModel model);
-      
-        protected abstract SqlParameter[] SetID(Guid guid);
         public void Delete(String storedProcedure, SqlParameter[] parameters = default(SqlParameter[]))
         {
             using (SqlConnection connection = new SqlConnection(connectionString))
@@ -174,6 +169,41 @@ namespace MD._360pixels.Repository.Core
             return result;
         }
 
-       
+        public void Update(string storedProcedure, SqlParameter[] parameters = default(SqlParameter[]))
+        {
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                try
+                {
+                    SqlCommand command = new SqlCommand();
+                    command.Connection = connection;
+                    command.CommandText = storedProcedure;
+                    command.CommandType = System.Data.CommandType.StoredProcedure;
+
+                    if (parameters != null)
+                    {
+                        command.Parameters.AddRange(parameters);
+                    }
+
+                    connection.Open();
+                    command.ExecuteNonQuery();
+                }
+                catch (SqlException ex)
+                {
+                    Console.WriteLine("Exception: {0} ", ex.ToString());
+                }
+                finally
+                {
+                    connection.Close();
+                }
+            }
+        }
+
+
+
+        protected abstract TModel GetModelfromReader(SqlDataReader reader);
+        protected abstract SqlParameter[] AddParameter(TModel model);
+        protected abstract SqlParameter[] SetID(Guid guid);
+
     }
 }

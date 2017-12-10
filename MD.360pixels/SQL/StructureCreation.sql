@@ -194,7 +194,8 @@ CREATE PROCEDURE [dbo].[UserProfie_ReadById]
 )
 AS
 BEGIN
-	SELECT s.UserName,
+		SELECT	s.UserID,
+				s.UserName,
 			s.FirstName,
 			s.LastName,
 			s.Camera,
@@ -214,7 +215,7 @@ CREATE PROCEDURE [dbo].[Blog_Update]
 	@Title nvarchar(100) ,
 	@Author nvarchar(100) ,
 	@Content nvarchar(300) ,
-	@Date DATE ,
+	@Date Date ,
 	@Type nvarchar(50) 
 )
 AS
@@ -256,7 +257,7 @@ CREATE PROCEDURE [dbo].[Blog_Create]
 	@Title nvarchar(100) ,
 	@Author nvarchar(100) ,
 	@Content nvarchar(300) ,
-	@Date DATE ,
+	@Date Date ,
 	@Type nvarchar(50) 
 
 )
@@ -274,7 +275,8 @@ CREATE PROCEDURE [dbo].[Blog_ReadById]
 )
 AS
 BEGIN
-	SELECT s.Title,
+	SELECT 	s.BlogID,	
+			s.Title,
 			s.Author,
 			s.Content,
 			s.Date,
@@ -290,7 +292,8 @@ CREATE PROCEDURE [dbo].[Blog_ReadAll]
 
 AS
 BEGIN
-	SELECT s.Title,
+	SELECT  s.BlogID,
+			s.Title,
 			s.Author,
 			s.Content,
 			s.Date,
@@ -360,7 +363,8 @@ CREATE PROCEDURE [dbo].[Challenges_ReadById]
 )
 AS
 BEGIN
-	SELECT s.ChallengeName,
+	SELECT s.ChallengeID,
+			s.ChallengeName,
 			s.Description
 	FROM Challenges s
 	WHERE s.ChallengeID = @ChallengeID
@@ -438,7 +442,8 @@ CREATE PROCEDURE [dbo].[Categories_ReadById]
 )
 AS
 BEGIN
-	SELECT s.CategoryName
+	SELECT s.CategoryID,
+			s.CategoryName
 	FROM Categories s
 	WHERE s.CategoryID = @CategoryID
 	
@@ -533,7 +538,8 @@ CREATE PROCEDURE [dbo].[Photos_ReadByID]
 )
 AS
 BEGIN 
-	SELECT s.Photo,
+	SELECT s.PhotoID,
+			s.Photo,
 			s.Likes,
 			s.Location,
 			s.Comments 

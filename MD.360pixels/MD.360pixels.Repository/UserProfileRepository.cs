@@ -13,13 +13,50 @@ namespace MD._360pixels.Repository
     public class UserProfileRepository :BaseRepository<UserProfile>
     {
         
-
-        #region ReadALL
         public List<UserProfile> ReadAll()
         {
             return ReadAll("UserProfile_ReadAll");
         }
 
+        
+        public void Insert(UserProfile user)
+        {
+
+            Insert("UserProfile_Create", AddParameter(user));
+           
+        }
+       
+          
+        public void Delete(Guid userID)
+        {
+            Delete("UserProfile_Delete", SetID(userID));
+
+        }
+
+
+        public void Update(UserProfile user)
+        {
+
+            Update("UserProfile_Update", AddParameter(user));
+            
+        }
+
+        public UserProfile ReadById(Guid userID)
+        {
+            return ReadByID("UserProfie_ReadById", SetID(userID)).First() ;
+        }
+
+
+        protected override SqlParameter[] SetID(Guid userID)
+        {
+
+            SqlParameter[] parameter = new SqlParameter[]
+            {
+                new SqlParameter("UserID", userID)
+            };
+
+            return parameter;
+        }
         protected override UserProfile GetModelfromReader(SqlDataReader reader)
         {
             UserProfile user = new UserProfile();
@@ -35,19 +72,9 @@ namespace MD._360pixels.Repository
 
             return user;
         }
-        #endregion
-        #region Insert
-
-        
-        public void Insert(UserProfile user)
-        {
-
-            Insert("UserProfile_Create", AddParameter(user));
-           
-        }
         protected override SqlParameter[] AddParameter(UserProfile user)
         {
-            
+
             SqlParameter[] parameter = new SqlParameter[]
             {
                 new SqlParameter("UserID", user.UserID),
@@ -65,71 +92,5 @@ namespace MD._360pixels.Repository
             return parameter;
         }
 
-            #endregion
-        public void Delete(Guid userID)
-        {
-            Delete("UserProfile_Delete", SetID(userID));
-
-        }
-
-        protected override SqlParameter[] SetID(Guid userID)
-        {
-
-            SqlParameter[] parameter = new SqlParameter[]
-            {
-                new SqlParameter("UserID", userID)
-            };
-
-            return parameter;
-        }
-
-
-
-        public void Update(UserProfile user)
-        {
-            string ConnectionString = "Server =DESKTOP-2HQ1GA6 ; Database =test3; Trusted_Connection = True; ";
-
-            using (SqlConnection connection = new SqlConnection(ConnectionString))
-            {
-                try
-                {
-                    SqlCommand command = new SqlCommand();
-                    command.Connection = connection;
-                    command.CommandText = "UserProfile_Update";
-                    command.CommandType = System.Data.CommandType.StoredProcedure;
-
-                    command.Parameters.Add(new SqlParameter("UserID", user.UserID));
-                    command.Parameters.Add(new SqlParameter("UserName", user.UserName));
-                    command.Parameters.Add(new SqlParameter("FirstName", user.FirstName));
-                    command.Parameters.Add(new SqlParameter("LastName", user.LastName));
-                    command.Parameters.Add(new SqlParameter("BirthDay", user.BirthDay));
-                    command.Parameters.Add(new SqlParameter("Camera", user.Camera));
-                    command.Parameters.Add(new SqlParameter("Country", user.Country));
-                    command.Parameters.Add(new SqlParameter("Website", user.Website));
-
-                    connection.Open();
-                    command.ExecuteNonQuery();
-
-                }
-                catch(SqlException ex)
-                {
-                    Console.WriteLine("Exception : {0} ", ex.ToString());
-                }
-                finally
-                {
-                    connection.Close();
-                }
-            }
-        }
-
-        public UserProfile ReadById(Guid userID)
-        {
-            List<UserProfile> list = new List<UserProfile>();
-            list = ReadByID("UserProfie_ReadById", SetID(userID)) ;
-            return list.FirstOrDefault() ;
-
-        }
-
-   
     }
 }

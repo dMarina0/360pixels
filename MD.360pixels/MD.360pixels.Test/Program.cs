@@ -15,11 +15,11 @@ namespace MD._360pixels.Test
         {
 
             
-           crudUserProfile();
-           //crudBlog();
+           //crudUserProfile();
+           crudBlog();
            // crudPhoto();
           // crudCategory();
-           //crudChallenge();
+          // crudChallenge();
         }
         public static void crudUserProfile()
         {
@@ -29,8 +29,8 @@ namespace MD._360pixels.Test
 
             //Update
             UserProfile user = new UserProfile();
-            user.UserID = new Guid("77117CCC-5713-DEAA-1995-DB413054A843");
-            user.UserName = "Update";
+            user.UserID = new Guid("FE1B7EFD-571A-DEAA-4513-DB413054A827");
+            user.UserName = "Update UserName";
             user.FirstName = "Doci";
             user.LastName = "Marina";
             user.Camera = "";
@@ -102,11 +102,11 @@ namespace MD._360pixels.Test
             blogrepo.Insert(b2);
             //DELETE 
             
-            blogrepo.Delete(new Guid("b142f930-aa29-484e-3a1a-7d8b184c0429"));
+            blogrepo.Delete(new Guid("a7695725-7701-47ee-a4f6-f49b9bab8dd3"));
 
             //READ BY ID
             Blog b1 = new Blog();
-           b1 = blogrepo.ReadById(new Guid("b142f930-aa29-484e-3a1a-7d8b184c0429"));
+             b1 = blogrepo.ReadById(new Guid("a7695725-7701-47ee-a4f6-f49b9bab8d33"));
             Console.WriteLine("Read by ID: \n TITLE:{0}\n Type: {1} ", b1.Title, b1.Type);
 
 
@@ -139,7 +139,7 @@ namespace MD._360pixels.Test
 
 
             // DELETE
-            photorepo.Delete(new Guid("abee6f53-7dc7-4368-9edc-9814b3dcacad"));
+            photorepo.Delete(new Guid("cb1cc651-affc-4c5d-99ce-e73410393cd4"));
 
             // Read BY ID
             
@@ -238,8 +238,8 @@ namespace MD._360pixels.Test
             challengerepo.Update(c2);
 
             // Read By ID 
-           
-            Challenge c4 = challengerepo.ReadById(new Guid("474b1a89-ed68-4164-bd8f-44c01799d987"));
+            Challenge c4 = new Challenge();
+            c4 = challengerepo.ReadById(new Guid("34aa90ba-df2e-457e-810d-d87f58eb13d0"));
             Console.WriteLine(" Read by ID : \n Challenge: {0} \n Description:  {1} \n ", c4.ChallengeName, c4.Description);
 
 

@@ -11,13 +11,44 @@ namespace MD._360pixels.Repository
 {
     public class BlogRepository: BaseRepository<Blog>
     {
-        #region ReadAll
 
-        
         public List<Blog> ReadAll()
         {
             return ReadAll("Blog_ReadAll");
         }
+       
+        public void Insert(Blog blog)
+        {
+
+            Insert("Blog_Create", AddParameter(blog));
+                   
+            
+        }
+
+        
+        public void Delete(Guid blogID)
+        {
+
+            Delete("Blog_Delete", SetID(blogID));
+                 
+
+        }
+        
+        
+        public void Update(Blog blog)
+        {
+
+            Update("Blog_Update", AddParameter(blog));
+           
+        }
+      
+        public Blog ReadById(Guid blogID)
+        {
+             return ReadByID("Blog_ReadById", SetID(blogID)).FirstOrDefault();
+            
+        }
+       
+
 
         protected override Blog GetModelfromReader(SqlDataReader reader)
         {
@@ -30,19 +61,20 @@ namespace MD._360pixels.Repository
             blog.Type = reader.GetString(reader.GetOrdinal("Type"));
             return blog;
         }
-        #endregion
 
-        #region Insert
-
-        
-        public void Insert(Blog blog)
+        protected override SqlParameter[] SetID(Guid blogID)
         {
 
-            Insert("Blog_Create", AddParameter(blog));
-                   
-            
-        }
 
+            SqlParameter[] parameter = new SqlParameter[]
+            {
+                new SqlParameter("BlogID", blogID)
+            };
+
+
+            return parameter;
+
+        }
         protected override SqlParameter[] AddParameter(Blog blog)
         {
             SqlParameter[] parameter = new SqlParameter[]
@@ -58,76 +90,8 @@ namespace MD._360pixels.Repository
 
 
             return parameter;
-         }
-
-        #endregion
-
-        public void Delete(Guid blogID)
-        {
-
-            Delete("Blog_Delete", SetID(blogID));
-                 
-
         }
 
-        protected override SqlParameter[] SetID(Guid blogID)
-        {
-            
 
-            SqlParameter[] parameter = new SqlParameter[]
-            {
-                new SqlParameter("BlogID", blogID)
-            };
-
-
-            return parameter;
-
-
-
-        }
-
-        public void Update(Blog blog)
-        {
-            string ConnectionString = "Server =DESKTOP-2HQ1GA6 ; Database =test3; Trusted_Connection = True; ";
-
-            using (SqlConnection connection = new SqlConnection(ConnectionString))
-            {
-                try
-                {
-                    SqlCommand command = new SqlCommand();
-                    command.Connection = connection;
-                    command.CommandText = "Blog_Update";
-                    command.CommandType = System.Data.CommandType.StoredProcedure;
-
-                    command.Parameters.Add(new SqlParameter("BlogID", blog.BlogID));
-                    command.Parameters.Add(new SqlParameter("Title", blog.Title));
-                    command.Parameters.Add(new SqlParameter("Author", blog.Author));
-                    command.Parameters.Add(new SqlParameter("Content", blog.Content));
-                    command.Parameters.Add(new SqlParameter("Date", blog.Date));
-                    command.Parameters.Add(new SqlParameter("Type", blog.Type));
-
-
-                    connection.Open();
-                    command.ExecuteNonQuery();
-
-                }
-                catch (SqlException ex)
-                {
-                    Console.WriteLine("Exception : {0} ", ex.ToString());
-                }
-                finally
-                {
-                    connection.Close();
-                }
-            }
-        }
-
-        public Blog ReadById(Guid blogID)
-        {
-             return ReadByID("Blog_ReadById", SetID(blogID)).First();
-            
-        }
-
-      
     }
 }
