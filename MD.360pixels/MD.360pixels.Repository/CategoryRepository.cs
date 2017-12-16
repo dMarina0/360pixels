@@ -1,4 +1,5 @@
 ﻿using MD._360pixels.Repository.Core;
+using MD._360pixels.RepositoryAbstraction;
 using MD._360Pixels.Model;
 using System;
 using System.Collections.Generic;
@@ -10,7 +11,7 @@ using System.Threading.Tasks;
 namespace MD._360pixels.Repository
 {
 
-   public class CategoryRepository:BaseRepository<Category>
+   public class CategoryRepository:BaseRepository<Category>,ICategoryRepository
     {
         public List<Category> ReadAll()
         {
@@ -23,7 +24,7 @@ namespace MD._360pixels.Repository
         public void Insert(Category category)
         {
 
-            Insert("Categories_Create", AddParameter(category));
+            Insert("Categories_Create", GetParameter(category));
             
         }
         
@@ -37,18 +38,18 @@ namespace MD._360pixels.Repository
       
         public void Update(Category category)
         {
-            Update("Categories_Update", AddParameter(category));
+            Update("Categories_Update", GetParameter(category));
         }
        
        
         public Category ReadById(Guid categoryID)
         {
-                return ReadByID("Categories_ReadById", SetID(categoryID)).First();
+                return ReadByID("Categories_ReadById", new SqlParameter("CategoryID", categoryID));
 
         }
         
 
-        protected override SqlParameter[] AddParameter(Category category)
+        protected override SqlParameter[] GetParameter(Category category)
         {
             SqlParameter[] parameter = new SqlParameter[]
             {

@@ -1,4 +1,5 @@
 ﻿using MD._360pixels.Repository.Core;
+using MD._360pixels.RepositoryAbstraction;
 using MD._360Pixels.Model;
 using System;
 using System.Collections.Generic;
@@ -9,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace MD._360pixels.Repository
 {
-    public class ChallengeRepository:BaseRepository<Challenge>
+    public class ChallengeRepository:BaseRepository<Challenge>,IChallengeRepository
     {
 
         public List<Challenge> ReadAll()
@@ -21,7 +22,7 @@ namespace MD._360pixels.Repository
         
         public void Insert(Challenge challenge)
         {
-            Insert("Challenges_Create", AddParameter(challenge));
+            Insert("Challenges_Create", GetParameter(challenge));
                    
             
         }
@@ -37,13 +38,13 @@ namespace MD._360pixels.Repository
         public void Update(Challenge challenge)
         {
 
-            Update("Challenges_Update", AddParameter(challenge));
+            Update("Challenges_Update", GetParameter(challenge));
             
         }
 
         public Challenge ReadById(Guid challengeID)
         {
-            return ReadByID("Challenges_ReadById", SetID(challengeID)).First();
+            return ReadByID("Challenges_ReadById", new SqlParameter("ChallengeID", challengeID));
 
         }
 
@@ -60,7 +61,7 @@ namespace MD._360pixels.Repository
             return parameter;
 
         }
-        protected override SqlParameter[] AddParameter(Challenge challenge)
+        protected override SqlParameter[] GetParameter(Challenge challenge)
         {
             SqlParameter[] parameter = new SqlParameter[]
             {

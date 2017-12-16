@@ -1,4 +1,6 @@
-﻿using System;
+﻿using MD._360pixels.RepositoryAbstraction;
+using MD._360pixels.RepositoryAbstraction.Core;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,18 +8,34 @@ using System.Threading.Tasks;
 
 namespace MD._360pixels.Repository.Core
 {
-    public class RepositoryContext :IDisposable
+    public class RepositoryContext :IRepositoryContext
     {
-        private static BlogRepository _blogRepository;
-        private static PhotoRepository _photoRepository;
-        private static CategoryRepository _categoryRepository;
-        private static ChallengeRepository _challengeRepository;
-        private static UserProfileRepository _userProfileRepository;
+        private static IRepositoryContext _instance;
+        private static IBlogRepository _blogRepository;
+        private static IPhotoRepository _photoRepository;
+        private static ICategoryRepository _categoryRepository;
+        private static IChallengeRepository _challengeRepository;
+        private static IUserProfileRepository _userProfileRepository;
 
-        public RepositoryContext() { }
+        public RepositoryContext()
+        {
+            _instance = this;
+        }
+
+        internal static IRepositoryContext Current
+        {
+            get
+            {
+                if (_instance == null)
+                {
+                    throw new Exception("RepositoryContext error");
+                }
+                return _instance;
+            }
+        }
 
 
-        public static BlogRepository blogRepository
+        public IBlogRepository blogRepository
         {
             get
                 { 
@@ -30,7 +48,7 @@ namespace MD._360pixels.Repository.Core
             
         }
 
-        public static PhotoRepository photoRepository
+        public   IPhotoRepository photoRepository
         {
             get{
 
@@ -43,7 +61,7 @@ namespace MD._360pixels.Repository.Core
             
         }
 
-        public static CategoryRepository categoryRepository
+        public  ICategoryRepository categoryRepository
         {
             get
             {
@@ -57,7 +75,7 @@ namespace MD._360pixels.Repository.Core
 
         }
 
-        public static ChallengeRepository challengeRepository
+        public  IChallengeRepository challengeRepository
         {
             get
             {
@@ -71,7 +89,7 @@ namespace MD._360pixels.Repository.Core
 
         }
 
-        public static UserProfileRepository userProfileRepository
+        public  IUserProfileRepository userProfileRepository
         {
             get
             {
@@ -97,6 +115,10 @@ namespace MD._360pixels.Repository.Core
         {
             if (dispose)
             {
+                if( _instance != null )
+                {
+                    _instance = null;
+                }
                 if (_blogRepository != null)
                 {
                    

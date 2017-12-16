@@ -1,4 +1,5 @@
 ﻿using MD._360pixels.Repository.Core;
+using MD._360pixels.RepositoryAbstraction;
 using MD._360Pixels.Model;
 using System;
 using System.Collections.Generic;
@@ -9,19 +10,18 @@ using System.Threading.Tasks;
 
 namespace MD._360pixels.Repository
 {
-    public class BlogRepository: BaseRepository<Blog>
+    public class BlogRepository: BaseRepository<Blog>, IBlogRepository
     {
 
         public List<Blog> ReadAll()
         {
-            PhotoRepository photo = RepositoryContext.photoRepository;
             return ReadAll("Blog_ReadAll");
         }
        
         public void Insert(Blog blog)
         {
 
-            Insert("Blog_Create", AddParameter(blog));
+            Insert("Blog_Create", GetParameter(blog));
                    
             
         }
@@ -39,13 +39,13 @@ namespace MD._360pixels.Repository
         public void Update(Blog blog)
         {
 
-            Update("Blog_Update", AddParameter(blog));
+            Update("Blog_Update", GetParameter(blog));
            
         }
       
         public Blog ReadById(Guid blogID)
         {
-             return ReadByID("Blog_ReadById", SetID(blogID)).First();
+             return ReadByID("Blog_ReadById", new SqlParameter("BlogID", blogID));
             
         }
        
@@ -76,7 +76,8 @@ namespace MD._360pixels.Repository
             return parameter;
 
         }
-        protected override SqlParameter[] AddParameter(Blog blog)
+      
+        protected override SqlParameter[] GetParameter(Blog blog)
         {
             SqlParameter[] parameter = new SqlParameter[]
             {

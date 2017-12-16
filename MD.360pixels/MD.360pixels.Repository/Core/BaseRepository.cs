@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace MD._360pixels.Repository.Core
 {
-    public abstract class  BaseRepository<TModel>:RepositoryContext
+    public abstract class  BaseRepository<TModel>
     {
 
         protected static string connectionString= GetConnectionString();
@@ -127,7 +127,7 @@ namespace MD._360pixels.Repository.Core
             }
         }
 
-        public List<TModel> ReadByID(string storedProcedure, SqlParameter[] parameters = default(SqlParameter[]))
+        public TModel ReadByID(string storedProcedure, SqlParameter parameter = default(SqlParameter))
         {
             List<TModel> result = new List<TModel>();
 
@@ -141,9 +141,9 @@ namespace MD._360pixels.Repository.Core
                         command.Connection = connection;
                         command.CommandText = storedProcedure;
                         command.CommandType = System.Data.CommandType.StoredProcedure;
-                        if (parameters != null)
+                        if (parameter != null)
                         {
-                            command.Parameters.AddRange(parameters);
+                            command.Parameters.Add(parameter);
                         }
                         connection.Open();
 
@@ -151,7 +151,7 @@ namespace MD._360pixels.Repository.Core
                         {
                             while (reader.Read())
                             {
-                                result.Add(GetModelfromReader(reader));
+                               result.Add(GetModelfromReader(reader));
                             }
 
                         }
@@ -166,7 +166,7 @@ namespace MD._360pixels.Repository.Core
                     connection.Close();
                 }
             }
-            return result;
+            return result.Single();
         }
 
         public void Update(string storedProcedure, SqlParameter[] parameters = default(SqlParameter[]))
@@ -202,7 +202,7 @@ namespace MD._360pixels.Repository.Core
 
 
         protected abstract TModel GetModelfromReader(SqlDataReader reader);
-        protected abstract SqlParameter[] AddParameter(TModel model);
+        protected abstract SqlParameter[] GetParameter(TModel model);
         protected abstract SqlParameter[] SetID(Guid guid);
 
     }

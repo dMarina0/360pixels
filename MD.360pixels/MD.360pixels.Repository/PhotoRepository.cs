@@ -1,4 +1,5 @@
 ﻿using MD._360pixels.Repository.Core;
+using MD._360pixels.RepositoryAbstraction;
 using MD._360Pixels.Model;
 using System;
 using System.Collections.Generic;
@@ -9,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace MD._360pixels.Repository
 {
-    public class PhotoRepository: BaseRepository<Photos>
+    public class PhotoRepository: BaseRepository<Photos> , IPhotoRepository
     {
         
         public List<Photos> ReadAll()
@@ -22,7 +23,7 @@ namespace MD._360pixels.Repository
         public void Insert(Photos photo)
         {
 
-            Insert("Photos_Create", AddParameter(photo));
+            Insert("Photos_Create", GetParameter(photo));
                     
         }
 
@@ -36,13 +37,13 @@ namespace MD._360pixels.Repository
 
         public void Update(Photos photo)
         {
-            Update("Photos_Update", AddParameter(photo));
+            Update("Photos_Update", GetParameter(photo));
                     
         }
 
         public Photos ReadById(Guid photoID)
         {
-            return ReadByID("Photos_ReadByID", SetID(photoID)).First();
+            return ReadByID("Photos_ReadByID", new SqlParameter("PhotoID", photoID));
         }
 
 
@@ -57,7 +58,7 @@ namespace MD._360pixels.Repository
             photo.Comment = reader.GetString(reader.GetOrdinal("Comments"));
             return photo;
         }
-        protected override SqlParameter[] AddParameter(Photos photo)
+        protected override SqlParameter[] GetParameter(Photos photo)
         {
             SqlParameter[] parameter = new SqlParameter[]
             {

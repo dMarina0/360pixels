@@ -1,4 +1,5 @@
 ﻿using MD._360pixels.Repository.Core;
+using MD._360pixels.RepositoryAbstraction;
 using MD._360Pixels.Model;
 using System;
 using System.Collections.Generic;
@@ -10,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace MD._360pixels.Repository
 {
-    public class UserProfileRepository :BaseRepository<UserProfile>
+    public class UserProfileRepository :BaseRepository<UserProfile>,IUserProfileRepository
     {
         
         public List<UserProfile> ReadAll()
@@ -22,7 +23,7 @@ namespace MD._360pixels.Repository
         public void Insert(UserProfile user)
         {
 
-            Insert("UserProfile_Create", AddParameter(user));
+            Insert("UserProfile_Create", GetParameter(user));
            
         }
        
@@ -37,13 +38,13 @@ namespace MD._360pixels.Repository
         public void Update(UserProfile user)
         {
 
-            Update("UserProfile_Update", AddParameter(user));
+            Update("UserProfile_Update", GetParameter(user));
             
         }
 
         public UserProfile ReadById(Guid userID)
         {
-            return ReadByID("UserProfie_ReadById", SetID(userID)).First() ;
+            return ReadByID("UserProfie_ReadById", new SqlParameter("UserID", userID)) ;
         }
 
 
@@ -72,7 +73,7 @@ namespace MD._360pixels.Repository
 
             return user;
         }
-        protected override SqlParameter[] AddParameter(UserProfile user)
+        protected override SqlParameter[] GetParameter(UserProfile user)
         {
 
             SqlParameter[] parameter = new SqlParameter[]

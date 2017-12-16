@@ -49,6 +49,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\MD.360pixels.Business\MD.360pixels.Business.csproj">
+      <Project>{ACE857D9-202F-4B2D-9873-BCA90FC204BC}</Project>
+      <Name>MD.360pixels.Business</Name>
+    </ProjectReference>
     <ProjectReference Include="..\MD.360Pixels.Model\MD.360Pixels.Model.csproj">
       <Project>{A5A9EAA0-BBBE-46B4-B8B9-75BC4F28E3E6}</Project>
       <Name>MD.360Pixels.Model</Name>

@@ -1,4 +1,5 @@
-﻿using MD._360pixels.Repository;
+﻿using MD._360pixels.Business.Core;
+using MD._360pixels.Repository;
 using MD._360Pixels.Model;
 using System;
 using System.Collections.Generic;
@@ -14,18 +15,21 @@ namespace MD._360pixels.Test
         static void Main(string[] args)
         {
 
+            using (BusinessContext business = new BusinessContext())
+            {
+                crudBlog(business);
+                // crudCategory(business);
+                //crudChallenge(business);
+                //crudPhoto(business);
+                //crudUserProfile(business);
+            }
             
-          //crudUserProfile();
-           //crudBlog();
-           // crudPhoto();
-          //crudCategory();
-          // crudChallenge();
         }
-        public static void crudUserProfile()
+        public static void crudUserProfile(BusinessContext business)
         {
             UserProfileRepository userRepository = new UserProfileRepository();
             List<UserProfile> users = new List<UserProfile>();
-            List<UserProfile> usersReadbyID = new List<UserProfile>();
+            
 
             //Update
             UserProfile user = new UserProfile();
@@ -38,10 +42,10 @@ namespace MD._360pixels.Test
             user.Country = "Romania";
             user.Website = "webUpdate";
 
-            userRepository.Update(user);
+           business.userProfileBusiness.Update(user);
 
             //Delete
-            userRepository.Delete(new Guid("77117CCC-5713-DEAA-1995-DB413054A843"));
+            business.userProfileBusiness.Delete(new Guid("77117CCC-5713-DEAA-1995-DB413054A843"));
 
             //Insert
             UserProfile u3 = new UserProfile();
@@ -54,16 +58,16 @@ namespace MD._360pixels.Test
             u3.Country = "Romania";
             u3.Website = "webUpdate";
 
-            userRepository.Insert(u3);
+            business.userProfileBusiness.Insert(u3);
 
             //Read By Id
             UserProfile u = new UserProfile();
-            u = userRepository.ReadById(new Guid("77117EFD-571A-DEAA-1995-DB413054A827"));
+            u = business.userProfileBusiness.ReadById(new Guid("77117EFD-571A-DEAA-1995-DB413054A827"));
             Console.WriteLine(" Read by Id : \n {0} {1} {2} {3} {4} \n", u.UserID, u.UserName, u.FirstName, u.LastName, u.Camera);
 
 
             //Read All
-            users = userRepository.ReadAll();
+            users = business.userProfileBusiness.ReadAll();
 
 
             Console.WriteLine("--------READ ALL METHOD-------");
@@ -75,7 +79,7 @@ namespace MD._360pixels.Test
             Console.ReadKey();
         }
 
-        public static void crudBlog()
+        public static void crudBlog(BusinessContext business)
         {
             BlogRepository blogrepo = new BlogRepository();
             List<Blog> blogs = new List<Blog>();
@@ -88,7 +92,7 @@ namespace MD._360pixels.Test
             b.Content = "La multi ani Romanica";
             b.Date = new DateTime(2017, 12, 1);
             b.Type = "News";
-            blogrepo.Update(b);
+            business.blogBusiness.Update(b);
 
             //Insert
             Blog b2 = new Blog();
@@ -99,19 +103,19 @@ namespace MD._360pixels.Test
             b2.Date = new DateTime(2017, 12, 1);
             b2.Type = "News";
 
-            blogrepo.Insert(b2);
+            business.blogBusiness.Insert(b2);
             //DELETE 
-            
-            blogrepo.Delete(new Guid("a7695725-7701-47ee-a4f6-f49b9bab8dd3"));
+
+            business.blogBusiness.Delete(new Guid("a7695725-7701-47ee-a4f6-f49b9bab8dd3"));
 
             //READ BY ID
             Blog b1 = new Blog();
-             b1 = blogrepo.ReadById(new Guid("a7695725-7701-47ee-a4f6-f49b9bab8d33"));
+             b1 = business.blogBusiness.ReadById(new Guid("a7695725-7701-47ee-a4f6-f49b9bab8d33"));
             Console.WriteLine("Read by ID: \n TITLE:{0}\n Type: {1} ", b1.Title, b1.Type);
 
 
             //Read All
-            blogs = blogrepo.ReadAll();
+            blogs = business.blogBusiness.ReadAll();
             Console.WriteLine("            === Read All ==         ");
             foreach (Blog bl in blogs)
             {
@@ -121,7 +125,7 @@ namespace MD._360pixels.Test
 
         }
 
-        public static void crudPhoto()
+        public static void crudPhoto(BusinessContext business)
         {
             PhotoRepository photorepo = new PhotoRepository();
             List<Photos> photos = new List<Photos>();
@@ -134,16 +138,16 @@ namespace MD._360pixels.Test
             photo.Location = "cluj";
             photo.Comment = "Test INsert";
 
-            photorepo.Insert(photo);
+            business.photoBusiness.Insert(photo);
 
 
 
             // DELETE
-            photorepo.Delete(new Guid("cb1cc651-affc-4c5d-99ce-e73410393cd4"));
+            business.photoBusiness.Delete(new Guid("cb1cc651-affc-4c5d-99ce-e73410393cd4"));
 
             // Read BY ID
             
-            Photos b2 = photorepo.ReadById(new Guid("31825ab5-c675-4748-ae05-bead72f19f91"));
+            Photos b2 = business.photoBusiness.ReadById(new Guid("31825ab5-c675-4748-ae05-bead72f19f91"));
             Console.WriteLine(" Read by ID : \n Photo:{0} \n NrLikes:{1} ", b2.Photo, b2.Likes);
 
 
@@ -155,10 +159,10 @@ namespace MD._360pixels.Test
             p1.Location = "cluj";
             p1.Comment = "best";
 
-            photorepo.Update(p1);
+            business.photoBusiness.Update(p1);
 
             // Read All
-            photos = photorepo.ReadAll();
+            photos = business.photoBusiness.ReadAll();
             Console.WriteLine("====== READ ALL=======");
             foreach (Photos p in photos)
             {
@@ -171,7 +175,7 @@ namespace MD._360pixels.Test
 
         }
 
-        public static void crudCategory()
+        public static void crudCategory(BusinessContext business)
         {
             CategoryRepository categoryrepo = new CategoryRepository();
             List<Category> categories = new List<Category>();
@@ -179,12 +183,12 @@ namespace MD._360pixels.Test
             Category category = new Category();
             category.CategoryID = Guid.NewGuid();
             category.CategoryName = "Animals--insert";
-            categoryrepo.Insert(category);
+            business.categoryBusiness.Insert(category);
 
 
             //DELETE
-           
-            categoryrepo.Delete(new Guid("9A1833AB-B8AC-4781-7478-45FD04AD5166"));
+
+            business.categoryBusiness.Delete(new Guid("9A1833AB-B8AC-4781-7478-45FD04AD5166"));
 
 
             // UPDATE
@@ -192,16 +196,16 @@ namespace MD._360pixels.Test
             c2.CategoryID = new Guid("9A18C663-B8AC-4781-7478-45FD04AD5166");
             c2.CategoryName = "Humans";
 
-            categoryrepo.Update(c2);
+            business.categoryBusiness.Update(c2);
 
 
             // Read By ID 
             
-            Category c4 = categoryrepo.ReadById(new Guid("8738C663-B8AC-4781-7478-45FD04AD5166"));
+            Category c4 = business.categoryBusiness.ReadById(new Guid("8738C663-B8AC-4781-7478-45FD04AD5166"));
             Console.WriteLine(" Read by ID : ID: {0}  \n CategoryName: {1} ", c4.CategoryID, c4.CategoryName);
 
 
-            categories = categoryrepo.ReadAll();
+            categories = business.categoryBusiness.ReadAll();
             Console.WriteLine("=======Read all Categories=====");
             foreach (Category c in categories)
             {
@@ -211,7 +215,7 @@ namespace MD._360pixels.Test
 
         }
 
-        public static void crudChallenge()
+        public static void crudChallenge(BusinessContext business)
         {
             ChallengeRepository challengerepo = new ChallengeRepository();
             List<Challenge> challenges = new List<Challenge>();
@@ -221,12 +225,12 @@ namespace MD._360pixels.Test
             challenge.ChallengeID = Guid.NewGuid();
             challenge.ChallengeName = "Street art--insert";
             challenge.Description = "Whether used as a backdrop or as part of your main composition there's no denying that graffiti can add a real punch to your street photography.";
-            challengerepo.Insert(challenge);
+            business.challengeBusiness.Insert(challenge);
 
 
             // DELETE
-          
-            challengerepo.Delete(new Guid("d7f9fc1c-d39a-42ce-a437-56c88306e024"));
+
+            business.challengeBusiness.Delete(new Guid("d7f9fc1c-d39a-42ce-a437-56c88306e024"));
 
 
             // UPDATE
@@ -235,15 +239,15 @@ namespace MD._360pixels.Test
             c2.ChallengeName = "ChallengeUpdate";
             c2.Description = "DescriptionUpdate";
 
-            challengerepo.Update(c2);
+            business.challengeBusiness.Update(c2);
 
             // Read By ID 
             Challenge c4 = new Challenge();
-            c4 = challengerepo.ReadById(new Guid("34aa90ba-df2e-457e-810d-d87f58eb13d0"));
+            c4 = business.challengeBusiness.ReadById(new Guid("34aa90ba-df2e-457e-810d-d87f58eb13d0"));
             Console.WriteLine(" Read by ID : \n Challenge: {0} \n Description:  {1} \n ", c4.ChallengeName, c4.Description);
 
 
-            challenges = challengerepo.ReadAll();
+            challenges = business.challengeBusiness.ReadAll();
             Console.WriteLine("====== Read all Challenges==== \n");
             foreach (Challenge c in challenges)
             {
