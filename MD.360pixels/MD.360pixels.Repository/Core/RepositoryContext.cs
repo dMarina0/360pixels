@@ -1,25 +1,29 @@
 ﻿using MD._360pixels.RepositoryAbstraction;
 using MD._360pixels.RepositoryAbstraction.Core;
 using System;
+using System.Net;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+
 namespace MD._360pixels.Repository.Core
 {
-    public class RepositoryContext :IRepositoryContext
+    public  class RepositoryContext :IRepositoryContext
     {
+       
         private static IRepositoryContext _instance;
         private static IBlogRepository _blogRepository;
         private static IPhotoRepository _photoRepository;
         private static ICategoryRepository _categoryRepository;
         private static IChallengeRepository _challengeRepository;
         private static IUserProfileRepository _userProfileRepository;
-
+   
         public RepositoryContext()
         {
             _instance = this;
+            
         }
 
         internal static IRepositoryContext Current
@@ -38,14 +42,16 @@ namespace MD._360pixels.Repository.Core
         public IBlogRepository blogRepository
         {
             get
-                { 
-            if (_blogRepository == null)
+             {
+             if (_blogRepository == null)
             {
-                _blogRepository = new BlogRepository();
+                    _blogRepository = new BlogRepository();
             }
-            return _blogRepository;
-        }
-            
+                return _blogRepository;
+                //return IoCcontainer.Instance.Resolve<IBlogRepository>();
+
+            }
+
         }
 
         public   IPhotoRepository photoRepository
