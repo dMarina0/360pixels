@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Unity;
+using Unity.Lifetime;
 
 namespace MD._360pixels.Repository
 {
@@ -19,12 +20,12 @@ namespace MD._360pixels.Repository
         private containerIoC()
         {
             _container = new UnityContainer();
-            _container.RegisterType<IRepositoryContext, RepositoryContext>();
-            _container.RegisterType<IBlogRepository, BlogRepository>();
-            _container.RegisterType<ICategoryRepository, CategoryRepository>();
-            _container.RegisterType<IChallengeRepository, ChallengeRepository>();
-            _container.RegisterType<IPhotoRepository, PhotoRepository>();
-            _container.RegisterType<IUserProfileRepository, UserProfileRepository>();
+            _container.RegisterType<IRepositoryContext, RepositoryContext>(new ContainerControlledLifetimeManager());
+            _container.RegisterType<IBlogRepository, BlogRepository>(new ContainerControlledLifetimeManager());
+            _container.RegisterType<ICategoryRepository, CategoryRepository>(new ContainerControlledLifetimeManager());
+            _container.RegisterType<IChallengeRepository, ChallengeRepository>(new ContainerControlledLifetimeManager());
+            _container.RegisterType<IPhotoRepository, PhotoRepository>(new ContainerControlledLifetimeManager());
+            _container.RegisterType<IUserProfileRepository, UserProfileRepository>(new ContainerControlledLifetimeManager());
         }
         public static containerIoC Instance
         {
