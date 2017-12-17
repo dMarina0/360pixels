@@ -1,5 +1,4 @@
-﻿using MD._360pixels.Repository;
-using MD._360pixels.Repository.Core;
+﻿using MD._360pixels.Repository.Core;
 using MD._360pixels.RepositoryAbstraction;
 using MD._360pixels.RepositoryAbstraction.Core;
 using System;
@@ -9,15 +8,15 @@ using System.Text;
 using System.Threading.Tasks;
 using Unity;
 
-namespace MD._360pixels.Test
+namespace MD._360pixels.Repository
 {
-    public class IoCcontainer
+    public class containerIoC
     {
         private IUnityContainer _container;
 
-        private static IoCcontainer _instance;
+        private static containerIoC _instance;
 
-        private IoCcontainer()
+        private containerIoC()
         {
             _container = new UnityContainer();
             _container.RegisterType<IRepositoryContext, RepositoryContext>();
@@ -27,13 +26,13 @@ namespace MD._360pixels.Test
             _container.RegisterType<IPhotoRepository, PhotoRepository>();
             _container.RegisterType<IUserProfileRepository, UserProfileRepository>();
         }
-        public static IoCcontainer Instance
+        public static containerIoC Instance
         {
             get
             {
                 if (_instance == null)
                 {
-                    _instance = new IoCcontainer();
+                    _instance = new containerIoC();
                 }
                 return _instance;
             }

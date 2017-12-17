@@ -34,7 +34,7 @@ namespace MD._360pixels.Repository.Core
                 {
                     throw new Exception("RepositoryContext error");
                 }
-                return _instance;
+                return containerIoC.Instance.Resolve<IRepositoryContext>();
             }
         }
 
@@ -46,9 +46,9 @@ namespace MD._360pixels.Repository.Core
              if (_blogRepository == null)
             {
                     _blogRepository = new BlogRepository();
-            }
-                return _blogRepository;
-                //return IoCcontainer.Instance.Resolve<IBlogRepository>();
+                }
+                //return _blogRepository;
+                return containerIoC.Instance.Resolve<IBlogRepository>();
 
             }
 
@@ -76,7 +76,7 @@ namespace MD._360pixels.Repository.Core
                 {
                     _categoryRepository = new CategoryRepository();
                 }
-                return _categoryRepository;
+                return containerIoC.Instance.Resolve<ICategoryRepository>();
             }
 
         }
@@ -90,7 +90,7 @@ namespace MD._360pixels.Repository.Core
                 {
                     _challengeRepository = new ChallengeRepository();
                 }
-                return _challengeRepository;
+                return containerIoC.Instance.Resolve<IChallengeRepository>();
             }
 
         }
@@ -104,7 +104,7 @@ namespace MD._360pixels.Repository.Core
                 {
                     _userProfileRepository = new UserProfileRepository();
                 }
-                return _userProfileRepository;
+                return  containerIoC.Instance.Resolve<IUserProfileRepository>();
             }
 
         }

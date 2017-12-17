@@ -68,6 +68,7 @@
     <Compile Include="BlogRepository.cs" />
     <Compile Include="CategoryRepository.cs" />
     <Compile Include="ChallengeRepository.cs" />
+    <Compile Include="Core\containerIoC.cs" />
     <Compile Include="Core\BaseRepository.cs" />
     <Compile Include="Core\RepositoryContext.cs" />
     <Compile Include="PhotoRepository.cs" />
