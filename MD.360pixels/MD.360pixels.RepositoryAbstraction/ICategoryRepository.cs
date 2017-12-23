@@ -10,9 +10,9 @@ namespace MD._360pixels.RepositoryAbstraction
     public interface ICategoryRepository
     {
         List<Category> ReadAll();
-        void Insert(Category category);
-        void Delete(Guid categoryID);
-        void Update(Category category);
-        Category ReadById(Guid categoryID);
+        void Insert(Category Category);
+        void Delete(Guid CategoryID);
+        void Update(Category Category);
+        Category ReadById(Guid CategoryID);
     }
 }

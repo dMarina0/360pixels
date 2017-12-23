@@ -12,23 +12,23 @@ namespace MD._360pixels.Business
     {
         public List<Photos> ReadAll()
         {
-            return BusinessContext.Current.repositoryContext.photoRepository.ReadAll();
+            return BusinessContext.Current.RepositoryContext.PhotoRepository.ReadAll();
         }
-        public void Insert(Photos photo)
+        public void Insert(Photos Photo)
         {
-            BusinessContext.Current.repositoryContext.photoRepository.Insert(photo);
+            BusinessContext.Current.RepositoryContext.PhotoRepository.Insert(Photo);
         }
-        public void Delete(Guid photoID)
+        public void Delete(Guid PhotoID)
         {
-            BusinessContext.Current.repositoryContext.photoRepository.Delete(photoID);
+            BusinessContext.Current.RepositoryContext.PhotoRepository.Delete(PhotoID);
         }
-        public void Update(Photos photo)
+        public void Update(Photos Photo)
         {
-            BusinessContext.Current.repositoryContext.photoRepository.Update(photo);
+            BusinessContext.Current.RepositoryContext.PhotoRepository.Update(Photo);
         }
-        public Photos ReadById(Guid photoID)
+        public Photos ReadById(Guid PhotoID)
         {
-            return BusinessContext.Current.repositoryContext.photoRepository.ReadById(photoID);
+            return BusinessContext.Current.RepositoryContext.PhotoRepository.ReadById(PhotoID);
         }
     }
 }

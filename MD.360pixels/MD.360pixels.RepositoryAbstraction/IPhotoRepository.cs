@@ -10,9 +10,9 @@ namespace MD._360pixels.RepositoryAbstraction
     public interface IPhotoRepository
     {
         List<Photos> ReadAll();
-        void Insert(Photos photos);
-        void Delete(Guid photoID);
-        void Update(Photos photo);
-        Photos ReadById(Guid photoID);
+        void Insert(Photos Photos);
+        void Delete(Guid PhotoID);
+        void Update(Photos Photo);
+        Photos ReadById(Guid PhotoID);
     }
 }

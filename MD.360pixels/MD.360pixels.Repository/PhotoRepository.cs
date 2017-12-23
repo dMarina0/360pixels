@@ -22,28 +22,53 @@ namespace MD._360pixels.Repository
 
         public void Insert(Photos photo)
         {
+            SqlParameter[] parameter = new SqlParameter[]
+            {
+                new SqlParameter("PhotoID", photo.PhotoID),
+                new SqlParameter("Photo", photo.Photo),
+                new SqlParameter("Likes", photo.Likes),
+                new SqlParameter("Location", photo.Location),
+                new SqlParameter("Comments", photo.Comment)
 
-            Insert("Photos_Create", GetParameter(photo));
+            };
+            Insert("Photos_Create", parameter);
                     
         }
 
 
         public void Delete(Guid photoID)
         {
-            Delete("Photos_Delete", SetID(photoID));
+
+            SqlParameter[] parameter = new SqlParameter[]
+            {
+                new SqlParameter("PhotoID", photoID)
+            };
+
+            Delete("Photos_Delete", parameter);
               
 
         }
 
         public void Update(Photos photo)
         {
-            Update("Photos_Update", GetParameter(photo));
+            SqlParameter[] parameter = new SqlParameter[]
+            {
+                new SqlParameter("PhotoID", photo.PhotoID),
+                new SqlParameter("Photo", photo.Photo),
+                new SqlParameter("Likes", photo.Likes),
+                new SqlParameter("Location", photo.Location),
+                new SqlParameter("Comments", photo.Comment)
+
+            };
+            Update("Photos_Update", parameter);
                     
         }
 
         public Photos ReadById(Guid photoID)
         {
-            return ReadByID("Photos_ReadByID", new SqlParameter("PhotoID", photoID));
+            SqlParameter parameter = new SqlParameter("PhotoID", photoID);
+            
+            return ReadByID("Photos_ReadByID", parameter);
         }
 
 
@@ -58,36 +83,7 @@ namespace MD._360pixels.Repository
             photo.Comment = reader.GetString(reader.GetOrdinal("Comments"));
             return photo;
         }
-        protected override SqlParameter[] GetParameter(Photos photo)
-        {
-            SqlParameter[] parameter = new SqlParameter[]
-            {
-                new SqlParameter("PhotoID", photo.PhotoID),
-                new SqlParameter("Photo", photo.Photo),
-                new SqlParameter("Likes", photo.Likes),
-                new SqlParameter("Location", photo.Location),
-                new SqlParameter("Comments", photo.Comment)
-
-            };
-
-
-            return parameter;
-        }
-        protected override SqlParameter[] SetID(Guid photoID)
-        {
-
-
-            SqlParameter[] parameter = new SqlParameter[]
-            {
-                new SqlParameter("PhotoID", photoID)
-            };
-
-
-            return parameter;
-
-        }
-
-        
+     
     }
     
     

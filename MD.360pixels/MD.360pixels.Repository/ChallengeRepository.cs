@@ -22,47 +22,6 @@ namespace MD._360pixels.Repository
         
         public void Insert(Challenge challenge)
         {
-            Insert("Challenges_Create", GetParameter(challenge));
-                   
-            
-        }
-
-        public void Delete(Guid challengeID)
-        {
-            Delete("Challenges_Delete", SetID(challengeID));
-              
-
-        }
-        
-
-        public void Update(Challenge challenge)
-        {
-
-            Update("Challenges_Update", GetParameter(challenge));
-            
-        }
-
-        public Challenge ReadById(Guid challengeID)
-        {
-            return ReadByID("Challenges_ReadById", new SqlParameter("ChallengeID", challengeID));
-
-        }
-
-        protected override SqlParameter[] SetID(Guid challengeID)
-        {
-
-
-            SqlParameter[] parameter = new SqlParameter[]
-            {
-                new SqlParameter("ChallengeID", challengeID)
-            };
-
-
-            return parameter;
-
-        }
-        protected override SqlParameter[] GetParameter(Challenge challenge)
-        {
             SqlParameter[] parameter = new SqlParameter[]
             {
                 new SqlParameter("ChallengeID", challenge.ChallengeID),
@@ -70,8 +29,45 @@ namespace MD._360pixels.Repository
                 new SqlParameter("Description", challenge.Description)
 
             };
-            return parameter;
+            Insert("Challenges_Create", parameter);
+                   
         }
+
+        public void Delete(Guid challengeID)
+        {
+            SqlParameter[] parameter = new SqlParameter[]
+            {
+                     new SqlParameter("ChallengeID", challengeID)
+            };
+          
+            Delete("Challenges_Delete", parameter);
+        }
+        
+
+        public void Update(Challenge challenge)
+        {
+            SqlParameter[] parameter = new SqlParameter[]
+           {
+                new SqlParameter("ChallengeID", challenge.ChallengeID),
+                new SqlParameter("ChallengeName", challenge.ChallengeName),
+                new SqlParameter("Description", challenge.Description)
+
+           };
+
+            Update("Challenges_Update", parameter);
+            
+        }
+
+        public Challenge ReadById(Guid challengeID)
+        {
+            SqlParameter parameter = new SqlParameter("ChallengeID", challengeID);
+           
+            return ReadByID("Challenges_ReadById", parameter);
+
+        }
+
+       
+        
         protected override Challenge GetModelfromReader(SqlDataReader reader)
         {
             Challenge challenge = new Challenge();

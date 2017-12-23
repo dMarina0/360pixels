@@ -12,23 +12,23 @@ namespace MD._360pixels.Business
     {
         public List<Challenge> ReadAll()
         {
-            return BusinessContext.Current.repositoryContext.challengeRepository.ReadAll();
+            return BusinessContext.Current.RepositoryContext.ChallengeRepository.ReadAll();
         }
-        public void Insert(Challenge challenge)
+        public void Insert(Challenge Challenge)
         {
-            BusinessContext.Current.repositoryContext.challengeRepository.Insert(challenge);
+            BusinessContext.Current.RepositoryContext.ChallengeRepository.Insert(Challenge);
         }
-        public void Delete(Guid challengeID)
+        public void Delete(Guid ChallengeID)
         {
-            BusinessContext.Current.repositoryContext.challengeRepository.Delete(challengeID);
+            BusinessContext.Current.RepositoryContext.ChallengeRepository.Delete(ChallengeID);
         }
-        public void Update(Challenge challenge)
+        public void Update(Challenge Challenge)
         {
-            BusinessContext.Current.repositoryContext.challengeRepository.Update(challenge);
+            BusinessContext.Current.RepositoryContext.ChallengeRepository.Update(Challenge);
         }
-        public Challenge ReadById(Guid challengeID)
+        public Challenge ReadById(Guid ChallengeID)
         {
-            return BusinessContext.Current.repositoryContext.challengeRepository.ReadById(challengeID);
+            return BusinessContext.Current.RepositoryContext.ChallengeRepository.ReadById(ChallengeID);
         }
     }
 }

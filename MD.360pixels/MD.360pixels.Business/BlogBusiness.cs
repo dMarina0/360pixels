@@ -12,23 +12,23 @@ namespace MD._360pixels.Business
     {
        public  List<Blog> ReadAll()
         {
-            return BusinessContext.Current.repositoryContext.blogRepository.ReadAll();
+            return BusinessContext.Current.RepositoryContext.BlogRepository.ReadAll();
         }
-        public void Insert(Blog blog)
+        public void Insert(Blog Blog)
         {
-            BusinessContext.Current.repositoryContext.blogRepository.Insert(blog);
+            BusinessContext.Current.RepositoryContext.BlogRepository.Insert(Blog);
         }
-        public void Delete(Guid blogID)
+        public void Delete(Guid BlogID)
         {
-            BusinessContext.Current.repositoryContext.blogRepository.Delete(blogID);
+            BusinessContext.Current.RepositoryContext.BlogRepository.Delete(BlogID);
         }
-        public void Update(Blog blog)
+        public void Update(Blog Blog)
         {
-            BusinessContext.Current.repositoryContext.blogRepository.Update(blog);
+            BusinessContext.Current.RepositoryContext.BlogRepository.Update(Blog);
         }
-        public Blog ReadById(Guid blogID)
+        public Blog ReadById(Guid BlogID)
         {
-            return BusinessContext.Current.repositoryContext.blogRepository.ReadById(blogID);
+            return BusinessContext.Current.RepositoryContext.BlogRepository.ReadById(BlogID);
         }
     }
 }

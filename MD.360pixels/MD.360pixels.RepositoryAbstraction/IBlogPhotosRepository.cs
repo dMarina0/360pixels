@@ -7,13 +7,10 @@ using System.Threading.Tasks;
 
 namespace MD._360pixels.RepositoryAbstraction
 {
-    public interface IBlogRepository
+    public interface IBlogPhotosRepository
     {
-        List<Blog> ReadAll();
-        void Insert(Blog Blog);
-         void Delete(Guid BlogID);
-        void Update(Blog Blog);
-        Blog ReadById(Guid BlogID);
-
+        List<BlogPhoto> ReadAll();
+        void Insert(BlogPhoto BlogPhoto);
+        void Delete(Guid BlogID, Guid PhotoID);
     }
 }

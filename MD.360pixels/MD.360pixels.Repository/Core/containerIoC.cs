@@ -26,6 +26,10 @@ namespace MD._360pixels.Repository
             _container.RegisterType<IChallengeRepository, ChallengeRepository>(new ContainerControlledLifetimeManager());
             _container.RegisterType<IPhotoRepository, PhotoRepository>(new ContainerControlledLifetimeManager());
             _container.RegisterType<IUserProfileRepository, UserProfileRepository>(new ContainerControlledLifetimeManager());
+            _container.RegisterType<IUserChallengesRepository, UserChallengeRepository>(new ContainerControlledLifetimeManager());
+            _container.RegisterType<IBlogPhotosRepository, BlogPhotosRepository>(new ContainerControlledLifetimeManager());
+            _container.RegisterType<ICategoriesPhotosRepository, CategoriesPhotosRepository>(new ContainerControlledLifetimeManager());
+            _container.RegisterType<IChallengesPhotosRepository, ChallengesPhotosRepository>(new ContainerControlledLifetimeManager());
         }
         public static containerIoC Instance
         {

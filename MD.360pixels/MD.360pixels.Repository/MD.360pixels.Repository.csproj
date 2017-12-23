@@ -65,13 +65,17 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BlogPhotosRepository.cs" />
     <Compile Include="BlogRepository.cs" />
+    <Compile Include="CategoriesPhotosRepository.cs" />
     <Compile Include="CategoryRepository.cs" />
     <Compile Include="ChallengeRepository.cs" />
+    <Compile Include="ChallengesPhotosRepository.cs" />
     <Compile Include="Core\containerIoC.cs" />
     <Compile Include="Core\BaseRepository.cs" />
     <Compile Include="Core\RepositoryContext.cs" />
     <Compile Include="PhotoRepository.cs" />
+    <Compile Include="UserChallengeRepository.cs" />
     <Compile Include="UserProfileRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

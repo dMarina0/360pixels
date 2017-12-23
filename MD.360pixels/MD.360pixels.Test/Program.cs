@@ -17,13 +17,32 @@ namespace MD._360pixels.Test
 
             using (BusinessContext business = new BusinessContext())
             {
-                crudBlog(business);
+                // crudBlog(business);
                 // crudCategory(business);
                 //crudChallenge(business);
                 //crudPhoto(business);
                 //crudUserProfile(business);
+                //crudUserChallenges(business);
             }
             
+        }
+
+        public static void crudUserChallenges(BusinessContext business)
+        {
+            UserChallengeRepository userChallenge = new UserChallengeRepository();
+            List<UserChallenge> userChallenges = new List<UserChallenge>();
+
+
+            business.UserChallengesBusiness.Delete(new Guid("353E116F-3D66-C91A-7F69-9350261B440D"), new Guid("34aa90ba-df2e-457e-810d-d87f58eb13d0"));
+
+            userChallenges = business.UserChallengesBusiness.ReadAll();
+
+            foreach (UserChallenge us in userChallenges)
+            {
+                Console.WriteLine(" Users :{0} \n Challenges:{1} ", us.UserID, us.ChallengeID);
+            }
+
+            Console.ReadKey();
         }
         public static void crudUserProfile(BusinessContext business)
         {
@@ -42,10 +61,10 @@ namespace MD._360pixels.Test
             user.Country = "Romania";
             user.Website = "webUpdate";
 
-           business.userProfileBusiness.Update(user);
+           business.UserProfileBusiness.Update(user);
 
             //Delete
-            business.userProfileBusiness.Delete(new Guid("77117CCC-5713-DEAA-1995-DB413054A843"));
+            business.UserProfileBusiness.Delete(new Guid("77117CCC-5713-DEAA-1995-DB413054A843"));
 
             //Insert
             UserProfile u3 = new UserProfile();
@@ -58,16 +77,16 @@ namespace MD._360pixels.Test
             u3.Country = "Romania";
             u3.Website = "webUpdate";
 
-            business.userProfileBusiness.Insert(u3);
+            business.UserProfileBusiness.Insert(u3);
 
             //Read By Id
             UserProfile u = new UserProfile();
-            u = business.userProfileBusiness.ReadById(new Guid("77117EFD-571A-DEAA-1995-DB413054A827"));
+            u = business.UserProfileBusiness.ReadById(new Guid("77117EFD-571A-DEAA-1995-DB413054A827"));
             Console.WriteLine(" Read by Id : \n {0} {1} {2} {3} {4} \n", u.UserID, u.UserName, u.FirstName, u.LastName, u.Camera);
 
 
             //Read All
-            users = business.userProfileBusiness.ReadAll();
+            users = business.UserProfileBusiness.ReadAll();
 
 
             Console.WriteLine("--------READ ALL METHOD-------");
@@ -92,7 +111,7 @@ namespace MD._360pixels.Test
             b.Content = "La multi ani Romanica";
             b.Date = new DateTime(2017, 12, 1);
             b.Type = "News";
-            business.blogBusiness.Update(b);
+            business.BlogBusiness.Update(b);
 
             //Insert
             Blog b2 = new Blog();
@@ -103,19 +122,19 @@ namespace MD._360pixels.Test
             b2.Date = new DateTime(2017, 12, 1);
             b2.Type = "News";
 
-            business.blogBusiness.Insert(b2);
+            business.BlogBusiness.Insert(b2);
             //DELETE 
 
-            business.blogBusiness.Delete(new Guid("a7695725-7701-47ee-a4f6-f49b9bab8dd3"));
+            business.BlogBusiness.Delete(new Guid("a7695725-7701-47ee-a4f6-f49b9bab8dd3"));
 
             //READ BY ID
             Blog b1 = new Blog();
-             b1 = business.blogBusiness.ReadById(new Guid("a7695725-7701-47ee-a4f6-f49b9bab8d33"));
+             b1 = business.BlogBusiness.ReadById(new Guid("a7695725-7701-47ee-a4f6-f49b9bab8d33"));
             Console.WriteLine("Read by ID: \n TITLE:{0}\n Type: {1} ", b1.Title, b1.Type);
 
 
             //Read All
-            blogs = business.blogBusiness.ReadAll();
+            blogs = business.BlogBusiness.ReadAll();
             Console.WriteLine("            === Read All ==         ");
             foreach (Blog bl in blogs)
             {
@@ -138,16 +157,16 @@ namespace MD._360pixels.Test
             photo.Location = "cluj";
             photo.Comment = "Test INsert";
 
-            business.photoBusiness.Insert(photo);
+            business.PhotoBusiness.Insert(photo);
 
 
 
             // DELETE
-            business.photoBusiness.Delete(new Guid("cb1cc651-affc-4c5d-99ce-e73410393cd4"));
+            business.PhotoBusiness.Delete(new Guid("cb1cc651-affc-4c5d-99ce-e73410393cd4"));
 
             // Read BY ID
             
-            Photos b2 = business.photoBusiness.ReadById(new Guid("31825ab5-c675-4748-ae05-bead72f19f91"));
+            Photos b2 = business.PhotoBusiness.ReadById(new Guid("31825ab5-c675-4748-ae05-bead72f19f91"));
             Console.WriteLine(" Read by ID : \n Photo:{0} \n NrLikes:{1} ", b2.Photo, b2.Likes);
 
 
@@ -159,10 +178,10 @@ namespace MD._360pixels.Test
             p1.Location = "cluj";
             p1.Comment = "best";
 
-            business.photoBusiness.Update(p1);
+            business.PhotoBusiness.Update(p1);
 
             // Read All
-            photos = business.photoBusiness.ReadAll();
+            photos = business.PhotoBusiness.ReadAll();
             Console.WriteLine("====== READ ALL=======");
             foreach (Photos p in photos)
             {
@@ -183,12 +202,12 @@ namespace MD._360pixels.Test
             Category category = new Category();
             category.CategoryID = Guid.NewGuid();
             category.CategoryName = "Animals--insert";
-            business.categoryBusiness.Insert(category);
+            business.CategoryBusiness.Insert(category);
 
 
             //DELETE
 
-            business.categoryBusiness.Delete(new Guid("9A1833AB-B8AC-4781-7478-45FD04AD5166"));
+            business.CategoryBusiness.Delete(new Guid("9A1833AB-B8AC-4781-7478-45FD04AD5166"));
 
 
             // UPDATE
@@ -196,16 +215,16 @@ namespace MD._360pixels.Test
             c2.CategoryID = new Guid("9A18C663-B8AC-4781-7478-45FD04AD5166");
             c2.CategoryName = "Humans";
 
-            business.categoryBusiness.Update(c2);
+            business.CategoryBusiness.Update(c2);
 
 
             // Read By ID 
             
-            Category c4 = business.categoryBusiness.ReadById(new Guid("8738C663-B8AC-4781-7478-45FD04AD5166"));
+            Category c4 = business.CategoryBusiness.ReadById(new Guid("8738C663-B8AC-4781-7478-45FD04AD5166"));
             Console.WriteLine(" Read by ID : ID: {0}  \n CategoryName: {1} ", c4.CategoryID, c4.CategoryName);
 
 
-            categories = business.categoryBusiness.ReadAll();
+            categories = business.CategoryBusiness.ReadAll();
             Console.WriteLine("=======Read all Categories=====");
             foreach (Category c in categories)
             {
@@ -225,12 +244,12 @@ namespace MD._360pixels.Test
             challenge.ChallengeID = Guid.NewGuid();
             challenge.ChallengeName = "Street art--insert";
             challenge.Description = "Whether used as a backdrop or as part of your main composition there's no denying that graffiti can add a real punch to your street photography.";
-            business.challengeBusiness.Insert(challenge);
+            business.ChallengeBusiness.Insert(challenge);
 
 
             // DELETE
 
-            business.challengeBusiness.Delete(new Guid("d7f9fc1c-d39a-42ce-a437-56c88306e024"));
+            business.ChallengeBusiness.Delete(new Guid("d7f9fc1c-d39a-42ce-a437-56c88306e024"));
 
 
             // UPDATE
@@ -239,15 +258,15 @@ namespace MD._360pixels.Test
             c2.ChallengeName = "ChallengeUpdate";
             c2.Description = "DescriptionUpdate";
 
-            business.challengeBusiness.Update(c2);
+            business.ChallengeBusiness.Update(c2);
 
             // Read By ID 
             Challenge c4 = new Challenge();
-            c4 = business.challengeBusiness.ReadById(new Guid("34aa90ba-df2e-457e-810d-d87f58eb13d0"));
+            c4 = business.ChallengeBusiness.ReadById(new Guid("34aa90ba-df2e-457e-810d-d87f58eb13d0"));
             Console.WriteLine(" Read by ID : \n Challenge: {0} \n Description:  {1} \n ", c4.ChallengeName, c4.Description);
 
 
-            challenges = business.challengeBusiness.ReadAll();
+            challenges = business.ChallengeBusiness.ReadAll();
             Console.WriteLine("====== Read all Challenges==== \n");
             foreach (Challenge c in challenges)
             {

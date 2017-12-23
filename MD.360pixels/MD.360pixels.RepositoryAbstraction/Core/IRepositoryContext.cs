@@ -8,10 +8,14 @@ namespace MD._360pixels.RepositoryAbstraction.Core
 {
     public interface IRepositoryContext: IDisposable
     {
-        IBlogRepository blogRepository { get; }
-        ICategoryRepository categoryRepository { get; }
-        IChallengeRepository challengeRepository { get; }
-        IPhotoRepository photoRepository { get; }
-        IUserProfileRepository userProfileRepository { get; }
+        IBlogRepository BlogRepository { get; }
+        ICategoryRepository CategoryRepository { get; }
+        IChallengeRepository ChallengeRepository { get; }
+        IPhotoRepository PhotoRepository { get; }
+        IUserProfileRepository UserProfileRepository { get; }
+        IUserChallengesRepository UserChallengesRepository { get; }
+        IBlogPhotosRepository BlogPhotosRepository { get; }
+        ICategoriesPhotosRepository CategoriesPhotosRepository { get; }
+        IChallengesPhotosRepository ChallengesPhotosRepository { get; }
     }
 }

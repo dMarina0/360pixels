@@ -23,41 +23,62 @@ namespace MD._360pixels.Repository
         public void Insert(UserProfile user)
         {
 
-            Insert("UserProfile_Create", GetParameter(user));
+            SqlParameter[] parameter = new SqlParameter[]
+           {
+                new SqlParameter("UserID", user.UserID),
+                new SqlParameter("UserName", user.UserName),
+                new SqlParameter("FirstName", user.FirstName),
+                new SqlParameter("LastName", user.LastName),
+                new SqlParameter("BirthDay", user.BirthDay),
+                new SqlParameter("Camera", user.Camera),
+                new SqlParameter("Country", user.Country),
+                new SqlParameter("Website", user.Website)
+
+           };
+            Insert("UserProfile_Create", parameter);
            
         }
        
           
         public void Delete(Guid userID)
         {
-            Delete("UserProfile_Delete", SetID(userID));
+            SqlParameter[] parameter = new SqlParameter[]
+           {
+                new SqlParameter("UserID", userID)
+           };
+            Delete("UserProfile_Delete", parameter);
 
         }
 
 
         public void Update(UserProfile user)
         {
+            SqlParameter[] parameter = new SqlParameter[]
+          {
+                new SqlParameter("UserID", user.UserID),
+                new SqlParameter("UserName", user.UserName),
+                new SqlParameter("FirstName", user.FirstName),
+                new SqlParameter("LastName", user.LastName),
+                new SqlParameter("BirthDay", user.BirthDay),
+                new SqlParameter("Camera", user.Camera),
+                new SqlParameter("Country", user.Country),
+                new SqlParameter("Website", user.Website)
 
-            Update("UserProfile_Update", GetParameter(user));
+          };
+
+            Update("UserProfile_Update", parameter);
             
         }
 
         public UserProfile ReadById(Guid userID)
         {
-            return ReadByID("UserProfie_ReadById", new SqlParameter("UserID", userID)) ;
+            SqlParameter parameter = new SqlParameter("UserID", userID);
+            
+            return ReadByID("UserProfie_ReadById", parameter) ;
         }
 
 
-        protected override SqlParameter[] SetID(Guid userID)
-        {
-
-            SqlParameter[] parameter = new SqlParameter[]
-            {
-                new SqlParameter("UserID", userID)
-            };
-
-            return parameter;
-        }
+        
         protected override UserProfile GetModelfromReader(SqlDataReader reader)
         {
             UserProfile user = new UserProfile();
@@ -73,25 +94,6 @@ namespace MD._360pixels.Repository
 
             return user;
         }
-        protected override SqlParameter[] GetParameter(UserProfile user)
-        {
-
-            SqlParameter[] parameter = new SqlParameter[]
-            {
-                new SqlParameter("UserID", user.UserID),
-                new SqlParameter("UserName", user.UserName),
-                new SqlParameter("FirstName", user.FirstName),
-                new SqlParameter("LastName", user.LastName),
-                new SqlParameter("BirthDay", user.BirthDay),
-                new SqlParameter("Camera", user.Camera),
-                new SqlParameter("Country", user.Country),
-                new SqlParameter("Website", user.Website)
-
-            };
-
-
-            return parameter;
-        }
-
+      
     }
 }

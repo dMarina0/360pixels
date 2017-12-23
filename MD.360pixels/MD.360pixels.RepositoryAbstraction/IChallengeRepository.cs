@@ -10,9 +10,9 @@ namespace MD._360pixels.RepositoryAbstraction
   public  interface IChallengeRepository
     {
         List<Challenge> ReadAll();
-        void Insert(Challenge challenge);
-        void Delete(Guid challengeID);
-        void Update(Challenge challenge);
-        Challenge ReadById(Guid challengeID);
+        void Insert(Challenge Challenge);
+        void Delete(Guid ChallengeID);
+        void Update(Challenge Challenge);
+        Challenge ReadById(Guid ChallengeID);
     }
 }

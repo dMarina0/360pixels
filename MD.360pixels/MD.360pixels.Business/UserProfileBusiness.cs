@@ -12,23 +12,23 @@ namespace MD._360pixels.Business
     {
         public List<UserProfile> ReadAll()
         {
-            return BusinessContext.Current.repositoryContext.userProfileRepository.ReadAll();
+            return BusinessContext.Current.RepositoryContext.UserProfileRepository.ReadAll();
         }
-        public void Insert(UserProfile user)
+        public void Insert(UserProfile User)
         {
-            BusinessContext.Current.repositoryContext.userProfileRepository.Insert(user);
+            BusinessContext.Current.RepositoryContext.UserProfileRepository.Insert(User);
         }
-        public void Delete(Guid userID)
+        public void Delete(Guid UserID)
         {
-            BusinessContext.Current.repositoryContext.userProfileRepository.Delete(userID);
+            BusinessContext.Current.RepositoryContext.UserProfileRepository.Delete(UserID);
         }
-        public void Update(UserProfile user)
+        public void Update(UserProfile User)
         {
-            BusinessContext.Current.repositoryContext.userProfileRepository.Update(user);
+            BusinessContext.Current.RepositoryContext.UserProfileRepository.Update(User);
         }
-        public UserProfile ReadById(Guid userID)
+        public UserProfile ReadById(Guid UserID)
         {
-            return BusinessContext.Current.repositoryContext.userProfileRepository.ReadById(userID);
+            return BusinessContext.Current.RepositoryContext.UserProfileRepository.ReadById(UserID);
         }
     }
 }

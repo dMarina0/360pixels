@@ -10,9 +10,9 @@ namespace MD._360pixels.RepositoryAbstraction
     public interface IUserProfileRepository
     {
         List<UserProfile> ReadAll();
-        void Insert(UserProfile user);
-        void Delete(Guid userID);
-        void Update(UserProfile user);
-        UserProfile ReadById(Guid userID);
+        void Insert(UserProfile User);
+        void Delete(Guid UserID);
+        void Update(UserProfile User);
+        UserProfile ReadById(Guid UserID);
     }
 }

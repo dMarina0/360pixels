@@ -19,6 +19,10 @@ namespace MD._360pixels.Business.Core
         private ChallengeBusiness _challengeBusiness;
         private PhotoBusiness _photoBusiness;
         private UserProfileBusiness _userProfileBusiness;
+        private UserChallengesBusiness _userChallengesBusiness;
+        private BlogPhotosBusiness _blogPhotosBusiness;
+        private CategoriesPhotosBusiness _categoriesPhotosBusiness;
+        private ChallengesPhotosBusiness _challengesPhotosBusiness;
 
         public BusinessContext()
         {
@@ -37,7 +41,7 @@ namespace MD._360pixels.Business.Core
                 return _businessInstance;
             }
         }
-        internal IRepositoryContext repositoryContext
+        internal IRepositoryContext RepositoryContext
         {
             get
             {
@@ -45,7 +49,7 @@ namespace MD._360pixels.Business.Core
             }
         }
 
-        public CategoryBusiness categoryBusiness
+        public CategoryBusiness CategoryBusiness
         {
             get
             {
@@ -56,8 +60,32 @@ namespace MD._360pixels.Business.Core
                 return _categoryBusiness;
             }
         }
+        public CategoriesPhotosBusiness CategoriesPhotosBusiness
+        {
+            get
+            {
+                if (_categoriesPhotosBusiness == null)
+                {
+                    _categoriesPhotosBusiness = new CategoriesPhotosBusiness();
+                }
+                return _categoriesPhotosBusiness;
+            }
+        }
 
-        public BlogBusiness blogBusiness
+
+        public UserChallengesBusiness UserChallengesBusiness
+        {
+            get
+            {
+                if (_userChallengesBusiness == null)
+                {
+                    _userChallengesBusiness = new UserChallengesBusiness();
+                }
+                return _userChallengesBusiness;
+            }
+        }
+
+        public BlogBusiness BlogBusiness
         {
             get
             {
@@ -69,7 +97,20 @@ namespace MD._360pixels.Business.Core
                     
             }
         }
-        public ChallengeBusiness challengeBusiness
+        public BlogPhotosBusiness BlogPhotosBusiness
+        {
+            get
+            {
+                if (_blogPhotosBusiness == null)
+                {
+                    _blogPhotosBusiness = new BlogPhotosBusiness();
+                }
+                return _blogPhotosBusiness;
+
+            }
+        }
+
+        public ChallengeBusiness ChallengeBusiness
         {
             get
             {
@@ -81,7 +122,19 @@ namespace MD._360pixels.Business.Core
 
             }
         }
-        public PhotoBusiness photoBusiness
+        public ChallengesPhotosBusiness ChallengePhotosBusiness
+        {
+            get
+            {
+                if (_challengesPhotosBusiness == null)
+                {
+                    _challengesPhotosBusiness = new ChallengesPhotosBusiness();
+                }
+                return _challengesPhotosBusiness;
+
+            }
+        }
+        public PhotoBusiness PhotoBusiness
         {
             get
             {
@@ -93,7 +146,7 @@ namespace MD._360pixels.Business.Core
 
             }
         }
-        public UserProfileBusiness userProfileBusiness
+        public UserProfileBusiness UserProfileBusiness
         {
             get
             {
@@ -121,10 +174,35 @@ namespace MD._360pixels.Business.Core
 
                     _blogBusiness = null;
                 }
+                if (_blogPhotosBusiness != null)
+                {
+
+                    _blogPhotosBusiness = null;
+                }
+                if (_challengeBusiness != null)
+                {
+
+                    _challengeBusiness = null;
+                }
+                if (_challengesPhotosBusiness != null)
+                {
+
+                    _challengesPhotosBusiness = null;
+                }
+                if (_userChallengesBusiness != null)
+                {
+
+                    _userChallengesBusiness = null;
+                }
                 if (_categoryBusiness != null)
                 {
 
                     _categoryBusiness = null;
+                }
+                if (_categoriesPhotosBusiness != null)
+                {
+
+                    _categoriesPhotosBusiness = null;
                 }
                 if (_userProfileBusiness != null)
                 {

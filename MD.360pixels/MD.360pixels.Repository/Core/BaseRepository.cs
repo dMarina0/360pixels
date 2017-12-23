@@ -202,8 +202,8 @@ namespace MD._360pixels.Repository.Core
 
 
         protected abstract TModel GetModelfromReader(SqlDataReader reader);
-        protected abstract SqlParameter[] GetParameter(TModel model);
-        protected abstract SqlParameter[] SetID(Guid guid);
+       
+        
 
     }
 }

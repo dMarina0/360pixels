@@ -65,10 +65,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Core\IRepositoryContext.cs" />
+    <Compile Include="IBlogPhotosRepository.cs" />
     <Compile Include="IBlogRepository.cs" />
+    <Compile Include="ICategoriesPhotosRepository.cs" />
     <Compile Include="ICategoryRepository.cs" />
     <Compile Include="IChallengeRepository.cs" />
+    <Compile Include="IChallengesPhotosRepository.cs" />
     <Compile Include="IPhotoRepository.cs" />
+    <Compile Include="IUserChallengesRepository.cs" />
     <Compile Include="IUserProfileRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

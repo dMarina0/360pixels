@@ -23,33 +23,30 @@ namespace MD._360pixels.Repository
        
         public void Insert(Category category)
         {
+            SqlParameter[] parameter = new SqlParameter[]
+            {
+                new SqlParameter("CategoryID", category.CategoryID),
+                new SqlParameter("CategoryName", category.CategoryName),
 
-            Insert("Categories_Create", GetParameter(category));
+            };
+            Insert("Categories_Create", parameter);
             
         }
         
       
         public void Delete(Guid categoryID)
         {
-            Delete("Categories_Delete", SetID(categoryID));
+            SqlParameter[] parameter = new SqlParameter[]
+            {
+            new SqlParameter("CategoryID", categoryID)
+            };
+           
+            Delete("Categories_Delete", parameter);
 
         }
         
       
         public void Update(Category category)
-        {
-            Update("Categories_Update", GetParameter(category));
-        }
-       
-       
-        public Category ReadById(Guid categoryID)
-        {
-                return ReadByID("Categories_ReadById", new SqlParameter("CategoryID", categoryID));
-
-        }
-        
-
-        protected override SqlParameter[] GetParameter(Category category)
         {
             SqlParameter[] parameter = new SqlParameter[]
             {
@@ -57,22 +54,18 @@ namespace MD._360pixels.Repository
                 new SqlParameter("CategoryName", category.CategoryName),
 
             };
-
-
-            return parameter;
+            Update("Categories_Update", parameter);
         }
-        protected override SqlParameter[] SetID(Guid categoryID)
+       
+       
+        public Category ReadById(Guid categoryID)
         {
-
-            SqlParameter[] parameter = new SqlParameter[]
-            {
-                new SqlParameter("CategoryID", categoryID)
-            };
-
-
-            return parameter;
+            SqlParameter parameter = new SqlParameter("CategoryID", categoryID);
+            
+            return ReadByID("Categories_ReadById",parameter);
 
         }
+ 
         protected override Category GetModelfromReader(SqlDataReader reader)
         {
             Category category = new Category();

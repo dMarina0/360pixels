@@ -65,11 +65,15 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BlogBusiness.cs" />
+    <Compile Include="BlogPhotosBusiness.cs" />
+    <Compile Include="CategoriesPhotosBusiness.cs" />
     <Compile Include="CategoryBusiness.cs" />
     <Compile Include="ChallengeBusiness.cs" />
+    <Compile Include="ChallengesPhotosBusiness.cs" />
     <Compile Include="Core\BusinessContext.cs" />
     <Compile Include="PhotoBusiness.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UserChallengesBusiness.cs" />
     <Compile Include="UserProfileBusiness.cs" />
   </ItemGroup>
   <ItemGroup>
