@@ -1,0 +1,432 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    
+    <link href="CSS/Index.css" rel="stylesheet" />
+    <link href="Content/bootstrap.css" rel="stylesheet" type="text/css" />
+    
+    <script src="Scripts/jquery-3.0.0.min.js"></script>
+    <script src="Scripts/bootstrap.bundle.js"></script>
+
+    <script src="Src/appController.js"></script>
+    <script src="Src/menuController.js"></script>
+    
+    <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css" />
+    <!--<script src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script>-->
+    <link href="http://fontawesome.io/assets/font-awesome/css/font-awesome.css" rel="stylesheet" media="screen">
+</head>
+
+
+<body>
+    <div class="wrapper">
+     <div class="header">
+            <div class="menu">
+                <header class="masthead">
+                    <nav class="navbar navbar-expand-md navbar-dark bg-dark rounded">
+                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+
+                        <div class="collapse navbar-collapse" id="navbarCollapse">
+                            <a class="navbar-brand" href="#"><img class="img-responsive logo" style="width:50px" src="https://cdn4.iconfinder.com/data/icons/adore/118/Camera.png" alt=""></a>
+                            <ul id="navbarContainer" class="navbar-nav text-md-center navbar-dark nav-justified w-100"></ul>
+                        </div>
+                    </nav>
+
+                </header>
+            </div>
+        </div>
+     <main class="container" role="main">
+        <div id="divHomeContainer">
+        <div class="start-image">
+            <img style="width:1487px; " src="Img/Things-Photographers-should-not-do.jpg" />
+                        <br />
+                        <br />
+
+                     <p style="text-align:center; font-size:x-large; color:black;" >Get inspired by best photographers</p>
+                            <p style="text-align:center; color:black;">Discover what’s trending according to photographers around the world.</p>
+                    <br />
+                    <br />
+
+            </div>
+        <div class="content">
+             <div class="photo"><img class="photo-image" src="Img/DSC_1050.JPG"></div>
+            <div class="photo"><img class="photo-image" src="Img/DSC_1059.JPG"/></div>
+            <div class="photo"><img class="photo-image"  src="Img/DSC_1063.JPG"/></div>
+            <div class="photo"><img  class="photo-image" src="Img/DSC_1089.JPG"/></div>
+            <div class="photo"><img  class="photo-image" src="Img/DSC_1097.JPG" /></div>
+            <div class="photo"><img class="photo-image" src="Img/p2.jpg" /></div>
+            <div class="photo"><img class="photo-image" src="Img/DSC_1360.JPG" /></div>
+            <div class="photo"><img class="photo-image" src="Img/as.jpg" /></div>
+        </div>
+        <div class="description">
+                <a href="https://ibb.co/hiaXsG"><img src="https://preview.ibb.co/e0YJXG/classes_abf873c02e5784b7041b0c37e2078d6f.jpg" alt="classes_abf873c02e5784b7041b0c37e2078d6f" border="0"></a>
+                   <h1 id="text-description" style="text-align:center">
+                       Improve your photography skills
+                       <p style="font-size:18px">Submit your photos to daily photo challenges and receive feedback people like you who simply love taking photos.</p>
+                    </h1>
+        </div>
+        <div class="desc">
+            <h1 id=" text-desc" style="text-align:center">
+                Blog is home to the best photo stories on the web
+                <p style="font-size:18px ; text-align:center"> You'll meet inspirational photographers, and discover how they capture the images that blow your mind every day. from tutorials to collections and beyond, 350pixels blog is your go-to source for everything photography. </p>
+            </h1>
+            
+
+            <a><img id="go-to-blog" src="https://preview.ibb.co/hbTegb/exhibited.jpg" alt="exhibited" border="0"></a><br /><a target='_blank' href='https://imgbb.com/'></a><br />
+        </div>
+    
+        </div>
+        <div id="divPhotosContainer" style="display:none">
+            <div class="vertical-menu">
+                <a href="#all">All categories</a>
+                <a href="#abstract">Abstract</a>
+                <a href="#action">Action</a>
+                <a href="#street">Street</a>
+                <a href="#macro">Macro</a>
+                <a href="#night">Night</a>
+                <a href="#portrait">Portrait</a>
+                <a href="#landscape">Landscape</a>
+                <a href="#people">People</a>
+            </div>
+            
+            <div id="all" class="grid-photos">
+                <div><img style="width: 350px; height: 260px;" src="Img/DSC_1050.JPG" /></div>
+                <div><img style="width: 350px; height: 260px;" src="Img/DSC_1059.JPG" /></div>
+                <div><img style="width: 350px; height: 260px;" src="Img/DSC_1063.JPG" /></div>
+                <div><img style="width: 350px; height: 260px;" src="Img/DSC_1089.JPG" /></div>
+                <div><img style="width: 350px; height: 260px;" src="Img/p2.jpg" /></div>
+                <div><img style="width: 350px; height: 260px;" src="Img/as.JPG" /></div>
+                <div><img style="width: 350px; height: 260px;" src="Img/DSC_1360.JPG" /></div>
+            </div>
+            <div id="abstract" class="grid-photos" >
+                <div><img style="width: 350px; height: 260px;" src="Img/DSC_1050.JPG" /></div>
+                <div><img style="width: 350px; height: 260px;" src="Img/DSC_1059.JPG" /></div>
+            </div>
+            <div id="action" class="grid-photos" >
+                <div><img style="width: 350px; height: 260px;" src="Img/p2.jpg" /></div>
+                <div><img style="width: 350px; height: 260px;" src="Img/as.JPG" /></div>
+            </div>
+            <div id="street" class="grid-photos" >
+                <div><img style="width: 350px; height: 260px;" src="Img/DSC_1360.JPG" /></div>
+            </div>
+            <div id="macro" class="grid-photos" >
+                <div><img style="width: 350px; height: 260px;" src="Img/DSC_1059.JPG" /></div>
+                <div><img style="width: 350px; height: 260px;" src="Img/DSC_1063.JPG" /></div>
+            </div>
+            <div id="night" class="grid-photos" >
+                <div><img style="width: 350px; height: 260px;" src="Img/p2.jpg" /></div>
+                <div><img style="width: 350px; height: 260px;" src="Img/as.JPG" /></div>
+            </div>
+            <div id="portrait" class="grid-photos" >
+                <div><img style="width: 350px; height: 260px;" src="Img/DSC_1063.JPG" /></div>
+                <div><img style="width: 350px; height: 260px;" src="Img/DSC_1089.JPG" /></div>
+            </div>
+            <div id="landscape" class="grid-photos" >
+                <div><img style="width: 350px; height: 260px;" src="Img/DSC_1050.JPG" /></div>
+            </div>
+            <div id="people" class="grid-photos" >
+                <div><img style="width: 350px; height: 260px;" src="Img/DSC_1360.JPG" /></div>
+            </div>
+            
+          </div>
+        <div id="divBlogContainer" style="display:none">
+            <div href="#Blog" class="normal-page">
+                <div class="BlogHeader">
+                    <img style="width:1480px; height:465px;" src="Img/blog.jpg" />
+                </div>
+
+                <div class="row">
+                    <div class="leftcolumn">
+
+                        <div id="page">
+                            <div style="color:dimgray;" class="list-group">
+                                <a style="background-color:dimgray;" href="javascript:void(0)" class="list-group-item ">
+                                    <div class="fakeimg"><img style="height:230px; width:500px; padding-bottom:20px;" src="https://drscdn.500px.org/photo/221324027/m%3D900/v2?webp=true&sig=8d20baebda3b4b1c91db70cf1f06c146d41fbbbdf265d930d970dcf8cebb9d8b" /></div>
+                                    <h2 class="blog-text" style="color:white">TITLE 1</h2>
+                                    <h5 class="blog-text" style="color:white">Title description, Dec 7, 2017</h5>
+                                    <p class="blog-text" style="color:white">Some text..</p>
+                                    <p class="blog-text" style="color:white">Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>
+                                </a>
+                                <button id="read-more" type="button" href="#post" class="btn btn-dark">Read More</button>
+                            </div>
+                            <div style="color:dimgray;" class="list-group">
+                                <a style="background-color:dimgray;" href="javascript:void(0)" class="list-group-item ">
+                                    <div class="fakeimg"><img style="height:230px; width:500px; padding-bottom:20px;" src="https://drscdn.500px.org/photo/221324027/m%3D900/v2?webp=true&sig=8d20baebda3b4b1c91db70cf1f06c146d41fbbbdf265d930d970dcf8cebb9d8b" /></div>
+                                    <h2 class="blog-text" style="color:white">TITLE 2</h2>
+                                    <h5 class="blog-text" style="color:white">Title description, Dec 7, 2017</h5>
+                                    <p class="blog-text" style="color:white">Some text..</p>
+                                    <p class="blog-text" style="color:white">Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>
+                                </a>
+                                <button type="button" class="btn btn-dark">Read More</button>
+                            </div>
+                            <div style="color:dimgray;" class="list-group">
+                                <a style="background-color:dimgray;" href="javascript:void(0)" class="list-group-item ">
+                                    <div class="fakeimg"><img style="height:230px; width:500px; padding-bottom:20px;" src="https://drscdn.500px.org/photo/221324027/m%3D900/v2?webp=true&sig=8d20baebda3b4b1c91db70cf1f06c146d41fbbbdf265d930d970dcf8cebb9d8b" /></div>
+                                    <h2 class="blog-text" style="color:white">TITLE 3</h2>
+                                    <h5 class="blog-text" style="color:white">Title description, Dec 7, 2017</h5>
+                                    <p class="blog-text" style="color:white">Some text..</p>
+                                    <p class="blog-text" style="color:white">Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>
+                                </a>
+                                <button type="button" class="btn btn-dark">Read More</button>
+                            </div>
+                            <div style="color:dimgray;" class="list-group">
+                                <a style="background-color:dimgray;" href="javascript:void(0)" class="list-group-item ">
+                                    <div class="fakeimg"><img style="height:230px; width:500px; padding-bottom:20px;" src="https://drscdn.500px.org/photo/221324027/m%3D900/v2?webp=true&sig=8d20baebda3b4b1c91db70cf1f06c146d41fbbbdf265d930d970dcf8cebb9d8b" /></div>
+                                    <h2 class="blog-text" style="color:white">TITLE 4</h2>
+                                    <h5 class="blog-text" style="color:white">Title description, Dec 7, 2017</h5>
+                                    <p class="blog-text" style="color:white">Some text..</p>
+                                    <p class="blog-text" style="color:white">Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>
+                                </a>
+                                <button type="button" class="btn btn-dark">Read More</button>
+                            </div>
+                            <div style="color:dimgray;" class="list-group">
+                                <a style="background-color:dimgray;" href="javascript:void(0)" class="list-group-item ">
+                                    <div class="fakeimg"><img style="height:230px; width:500px; padding-bottom:20px;" src="https://drscdn.500px.org/photo/221324027/m%3D900/v2?webp=true&sig=8d20baebda3b4b1c91db70cf1f06c146d41fbbbdf265d930d970dcf8cebb9d8b" /></div>
+                                    <h2 class="blog-text" style="color:white">TITLE 5</h2>
+                                    <h5 class="blog-text" style="color:white">Title description, Dec 7, 2017</h5>
+                                    <p class="blog-text" style="color:white">Some text..</p>
+                                    <p class="blog-text" style="color:white">Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>
+                                </a>
+                                <button type="button" class="btn btn-dark">Read More</button>
+                            </div>
+                            <div style="color:dimgray;" class="list-group">
+                                <a style="background-color:dimgray;" href="javascript:void(0)" class="list-group-item ">
+                                    <div class="fakeimg"><img style="height:230px; width:510px; padding-bottom:20px;" src="https://drscdn.500px.org/photo/221324027/m%3D900/v2?webp=true&sig=8d20baebda3b4b1c91db70cf1f06c146d41fbbbdf265d930d970dcf8cebb9d8b" /></div>
+                                    <h2 class="blog-text" style="color:white">TITLE 6</h2>
+                                    <h5 class="blog-text" style="color:white">Title description, Dec 7, 2017</h5>
+                                    <p class="blog-text" style="color:white">Some text..</p>
+                                    <p class="blog-text" style="color:white">Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>
+                                </a>
+                                <button type="button" class="btn btn-dark">Read More</button>
+                            </div>
+                            <div style="color:dimgray;" class="list-group">
+                                <a style="background-color:dimgray;" href="javascript:void(0)" class="list-group-item ">
+                                    <div class="fakeimg"><img style="height:230px; width:500px; padding-bottom:20px;" src="https://drscdn.500px.org/photo/221324027/m%3D900/v2?webp=true&sig=8d20baebda3b4b1c91db70cf1f06c146d41fbbbdf265d930d970dcf8cebb9d8b" /></div>
+                                    <h2 class="blog-text" style="color:white">TITLE 7</h2>
+                                    <h5 class="blog-text" style="color:white">Title description, Dec 7, 2017</h5>
+                                    <p class="blog-text" style="color:white">Some text..</p>
+                                    <p class="blog-text" style="color:white">Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>
+                                </a>
+                                <button type="button" class="btn btn-dark">Read More</button>
+                            </div>
+                            <div style="color:dimgray;" class="list-group">
+                                <a style="background-color:dimgray;" href="javascript:void(0)" class="list-group-item ">
+                                    <div class="fakeimg"><img style="height:230px; width:500px; padding-bottom:20px;" src="https://drscdn.500px.org/photo/221324027/m%3D900/v2?webp=true&sig=8d20baebda3b4b1c91db70cf1f06c146d41fbbbdf265d930d970dcf8cebb9d8b" /></div>
+                                    <h2 class="blog-text" style="color:white">TITLE 8</h2>
+                                    <h5 class="blog-text" style="color:white">Title description, Dec 7, 2017</h5>
+                                    <p class="blog-text" style="color:white">Some text..</p>
+                                    <p class="blog-text" style="color:white">Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>
+                                </a>
+                                <button type="button" class="btn btn-dark">Read More</button>
+                            </div>
+                        </div>
+                        <nav class="pagination-container" aria-label=...>
+                            <ul class=pagination>
+                                <li id="previous-page"><a href="javascript:void(0)" aria-label=Previous><span aria-hidden=true>&laquo;</span></a></li>
+                            </ul>
+                        </nav>
+
+                    </div>
+                    <div class="rightcolumn">
+                        <div class="cardRight">
+                            <div class="fb-page" data-href="https://www.facebook.com/360pixels-1788564874772665/" data-tabs="timeline" data-small-header="true" data-adapt-container-width="false" data-hide-cover="false" data-show-facepile="true"><blockquote cite="https://www.facebook.com/360pixels-1788564874772665/" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/360pixels-1788564874772665/">360pixels</a></blockquote></div>
+                        </div>
+                        <div class="cardRight">
+                            <div class="vertical-menu-blog">
+                                <a href="#" style="background-color:black;">360 pixels</a>
+                                <a href="#" style="background-color:darkgray;">Learn</a>
+                                <a href="#" style="background-color:darkgray;">News</a>
+                                <a href="#" style="background-color:darkgray;">Inspiration</a>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+            <div  id="post" style="display:none;">
+                <article>
+
+                    <section class="banner-section" style="padding-top:30px;"></section>
+                    <section class="post-content-section">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-lg-12 col-md-12 col-sm-12 post-title-block">
+
+                                    <h1 class="text-center">Title 1</h1>
+                                    <ul class="list-inline text-center">
+                                        <li>Author |</li>
+                                        <li>Category |</li>
+                                        <li>Date |</li>
+                                    </ul>
+                                </div>
+                                <div class="col-lg-9 col-md-9 col-sm-12">
+                                    <p class="lead">Nullam quis risus eget urna mollis ornare vel eu leo. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nullam id dolor id nibh ultricies vehicula.</p>
+                                    <p>Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec ullamcorper nulla non metus auctor fringilla. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Donec ullamcorper nulla non metus auctor fringilla.</p>
+                                    <div class="well ">
+                                        <large>This is image</large>
+                                    </div>
+                                    <p>Maecenas sed diam eget risus varius blandit sit amet non magna. Donec id elit non mi porta gravida at eget metus. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit.</p>
+                                    <blockquote>
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+                                        <footer>Someone famous in <cite title="Source Title">Source Title</cite></footer>
+                                    </blockquote>
+                                    <p>Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec ullamcorper nulla non metus auctor fringilla. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Donec ullamcorper nulla non metus auctor fringilla.</p>
+                                    <p>Maecenas sed diam eget risus varius blandit sit amet non magna. Donec id elit non mi porta gravida at eget metus. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit.</p>
+                                    <blockquote>
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante. nascetur ridiculus mus. Donec ullamcorper nulla non metus auctor fringilla. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Donec ullamcorper nulla non metus auctor fringilla.</p>
+
+                                    </blockquote>
+                                    <div class="image-block">
+                                        <img style="max-height:500px ; max-width:600px;"src="https://static.pexels.com/photos/268455/pexels-photo-268455.jpeg" class="img-responsive">
+                                    </div>
+                                    <p>Maecenas sed diam eget risus varius blandit sit amet non magna. Donec id elit non mi porta gravida at eget metus. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit.</p>
+                                </div>
+                                <div class="col-lg-3  col-md-3 col-sm-12">
+                                </div>
+                            </div>
+
+                        </div> <!-- /container -->
+                    </section>
+
+                </article>
+            </div>
+        </div>
+        <div id="divChallengesContainer" style="display:none">
+            <div class="card-deck">
+                <div class="card">
+                    <img id="photo-cat" class="card-img-top" style="max-width:444px; max-height:296px;" src="https://drscdn.500px.org/photo/148101889/q%3D80_m%3D2000/v2?webp=true&sig=4696c0d437325593b4e208c2829756d1fa33bd1a456bae02ec06e22616ece0c1" alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title" style="text-align:center;">Street Photography</h5>
+                    </div>
+                </div>
+                <div class="card">
+                    <img id="photo-cat" class="card-img-top" style="max-width:444px; max-height:296px;" src="Img/as.jpg" alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title">Summer</h5>
+                    </div>
+                </div>
+                <div class="card">
+                    <img id="photo-cat" class="card-img-top" style="max-width:444px; max-height:296px;" src="https://i.pinimg.com/564x/9c/e2/81/9ce281d6d03db07f77a62a36ef8a2664.jpg" alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title" style="text-align:center">Portrait</h5>
+                    </div>
+                </div>
+                <div class="card-deck">
+                    <div class="card">
+                        <img id="photo-cat" class="card-img-top" style="max-width:444px; max-height:296px;" src="https://i.pinimg.com/564x/2b/d2/cf/2bd2cfbd44e4525b7709f07673df14df.jpg" alt="Card image cap">
+                        <div class="card-body">
+                            <h5 class="card-title">Fall</h5>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <img id="photo-cat" class="card-img-top" style="max-width:444px; max-height:296px;"src="https://wallpapercave.com/wp/9uTVIpA.jpg" alt="Card image cap">
+                        <div class="card-body">
+                            <h5 class="card-title">Snow</h5>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <img id="photo-cat" class="card-img-top" style="max-width:444px; max-height:296px;" src="Img/p2.jpg" alt="Card image cap">
+                        <div class="card-body">
+                            <h5 class="card-title">Reflections</h5>
+                        </div>
+                    </div>
+                    <div class="card-deck">
+                        <div class="card">
+                            <img id="photo-cat" class="card-img-top" style="max-width:444px; max-height:296px;" src="https://cdn0.tnwcdn.com/wp-content/blogs.dir/1/files/2012/10/Food.jpg" alt="Card image cap">
+                            <div class="card-body">
+                                <h5 class="card-title">Food</h5>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <img id="photo-cat" class="card-img-top" style="max-width:444px; max-height:296px;" src="http://acrossthemargin.com/wp-content/uploads/2016/07/shadows.jpg" alt="Card image cap">
+                            <div class="card-body">
+                                <h5 class="card-title">Shadows</h5>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <img id="photo-cat" class="card-img-top" style="max-width:444px; max-height:296px;"  src="http://cdn.wonderfulengineering.com/wp-content/uploads/2014/07/black-and-white-wallpaper-45-610x457.jpg" alt="Card image cap">
+                            <div class="card-body">
+                                <h5 class="card-title">Black & White</h5>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+           </div>
+            <div class="photos-challenges" style="display:none">
+                <div class="column">
+                <div><img id="ima" style="max-height:450px;max-width:800px;width:100%;" src="https://static1.squarespace.com/static/58139419b3db2b2b3a91890f/5814d234579fb3b84120564f/5814da9f725e25ba0622a201/1477761697955/2015-Milano-Eolo-Perfido-Street-Photography-047.jpg?format=1500w" /></div>
+                <div><img id="ima" style="max-height:450px;max-width:800px;width:100%;" src="http://www.chasejarvis.com/wp-content/uploads/2015/11/Ashley_Gilbertson_Street_Photography_WEB_1600x900.jpg" /></div>
+                <div><img id="ima" style="max-height:450px;max-width:800px;width:100%;" src="https://mir-s3-cdn-cf.behance.net/project_modules/1400/41f83614969639.5628b4406a3d5.jpg" /></div>
+                </div>
+                <div class="column">
+                    <div><img id="ima" style="max-height:450px;max-width:800px;width:100%;" src="https://media.licdn.com/mpr/mpr/AAEAAQAAAAAAAAsoAAAAJDIwZGVmZWUyLTFmMjMtNDFlNi05MDVhLWU3MzU1Y2E1MzE3ZQ.png" /></div>
+                    <div><img id="ima" style="max-height:450px;max-width:800px;width:100%;" src="https://static1.squarespace.com/static/58139419b3db2b2b3a91890f/5814d234579fb3b84120564f/5814da9f725e25ba0622a201/1477761697955/2015-Milano-Eolo-Perfido-Street-Photography-047.jpg?format=1500w" /></div>
+                    <div><img id="ima" style="max-height:450px;max-width:800px;width:100%;" src="https://static1.squarespace.com/static/58139419b3db2b2b3a91890f/5814d234579fb3b84120564f/5814da9f725e25ba0622a201/1477761697955/2015-Milano-Eolo-Perfido-Street-Photography-047.jpg?format=1500w" /></div>
+                </div>
+                <div class="column">
+                    <div><img id="ima" style="max-height:450px;max-width:800px;width:100%;" src="http://www.chasejarvis.com/wp-content/uploads/2015/11/Ashley_Gilbertson_Street_Photography_WEB_1600x900.jpg" /></div>
+                    <div><img id="ima" style="max-height:450px;max-width:800px;width:100%;" src="https://mir-s3-cdn-cf.behance.net/project_modules/1400/41f83614969639.5628b4406a3d5.jpg" /></div>
+                    <div><img id="ima" style="max-height:450px;max-width:800px;width:100%;" src="https://media.licdn.com/mpr/mpr/AAEAAQAAAAAAAAsoAAAAJDIwZGVmZWUyLTFmMjMtNDFlNi05MDVhLWU3MzU1Y2E1MzE3ZQ.png" /></div>
+                </div>
+                </div>
+        </div>
+        <div id="divAboutContainer" style="display:none">
+            <div class="about-page">
+            <center style="text-align:center; vertical-align:middle; line-height:1290px; ">Coming soon..</center>
+            </div>
+        </div>
+    </main>
+      <div class="footer" style="background-color:black">
+            <footer id="myFooter" style="top:30px;">
+                <div class="cont">
+                    <div class="row">
+                        <div class="col-sm-3">
+                            <h2 class="logo"><img style="width:150px" src="Img/Camera.png" /></h2>
+                        </div>
+                        <div class="col-sm-2">
+                            <h5>Get started</h5>
+                            <ul>
+                                <li><a href="#">Home</a></li>
+                                <li><a href="#">Sign up</a></li>
+                            </ul>
+                        </div>
+                        <div class="col-sm-2">
+                            <h5>About us</h5>
+                            <ul>
+                                
+                                <li><a href="#">Contact us</a></li>
+                                <li><a href="#">Reviews</a></li>
+                            </ul>
+                        </div>
+                        <div class="col-sm-2">
+                            <h5>Menu</h5>
+                            <ul>
+                                <li><a href="#">Home</a></li>
+                                <li><a href="#">Photos</a></li>
+                                <li><a href="#">Blog</a></li>
+                                <li><a href="#">Challenges</a></li>
+                            </ul>
+                        </div>
+                        <div class="col-sm-3">
+                            <div class="social-networks">
+                                <a href="#" class="twitter"><i class="fa fa-twitter"></i></a>
+                                <a href="#" class="facebook"><i class="fa fa-facebook"></i></a>
+                                <a href="#" class="google"><i class="fa fa-google-plus"></i></a>
+                            </div>
+                            <button type="button" style="background-color:black;" class="btn btn-default">Contact us</button>
+                        </div>
+                    </div>
+                </div>
+               
+            </footer>
+
+        </div>
+    </div>
+    <script type="text/javascript" src="Src/pagination.js"></script>
+    <script src="Src/facebookPage.js"></script>
+    <script src="Src/navigation.js"></script>
+</body>
+</html>

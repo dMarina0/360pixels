@@ -597,6 +597,16 @@ AS
  
 END 
 GO
+CREATE PROCEDURE [dbo].[UserChallenges_ReadAll]
+
+AS
+BEGIN
+	SELECT s.ChallengeID,
+			s.UserID		
+	FROM UserChallenges s	
+	
+END
+GO
 
 
 
@@ -626,6 +636,16 @@ AS
 	
  
 END 
+GO
+CREATE PROCEDURE [dbo].[BlogPhotos_ReadAll]
+
+AS
+BEGIN
+	SELECT s.BlogID,
+			s.PhotoID		
+	FROM BlogPhotos s	
+	
+END
 GO
 	
 
@@ -657,6 +677,17 @@ AS
  
 END 
 GO
+CREATE PROCEDURE [dbo].[CategoriesPhotos_ReadAll]
+
+AS
+BEGIN
+	SELECT s.CategoryID,
+			s.PhotoID		
+	FROM CategoriesPhotos s	
+	
+END
+GO
+
 
 
 
@@ -687,6 +718,16 @@ AS
  
 END 
 GO
+CREATE PROCEDURE [dbo].[ChallengesPhotos_ReadAll]
+
+AS
+BEGIN
+	SELECT s.ChallengeID,
+			s.PhotoID		
+	FROM ChallengesPhotos s	
+	
+END
+GO
 
 
 
@@ -716,4 +757,14 @@ AS
 	
  
 END 
+GO
+CREATE PROCEDURE [dbo].[UserProfilePhotos_ReadAll]
+
+AS
+BEGIN
+	SELECT s.UserID,
+			s.PhotoID		
+	FROM UserProfilePhotos s	
+	
+END
 GO
