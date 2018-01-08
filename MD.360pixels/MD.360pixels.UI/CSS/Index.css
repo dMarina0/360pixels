@@ -236,6 +236,7 @@ body {
     grid-template-columns:repeat(3, 1fr);
     grid-gap:10px;
 }
+
 .grid-photos a
 {
     padding: 40px 40px 40px 40px;
@@ -437,3 +438,4 @@ section {
     width: 1480px;
     height: 1290px;
 }
+
