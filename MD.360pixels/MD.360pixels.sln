@@ -23,6 +23,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MD.360pixels.RepositoryFact
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MD.360pixels.UI", "MD.360pixels.UI\MD.360pixels.UI.csproj", "{3CB369EC-BB56-4F9B-B72B-C36CEAB12EA0}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MD.360pixels.API", "MD.360pixels.API\MD.360pixels.API.csproj", "{4489EE8B-2273-422D-805E-6E594C2000E3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -57,6 +59,10 @@ Global
 		{3CB369EC-BB56-4F9B-B72B-C36CEAB12EA0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3CB369EC-BB56-4F9B-B72B-C36CEAB12EA0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3CB369EC-BB56-4F9B-B72B-C36CEAB12EA0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4489EE8B-2273-422D-805E-6E594C2000E3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4489EE8B-2273-422D-805E-6E594C2000E3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4489EE8B-2273-422D-805E-6E594C2000E3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4489EE8B-2273-422D-805E-6E594C2000E3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -9,12 +9,24 @@
     <script src="Scripts/jquery-3.0.0.min.js"></script>
     <script src="Scripts/bootstrap.bundle.js"></script>
 
-    <script src="Src/appController.js"></script>
-    <script src="Src/menuController.js"></script>
     
     <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css" />
     <!--<script src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script>-->
     <link href="http://fontawesome.io/assets/font-awesome/css/font-awesome.css" rel="stylesheet" media="screen">
+
+        <!--App Scripts-->
+    <script src="Src/Services/categoryService.js"></script>
+    <script src="Src/Services/photoService.js"></script>
+    <script src="Src/Services/homeService.js"></script>
+    <script src="Src/Services/serviceContext.js"></script>
+    <script src="Src/Controllers/categoryMenu.js"></script>
+    <script src="Src/Controllers/categoryController.js"></script>
+    <script src="Src/Controllers/homeImageGridController.js"></script>
+    <script src="Src/Controllers/homeDescription.js"></script>
+    <script src="Src/Controllers/homeController.js"></script>
+    <script src="Src/menuController.js"></script>
+    <script src="Src/appController.js"></script>
+
 </head>
 
 
@@ -39,7 +51,7 @@
         </div>
      <main class="container" role="main">
         <div id="divHomeContainer">
-        <div class="start-image">
+        <div class="start-image" id="heroImage">
             <img style="width:1487px; width:100%; " src="Img/Things-Photographers-should-not-do.jpg" />
                         <br />
                         <br />
@@ -50,37 +62,37 @@
                     <br />
 
             </div>
-        <div class="content">
-             <div class="photo"><img class="photo-image" src="Img/DSC_1050.JPG"></div>
+        <div class="content" id="imageGridHome">
+             <!--<div class="photo"><img class="photo-image" src="Img/DSC_1050.JPG"></div>
             <div class="photo"><img class="photo-image" src="Img/DSC_1059.JPG"/></div>
             <div class="photo"><img class="photo-image"  src="Img/DSC_1063.JPG"/></div>
             <div class="photo"><img  class="photo-image" src="Img/DSC_1089.JPG"/></div>
             <div class="photo"><img  class="photo-image" src="Img/DSC_1097.JPG" /></div>
             <div class="photo"><img class="photo-image" src="Img/p2.jpg" /></div>
             <div class="photo"><img class="photo-image" src="Img/DSC_1360.JPG" /></div>
-            <div class="photo"><img class="photo-image" src="Img/as.jpg" /></div>
+            <div class="photo"><img class="photo-image" src="Img/as.jpg" /></div>-->
         </div>
-        <div class="description">
-                <a href="https://ibb.co/hiaXsG"><img style="width:100%;"src="https://preview.ibb.co/e0YJXG/classes_abf873c02e5784b7041b0c37e2078d6f.jpg" alt="classes_abf873c02e5784b7041b0c37e2078d6f" border="0"></a>
+        <div class="first-description" id="firstDescription">
+                <a><img style="width:100%;"src="https://preview.ibb.co/e0YJXG/classes_abf873c02e5784b7041b0c37e2078d6f.jpg" alt="classes_abf873c02e5784b7041b0c37e2078d6f" border="0"></a>
                    <h1 id="text-description" style="text-align:center">
                        Improve your photography skills
                        <p style="font-size:18px">Submit your photos to daily photo challenges and receive feedback people like you who simply love taking photos.</p>
                     </h1>
         </div>
-        <div class="desc">
-            <h1 id=" text-desc" style="text-align:center">
-                Blog is home to the best photo stories on the web
+        <div class="second-description" id="secondDescription">
+                <h1  style="text-align:center">
+                        Blog is home to the best photo stories on the web
                 <p style="font-size:18px ; text-align:center"> You'll meet inspirational photographers, and discover how they capture the images that blow your mind every day. from tutorials to collections and beyond, 350pixels blog is your go-to source for everything photography. </p>
-            </h1>
+                </h1>
             
 
-            <a><img style="width:100%"id="go-to-blog" src="https://preview.ibb.co/hbTegb/exhibited.jpg" alt="exhibited" border="0"></a><br /><a target='_blank' href='https://imgbb.com/'></a><br />
+            <a><img style="width:100%" id="go-to-blog" src="https://preview.ibb.co/hbTegb/exhibited.jpg" alt="exhibited" border="0"></a><br /><br />
         </div>
     
         </div>
         <div id="divPhotosContainer" style="display:none">
-            <div class="vertical-menu">
-                <a href="#all">All categories</a>
+            <div class="vertical-menu" id="verticalMenu">
+                <!--<a href="#all">All categories</a>
                 <a href="#abstract">Abstract</a>
                 <a href="#action">Action</a>
                 <a href="#street">Street</a>
@@ -88,7 +100,7 @@
                 <a href="#night">Night</a>
                 <a href="#portrait">Portrait</a>
                 <a href="#landscape">Landscape</a>
-                <a href="#people">People</a>
+                <a href="#people">People</a>-->
             </div>
             
             <div id="all" class="grid-photos">
@@ -222,7 +234,7 @@
                                 <button type="button" class="btn btn-dark">Read More</button>
                             </div>
                         </div>
-                        <nav class="pagination-container" aria-label=...>
+                        <nav style="width:100%" class="pagination-container" aria-label=...>
                             <ul class=pagination>
                                 <li id="previous-page"><a href="javascript:void(0)" aria-label=Previous><span aria-hidden=true>&laquo;</span></a></li>
                             </ul>

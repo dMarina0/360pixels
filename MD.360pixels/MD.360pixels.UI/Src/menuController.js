@@ -1,31 +1,39 @@
-﻿var MenuController = function () {
+﻿var MenuController = function (serviceContext) {
     var _self = this;
+
+    var _homeController = new HomeController(serviceContext)
+    var _categoryController = new CategoryController(serviceContext)
 
     var _menuElements = [
         {
             Id: "Home",
-            ContainerId: "divHomeContainer"
+            ContainerId: "divHomeContainer",
+            Controller : _homeController
         },
         {
             Id: "Photos",
-            ContainerId: "divPhotosContainer"
+            ContainerId: "divPhotosContainer",
+            Controller: _categoryController
         },
         {
             Id: "Blog",
-            ContainerId: "divBlogContainer"
+            ContainerId: "divBlogContainer",
+            Controller: null
         },
         {
             Id: "Challenges",
-            ContainerId: "divChallengesContainer"
+            ContainerId: "divChallengesContainer",
+            Controller:null
         },
         {
             Id: "About",
-            ContainerId: "divAboutContainer"
+            ContainerId: "divAboutContainer",
+            Controller: null
         }
     ];
 
     this.GenerateMenu = function () {
-        var jqNavbarContainer = $("#navbarContainer"); //ul ID
+        var jqNavbarContainer = $("#navbarContainer"); 
         for (i = 0; i < _menuElements.length; i++) {
             var jqListItem = $("<li id='" + _menuElements[i].Id + "' class='nav-item'>").append("<a class='nav-link'>" + _menuElements[i].Id + "</a>");
             jqNavbarContainer.append(jqListItem);
@@ -38,12 +46,12 @@
         var jqSelectedListItem = $(this); 
         
         var selectedId = jqSelectedListItem.attr("id");
-       
+        var menuElementId;
         var selectedContainerId;
         for (index = 0; index < _menuElements.length; index++) {
             if (_menuElements[index].Id === selectedId) {
                 selectedContainerId = _menuElements[index].ContainerId;
-               
+                menuElementId = index;
                 break;
             }
         }
@@ -59,6 +67,7 @@
             }
             else {
                 $(mainContainers[i]).show();
+                _menuElements[menuElementId].Controller.RenderPage();
 
             }
         

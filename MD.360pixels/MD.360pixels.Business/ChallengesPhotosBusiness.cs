@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 
 namespace MD._360pixels.Business
 {
+
     public class ChallengesPhotosBusiness
     {
         public List<ChallengePhoto> ReadAll()
