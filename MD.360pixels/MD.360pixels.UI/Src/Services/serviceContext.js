@@ -2,6 +2,7 @@
     var _photoService;
     var _homeService;
     var _categoryService;
+    var _challengeService;
 
     this.PhotoService = function () {
         if (!_photoService)
@@ -21,5 +22,11 @@
             _categoryService = new CategoryService();
         }
         return _categoryService;
+    }
+    this.ChallengeService = function () {
+        if (!_challengeService) {
+            _challengeService = new ChallengeService();
+        }
+        return _challengeService;
     }
 }

@@ -4,12 +4,11 @@
     $(pageId).show();
 }
 
-function defaultPage() {
-    $("#all").show();
-}
 
 $(window).on("hashchange", function () {
     showPage(location.hash);
+    
+   
 });
 
 $("#Photos").on("click", function () {
@@ -23,8 +22,10 @@ $("#read-more").click(function () {
     console.log(location.hash);
 });
 
-$("#photo-cat").click(function () {
+
+function showGridChallenge() {
     $(".card-deck").hide();
     $(".photos-challenges").show();
-})
+}
+
 

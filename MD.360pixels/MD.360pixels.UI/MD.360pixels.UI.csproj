@@ -134,6 +134,8 @@
     <Content Include="Src\appController.js" />
     <Content Include="Src\Controllers\categoryController.js" />
     <Content Include="Src\Controllers\categoryMenu.js" />
+    <Content Include="Src\Controllers\challengeController.js" />
+    <Content Include="Src\Controllers\gridImageChallengeController.js" />
     <Content Include="Src\Controllers\homeController.js" />
     <Content Include="Src\Controllers\homeDescription.js" />
     <Content Include="Src\Controllers\homeImageGridController.js" />
@@ -141,7 +143,9 @@
     <Content Include="Src\menuController.js" />
     <Content Include="Src\navigation.js" />
     <Content Include="Src\pagination.js" />
+    <Content Include="Src\Services\aboutService.js" />
     <Content Include="Src\Services\categoryService.js" />
+    <Content Include="Src\Services\challengeService.js" />
     <Content Include="Src\Services\photoService.js" />
     <Content Include="Src\Services\serviceContext.js" />
     <Content Include="Web.config" />

@@ -15,17 +15,23 @@
     <link href="http://fontawesome.io/assets/font-awesome/css/font-awesome.css" rel="stylesheet" media="screen">
 
         <!--App Scripts-->
+
+    <script src="Src/Services/aboutService.js"></script>
     <script src="Src/Services/categoryService.js"></script>
     <script src="Src/Services/photoService.js"></script>
-    <script src="Src/Services/homeService.js"></script>
+
+    <script src="Src/Services/challengeService.js"></script>
     <script src="Src/Services/serviceContext.js"></script>
     <script src="Src/Controllers/categoryMenu.js"></script>
+    <script src="Src/Controllers/gridImageChallengeController.js"></script>
+    <script src="Src/Controllers/challengeController.js"></script>
     <script src="Src/Controllers/categoryController.js"></script>
     <script src="Src/Controllers/homeImageGridController.js"></script>
     <script src="Src/Controllers/homeDescription.js"></script>
     <script src="Src/Controllers/homeController.js"></script>
     <script src="Src/menuController.js"></script>
     <script src="Src/appController.js"></script>
+    <script src="Src/Services/aboutService.js"></script>
 
 </head>
 
@@ -92,15 +98,7 @@
         </div>
         <div id="divPhotosContainer" style="display:none">
             <div class="vertical-menu" id="verticalMenu">
-                <!--<a href="#all">All categories</a>
-                <a href="#abstract">Abstract</a>
-                <a href="#action">Action</a>
-                <a href="#street">Street</a>
-                <a href="#macro">Macro</a>
-                <a href="#night">Night</a>
-                <a href="#portrait">Portrait</a>
-                <a href="#landscape">Landscape</a>
-                <a href="#people">People</a>-->
+                
             </div>
             
             <div id="all" class="grid-photos">
@@ -306,8 +304,8 @@
             </div>
         </div>
         <div id="divChallengesContainer" style="display:none">
-            <div class="card-deck">
-                <div class="card">
+            <div class="card-deck" id="card-challenges"></div>
+                <!--<div class="card">
                     <img id="photo-cat" class="card-img-top" style="max-width:444px; max-height:296px;" src="https://drscdn.500px.org/photo/148101889/q%3D80_m%3D2000/v2?webp=true&sig=4696c0d437325593b4e208c2829756d1fa33bd1a456bae02ec06e22616ece0c1" alt="Card image cap">
                     <div class="card-body">
                         <h5 class="card-title" style="text-align:center;">Street Photography</h5>
@@ -366,7 +364,7 @@
 
                     </div>
                 </div>
-           </div>
+           </div>-->
             <div class="photos-challenges" style="display:none">
                 <div class="column">
                 <div><img id="ima" style="max-height:450px;max-width:800px;width:100%;" src="https://static1.squarespace.com/static/58139419b3db2b2b3a91890f/5814d234579fb3b84120564f/5814da9f725e25ba0622a201/1477761697955/2015-Milano-Eolo-Perfido-Street-Photography-047.jpg?format=1500w" /></div>
@@ -388,6 +386,9 @@
         <div id="divAboutContainer" style="display:none">
             <div class="about-page">
             <center style="text-align:center; vertical-align:middle; line-height:1290px; ">Coming soon..</center>
+            </div>
+            <div id="test" class="test">
+
             </div>
         </div>
     </main>

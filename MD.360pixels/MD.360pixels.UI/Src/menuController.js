@@ -3,7 +3,7 @@
 
     var _homeController = new HomeController(serviceContext)
     var _categoryController = new CategoryController(serviceContext)
-
+    var _challengeController = new ChallengeController(serviceContext)
     var _menuElements = [
         {
             Id: "Home",
@@ -23,7 +23,7 @@
         {
             Id: "Challenges",
             ContainerId: "divChallengesContainer",
-            Controller:null
+            Controller: _challengeController
         },
         {
             Id: "About",

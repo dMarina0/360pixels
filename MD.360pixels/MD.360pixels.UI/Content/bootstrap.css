@@ -4159,7 +4159,7 @@ tbody.collapse.show {
 
 .card-deck {
   display: -ms-flexbox;
-  display: flex;
+  /*display: flex;*/
   -ms-flex-direction: column;
       flex-direction: column;
 }

@@ -21,10 +21,12 @@ body {
 }
 .container {
     display: grid;
-    grid-template-columns:repeat(auto-fit, minmax(350px,1fr));
+    grid-template-columns: repeat(auto-fit, minmax(350px,1fr));
     grid-column: 1/-1;
     background-color: grey;
     width: 100%;
+    padding: 0;
+    margin: 0;
 }
 
 .start-image {
@@ -290,11 +292,11 @@ body {
 }
 
 
-.card {
+/*.card {
     background-color: white;
     padding: 20px;
     margin-top: 20px;
-}
+}*/
 .cardRight {
     background-color: white;
     margin-top: 20px;
@@ -439,3 +441,19 @@ section {
     height: 1290px;
 }
 
+.card-deck {
+    padding-top: 60px;
+  
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 10px;
+}
+#divChallengesContainer {
+    width: 1480px;
+    height: 1290px;
+}
+
+#divBlogContainer {
+    width: 1480px;
+    height: 1290px;
+}
