@@ -9,9 +9,10 @@
 
     this.ReadAll = function (GetData) {
        
-       var result=$.ajax({
+        var result = $.ajax({
             url: 'http://localhost:64172/api/category',
             dataType: 'json',
+            crossDomain: true,
         });
 
        result.then(function (data) { GetData(data) });
@@ -24,6 +25,7 @@
             data: JSON.stringify(_newCategory),
             contentType: "application/json; charset=utf-8",
             dataType: "json",
+            crossDomain:true,
             success: function (msg) {
                 alert(msg);
             }
