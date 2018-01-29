@@ -3,8 +3,7 @@
 
     this.RenderGrid = function () {
         var jqGrid = $("<div class='photo'>")
-            .append("<img class='photo-image' src='" + photos.Img + "'>");
-    
+            .append("<img class='photo-image' src='" + photos.Photo + "'>");
 
             $("#" + containerId).append(jqGrid);
         }

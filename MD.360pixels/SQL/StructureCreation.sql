@@ -36,6 +36,11 @@ CONSTRAINT [PK_Challenges] PRIMARY KEY ([ChallengeID]));
 
 GO
 
+UPDATE Challenges
+SET Description ='https://www.w3schools.com/w3css/img_mountains.jpg'
+WHERE ChallengeID ='34AA90BA-DF2E-457E-810D-D87F58EB13D0';
+SELECT * FROM Challenges
+
 CREATE TABLE [UserChallenges](
 [UserID] uniqueidentifier NOT NULL,
 [ChallengeID] uniqueidentifier NOT NULL,

@@ -8,18 +8,13 @@
     
     <script src="Scripts/jquery-3.0.0.min.js"></script>
     <script src="Scripts/bootstrap.bundle.js"></script>
-
     
     <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css" />
-    <!--<script src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script>-->
     <link href="http://fontawesome.io/assets/font-awesome/css/font-awesome.css" rel="stylesheet" media="screen">
 
         <!--App Scripts-->
-
-    <script src="Src/Services/aboutService.js"></script>
     <script src="Src/Services/categoryService.js"></script>
     <script src="Src/Services/photoService.js"></script>
-
     <script src="Src/Services/challengeService.js"></script>
     <script src="Src/Services/serviceContext.js"></script>
     <script src="Src/Controllers/categoryMenu.js"></script>
@@ -27,11 +22,10 @@
     <script src="Src/Controllers/challengeController.js"></script>
     <script src="Src/Controllers/categoryController.js"></script>
     <script src="Src/Controllers/homeImageGridController.js"></script>
-    <script src="Src/Controllers/homeDescription.js"></script>
     <script src="Src/Controllers/homeController.js"></script>
     <script src="Src/menuController.js"></script>
     <script src="Src/appController.js"></script>
-    <script src="Src/Services/aboutService.js"></script>
+    
 
 </head>
 
@@ -69,14 +63,7 @@
 
             </div>
         <div class="content" id="imageGridHome">
-             <!--<div class="photo"><img class="photo-image" src="Img/DSC_1050.JPG"></div>
-            <div class="photo"><img class="photo-image" src="Img/DSC_1059.JPG"/></div>
-            <div class="photo"><img class="photo-image"  src="Img/DSC_1063.JPG"/></div>
-            <div class="photo"><img  class="photo-image" src="Img/DSC_1089.JPG"/></div>
-            <div class="photo"><img  class="photo-image" src="Img/DSC_1097.JPG" /></div>
-            <div class="photo"><img class="photo-image" src="Img/p2.jpg" /></div>
-            <div class="photo"><img class="photo-image" src="Img/DSC_1360.JPG" /></div>
-            <div class="photo"><img class="photo-image" src="Img/as.jpg" /></div>-->
+            
         </div>
         <div class="first-description" id="firstDescription">
                 <a><img style="width:100%;"src="https://preview.ibb.co/e0YJXG/classes_abf873c02e5784b7041b0c37e2078d6f.jpg" alt="classes_abf873c02e5784b7041b0c37e2078d6f" border="0"></a>
@@ -101,7 +88,7 @@
                 
             </div>
             
-            <div id="all" class="grid-photos">
+            <div id="all" onclick ="AddNewCategory()"class="grid-photos">
                 <div><img style="width: 350px; height: 260px;" src="Img/DSC_1050.JPG" /></div>
                 <div><img style="width: 350px; height: 260px;" src="Img/DSC_1059.JPG" /></div>
                 <div><img style="width: 350px; height: 260px;" src="Img/DSC_1063.JPG" /></div>
@@ -110,18 +97,25 @@
                 <div><img style="width: 350px; height: 260px;" src="Img/as.JPG" /></div>
                 <div><img style="width: 350px; height: 260px;" src="Img/DSC_1360.JPG" /></div>
             </div>
-            <div id="abstract" class="grid-photos" >
+            <div id="Architecture" class="grid-photos">
                 <div><img style="width: 350px; height: 260px;" src="Img/DSC_1050.JPG" /></div>
                 <div><img style="width: 350px; height: 260px;" src="Img/DSC_1059.JPG" /></div>
             </div>
-            <div id="action" class="grid-photos" >
+            <div id="Abstract" class="grid-photos" >
+                <div><img style="width: 350px; height: 260px;" src="Img/DSC_1050.JPG" /></div>
+                <div><img style="width: 350px; height: 260px;" src="Img/DSC_1059.JPG" /></div>
+            </div>
+            <div id="Action" class="grid-photos" >
                 <div><img style="width: 350px; height: 260px;" src="Img/p2.jpg" /></div>
                 <div><img style="width: 350px; height: 260px;" src="Img/as.JPG" /></div>
             </div>
-            <div id="street" class="grid-photos" >
+            <div id="Humans" class="grid-photos">
                 <div><img style="width: 350px; height: 260px;" src="Img/DSC_1360.JPG" /></div>
             </div>
-            <div id="macro" class="grid-photos" >
+            <div id="Street" class="grid-photos" >
+                <div><img style="width: 350px; height: 260px;" src="Img/DSC_1360.JPG" /></div>
+            </div>
+            <div id="Macro" class="grid-photos" >
                 <div><img style="width: 350px; height: 260px;" src="Img/DSC_1059.JPG" /></div>
                 <div><img style="width: 350px; height: 260px;" src="Img/DSC_1063.JPG" /></div>
             </div>
@@ -129,11 +123,11 @@
                 <div><img style="width: 350px; height: 260px;" src="Img/p2.jpg" /></div>
                 <div><img style="width: 350px; height: 260px;" src="Img/as.JPG" /></div>
             </div>
-            <div id="portrait" class="grid-photos" >
+            <div id="Portrait" class="grid-photos" >
                 <div><img style="width: 350px; height: 260px;" src="Img/DSC_1063.JPG" /></div>
                 <div><img style="width: 350px; height: 260px;" src="Img/DSC_1089.JPG" /></div>
             </div>
-            <div id="landscape" class="grid-photos" >
+            <div id="Landscape" class="grid-photos" >
                 <div><img style="width: 350px; height: 260px;" src="Img/DSC_1050.JPG" /></div>
             </div>
             <div id="people" class="grid-photos" >
@@ -438,6 +432,8 @@
 
         </div>
     </div>
+
+
     <script type="text/javascript" src="Src/pagination.js"></script>
     <script src="Src/facebookPage.js"></script>
     <script src="Src/navigation.js"></script>

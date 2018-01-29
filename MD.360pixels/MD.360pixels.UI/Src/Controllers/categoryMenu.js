@@ -3,7 +3,7 @@
 
     this.RenderMenu = function ()
     {
-        var jqCategoryMenu = ("<a href ='" + categories.Href + "'> " + categories.Name + " </a>");
+        var jqCategoryMenu = ("<a href ='" + '#'+ categories.CategoryName + "'> " + categories.CategoryName + " </a>");
 
         $("#" + containerID).append(jqCategoryMenu);
     }

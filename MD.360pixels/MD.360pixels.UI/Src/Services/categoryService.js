@@ -1,58 +1,32 @@
 ﻿var CategoryService = function () {
 
-
-    var _categoryMenu=[
-        
+    var _newCategory =
         {
-            Id: "1",
-            Name: "All",
-            Href: "#all"
-        },
-        {
-            Id: "2",
-            Name: "Abstract",
-            Href: "#abstract"
-        },
-        {
-            Id: "3",
-            Name: "Action",
-            Href: "#action"
-        },
-        {
-            Id: "4",
-            Name: "Street",
-            Href: "#street"
-        },
-        {
-            Id: "5",
-            Name: "Macro",
-            Href: "#macro"
-        },
-        {
-            Id: "6",
-            Name: "Night",
-            Href: "#night"
-        },
-        {
-            Id: "7",
-            Name: "Portrait",
-            Href: "#portrait"
-        },
-        {
-            Id: "8",
-            Name: "Landscape",
-            Href: "#landscape"
-        },
-        {
-            Id: "9",
-            Name: "People",
-            Href: "#people"
+            'CategoryID': 'D1F9FC1C-D39Q-11CE-A437-56C88306E024',
+            'CategoryName': 'NewCategory'
         }
+   
 
-    ];
+    this.ReadAll = function (GetData) {
+       
+       var result=$.ajax({
+            url: 'http://localhost:64172/api/category',
+            dataType: 'json',
+        });
 
-    this.ReadAll = function () {
+       result.then(function (data) { GetData(data) });
+    }
 
-        return _categoryMenu;
+    this.AddNewCategory = function () {
+        $.ajax({
+            type: "POST",
+            url: "http://localhost:64172/api/category",
+            data: JSON.stringify(_newCategory),
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: function (msg) {
+                alert(msg);
+            }
+        });
     }
 }
